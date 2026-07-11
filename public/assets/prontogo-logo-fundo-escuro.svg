@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 400" width="1180" height="400">
+
+  <style>
+    .claro{fill:#FFFFFF}
+    .laranja{fill:#F5820B}
+    .wordmark{font-family:'Sora',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:150px;font-weight:800;font-style:italic;letter-spacing:-4px}
+    .tagline{font-family:'Sora',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:22px;font-weight:600;letter-spacing:2.5px}
+  </style>
+
+  <rect x="0" y="0" width="1180" height="400" fill="#0E2A56"></rect>
+
+  <g transform="translate(30,30)">
+    <path class="claro" d="M 8 96  Q 6 90 14 90 L 128 78 Q 140 80 130 90 L 16 102 Q 8 102 8 96 Z"></path>
+    <path class="claro" d="M 22 140 Q 20 134 28 134 L 118 130 Q 130 132 120 142 L 30 146 Q 22 146 22 140 Z"></path>
+    <path class="claro" d="M 12 184 Q 10 178 18 178 L 132 186 Q 144 190 132 198 L 18 190 Q 12 190 12 184 Z"></path>
+
+    <path class="claro" fill-rule="evenodd" d="M 210 12
+      C 152 12 105 59 105 117
+      C 105 155 128 192 152 222
+      C 175 250 196 272 210 286
+      C 224 272 245 250 268 222
+      C 292 192 315 155 315 117
+      C 315 59 268 12 210 12 Z
+      M 210 62
+      C 240 62 265 87 265 117
+      C 265 147 240 172 210 172
+      C 180 172 155 147 155 117
+      C 155 87 180 62 210 62 Z"></path>
+
+    <ellipse class="laranja" cx="210" cy="316" rx="52" ry="11"></ellipse>
+
+    <g stroke="#0E2A56" stroke-width="9" stroke-linejoin="round">
+      <polygon fill="#FFA033" points="163,72 227,40 291,72 227,104"></polygon>
+      <polygon fill="#F5820B" points="163,72 227,104 227,176 163,144"></polygon>
+      <polygon fill="#E06A00" points="227,104 291,72 291,144 227,176"></polygon>
+    </g>
+    <polygon fill="#0E2A56" points="196,56 212,48 244,64 228,72" opacity="0.95"></polygon>
+    <rect fill="#0E2A56" x="223" y="104" width="8" height="72" opacity="0.9"></rect>
+  </g>
+
+  <text class="wordmark" x="420" y="215">
+    <tspan class="claro">Pronto</tspan><tspan class="laranja">Go</tspan>
+  </text>
+
+  <text class="tagline" x="428" y="272">
+    <tspan fill="#B9C8E4">LOGÍSTICA INTELIGENTE. ENTREGAS QUE CONECTAM</tspan><tspan class="laranja">.</tspan>
+  </text>
+</svg>
