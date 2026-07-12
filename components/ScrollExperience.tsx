@@ -46,6 +46,21 @@ export default function ScrollExperience() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  // A página abre sempre no início: sem isto, o browser restaura a posição
+  // de scroll em reloads e no botão "voltar" (incl. bfcache), deixando o
+  // visitante a meio da experiência de vídeo.
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+    function onPageShow(e: PageTransitionEvent) {
+      if (e.persisted) window.scrollTo(0, 0);
+    }
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, []);
+
   useEffect(() => {
     if (reduzMotion) return;
     const v1 = video1Ref.current;
