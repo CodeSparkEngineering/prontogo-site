@@ -23,8 +23,8 @@ const legendas: Legenda[] = [
     titulo: "A sua encomenda, entregue no tempo certo.",
     principal: true,
   },
-  { de: 0.34, ate: 0.62, kicker: "Em rota", titulo: "Acompanhada em tempo real." },
-  { de: 0.66, ate: 1.01, kicker: "Entregue", titulo: "Na porta certa, à hora certa." },
+  { de: 0.34, ate: 0.76, kicker: "Em rota", titulo: "Acompanhada em tempo real." },
+  { de: 0.8, ate: 1.01, kicker: "Entregue", titulo: "Na porta certa, à hora certa." },
 ];
 
 function clamp(v: number, min: number, max: number) {
