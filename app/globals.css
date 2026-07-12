@@ -250,7 +250,7 @@ a.contact-value:hover{color:var(--accent)}
 
 /* ============================ EXPERIÊNCIA (scroll-trigger, abertura da home) ============================ */
 .xp-trilho{height:420vh;position:relative}
-.xp-palco{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--navy-deep)}
+.xp-palco{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:var(--navy-deep)}
 .xp-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .25s linear}
 .xp-vinheta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(10,33,68,.5)),linear-gradient(180deg,rgba(10,33,68,.4),transparent 28%,transparent 72%,rgba(10,33,68,.55))}
 .xp-legenda{position:absolute;left:clamp(24px,7vw,96px);bottom:14vh;max-width:560px;color:#fff;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}

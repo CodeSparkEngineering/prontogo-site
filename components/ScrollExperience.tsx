@@ -55,6 +55,33 @@ export default function ScrollExperience() {
     let alvo = 0; // progresso alvo vindo do scroll
     let atual = 0; // progresso suavizado aplicado aos vídeos
     let raf = 0;
+    let primado = false;
+
+    // Browsers mobile (iOS Safari, Chrome Android) não descodificam frames
+    // até o vídeo ser "desbloqueado" por um play() — sem isto, o scrub via
+    // currentTime deixa o ecrã preso no poster. Um play/pause mudo, chamado
+    // no arranque e reforçado no primeiro toque (gesto exigido em Low Power
+    // Mode / Data Saver), destrava a descodificação.
+    function primar() {
+      if (primado) return;
+      primado = true;
+      for (const v of [video1Ref.current, video2Ref.current]) {
+        if (!v) continue;
+        v.muted = true;
+        if (v.preload !== "auto") v.preload = "auto";
+        if (v.readyState === 0) v.load();
+        const p = v.play();
+        if (p) {
+          p.then(() => v.pause()).catch(() => {
+            // play() recusado (ex.: Low Power Mode fora de gesto):
+            // permitir nova tentativa no próximo toque
+            primado = false;
+          });
+        } else {
+          v.pause();
+        }
+      }
+    }
 
     function onScroll() {
       const trilho = trilhoRef.current;
@@ -64,7 +91,7 @@ export default function ScrollExperience() {
       alvo = percurso > 0 ? clamp(-r.top / percurso, 0, 1) : 0;
       // O vídeo 2 começa com preload="metadata" para não pesar no carregamento
       // inicial; ao primeiro scroll pede-se o download completo, com folga
-      // até ao ponto de corte a meio do percurso.
+      // até ao ponto de corte do percurso.
       if (alvo > 0.05 && video2Ref.current && video2Ref.current.preload !== "auto") {
         video2Ref.current.preload = "auto";
       }
@@ -95,10 +122,15 @@ export default function ScrollExperience() {
     v1.pause();
     v2.pause();
     onScroll();
+    primar();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("touchstart", primar, { passive: true });
+    window.addEventListener("pointerdown", primar, { passive: true });
     raf = requestAnimationFrame(tick);
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("touchstart", primar);
+      window.removeEventListener("pointerdown", primar);
       cancelAnimationFrame(raf);
     };
   }, [reduzMotion]);
