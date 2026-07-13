@@ -278,4 +278,8 @@ a.contact-value:hover{color:var(--accent)}
   .section{padding:72px 20px}
   .hero-stats{gap:24px}
   .form-row{grid-template-columns:1fr}
+  /* Legenda e CTA da experiência em "andares" separados para não se sobreporem */
+  .xp-legenda{bottom:26vh;right:20px}
+  .xp-legenda h1,.xp-legenda h2{font-size:clamp(26px,7.5vw,34px)}
+  .xp-final{bottom:9vh}
 }
