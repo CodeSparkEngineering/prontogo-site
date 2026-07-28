@@ -1,4 +1,4 @@
-import Icon from "@/components/Icon";
+import Image from "next/image";
 import { passos } from "@/lib/content";
 
 export default function HowItWorks() {
@@ -30,7 +30,7 @@ export default function HowItWorks() {
             {passos.map((p) => (
               <div className="step" key={p.num} data-reveal>
                 <div className="step-circle">
-                  <Icon d={p.icon} size={28} />
+                  <Image src={p.img} alt="" width={96} height={96} aria-hidden="true" />
                   <span className="step-num">{p.num}</span>
                 </div>
                 <h3>{p.titulo}</h3>

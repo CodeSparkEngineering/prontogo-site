@@ -54,7 +54,7 @@ export interface Passo {
   num: string;
   titulo: string;
   texto: string;
-  icon: string;
+  img: string;
 }
 
 export const passos: Passo[] = [
@@ -63,21 +63,21 @@ export const passos: Passo[] = [
     titulo: "Solicite",
     texto:
       "Peça o serviço online ou por telefone. Confirmamos preço e janela de recolha em minutos.",
-    icon: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M12 18h.01"/>',
+    img: "/assets/prontogo-passo-solicite.webp",
   },
   {
     num: "2",
     titulo: "Recolhemos",
     texto:
       "Um estafeta ProntoGo recolhe a encomenda no local e hora combinados, com registo digital.",
-    icon: '<path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/><path d="m3 8 2.4-4.2A2 2 0 0 1 7.1 3h9.8a2 2 0 0 1 1.7.8L21 8"/><path d="M3 8h18"/>',
+    img: "/assets/prontogo-passo-recolhemos.webp",
   },
   {
     num: "3",
     titulo: "Entregamos",
     texto:
       "Acompanhe o percurso em tempo real até à entrega, com prova de receção imediata.",
-    icon: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><path d="m9.5 10 2 2 3.5-3.5"/>',
+    img: "/assets/prontogo-passo-entregamos.webp",
   },
 ];
 
