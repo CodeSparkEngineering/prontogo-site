@@ -308,4 +308,14 @@ a.contact-value:hover{color:var(--accent)}
   .xp-cap span:first-child{display:none}
   .xp-barra{height:5vh}
   .xp-moldura.fim{transform:scale(.94);border-radius:18px}
+  /* CTAs do desfecho empilhados, largura total e legíveis sobre o vídeo */
+  .xp-final-ctas{flex-direction:column;width:100%;padding:0 28px;gap:12px}
+  .xp-final-ctas .btn-primary{width:100%;justify-content:center}
+  .xp-final-ctas .link-ghost{width:100%;justify-content:center;padding:14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(14,42,86,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff}
+}
+
+/* Ecrãs muito estreitos: tiles de números com menos padding para os valores respirarem */
+@media (max-width:380px){
+  .number-tile{padding:18px 14px}
+  .numbers-grid{gap:12px}
 }
