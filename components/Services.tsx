@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Icon from "@/components/Icon";
 import { servicos } from "@/lib/content";
 
 export default function Services() {
@@ -37,11 +36,6 @@ export default function Services() {
                 />
               </div>
               <div className="card-body">
-                <div
-                  className={`card-icon ${s.tone === "accent" ? "icon-accent" : "icon-blue"}`}
-                >
-                  <Icon d={s.icon} />
-                </div>
                 <h3>{s.titulo}</h3>
                 <p>{s.texto}</p>
               </div>
