@@ -1,31 +1,50 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
-// Experiência de scroll: dois vídeos contínuos (o 2º começa no último frame
-// do 1º) são "esfregados" (scrub) pelo scroll — o tempo do vídeo segue a
-// posição de scroll em vez de reproduzir sozinho. Com prefers-reduced-motion,
-// os vídeos reproduzem normalmente em loop, sem scrub.
+// Experiência de scroll cinematográfica: um único vídeo multi-shot (3 planos)
+// é "esfregado" (scrub) pelo scroll. Elementos coreografados por progresso:
+// legendas por capítulo, barras letterbox, rail de capítulos navegável e um
+// desfecho em que o vídeo recua para revelar o CTA. Com prefers-reduced-motion
+// o vídeo reproduz em loop normal, sem scrub.
 
-interface Legenda {
-  de: number; // progresso global [0..1] em que a legenda entra
+interface Capitulo {
+  rotulo: string; // etiqueta no rail de capítulos
+  de: number; // progresso [0..1] em que a legenda entra
   ate: number; // progresso em que sai
   kicker: string;
   titulo: string;
   principal?: boolean; // true = título principal da página (h1)
 }
 
-const legendas: Legenda[] = [
+const capitulos: Capitulo[] = [
   {
+    rotulo: "Aveiro",
     de: 0.0,
-    ate: 0.3,
+    ate: 0.28,
     kicker: "Logística inteligente · Aveiro",
     titulo: "A sua encomenda, entregue no tempo certo.",
     principal: true,
   },
-  { de: 0.34, ate: 0.76, kicker: "Em rota", titulo: "Acompanhada em tempo real." },
-  { de: 0.8, ate: 1.01, kicker: "Entregue", titulo: "Na porta certa, à hora certa." },
+  {
+    rotulo: "Em rota",
+    de: 0.36,
+    ate: 0.58,
+    kicker: "Em rota",
+    titulo: "Acompanhada em tempo real, rua a rua.",
+  },
+  {
+    rotulo: "Entregue",
+    de: 0.64,
+    ate: 0.86,
+    kicker: "Entregue",
+    titulo: "Na porta certa, à hora certa.",
+  },
 ];
+
+// Progresso a partir do qual o vídeo recua e entra o painel final
+const FINAL = 0.88;
 
 function clamp(v: number, min: number, max: number) {
   return Math.min(max, Math.max(min, v));
@@ -33,8 +52,7 @@ function clamp(v: number, min: number, max: number) {
 
 export default function ScrollExperience() {
   const trilhoRef = useRef<HTMLDivElement>(null);
-  const video1Ref = useRef<HTMLVideoElement>(null);
-  const video2Ref = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [progresso, setProgresso] = useState(0);
   const [reduzMotion, setReduzMotion] = useState(false);
 
@@ -63,12 +81,11 @@ export default function ScrollExperience() {
 
   useEffect(() => {
     if (reduzMotion) return;
-    const v1 = video1Ref.current;
-    const v2 = video2Ref.current;
-    if (!v1 || !v2) return;
+    const video = videoRef.current;
+    if (!video) return;
 
     let alvo = 0; // progresso alvo vindo do scroll
-    let atual = 0; // progresso suavizado aplicado aos vídeos
+    let atual = 0; // progresso suavizado aplicado ao vídeo
     let raf = 0;
     let primado = false;
 
@@ -80,21 +97,17 @@ export default function ScrollExperience() {
     function primar() {
       if (primado) return;
       primado = true;
-      for (const v of [video1Ref.current, video2Ref.current]) {
-        if (!v) continue;
-        v.muted = true;
-        if (v.preload !== "auto") v.preload = "auto";
-        if (v.readyState === 0) v.load();
-        const p = v.play();
-        if (p) {
-          p.then(() => v.pause()).catch(() => {
-            // play() recusado (ex.: Low Power Mode fora de gesto):
-            // permitir nova tentativa no próximo toque
-            primado = false;
-          });
-        } else {
-          v.pause();
-        }
+      const v = videoRef.current;
+      if (!v) return;
+      v.muted = true;
+      if (v.readyState === 0) v.load();
+      const p = v.play();
+      if (p) {
+        p.then(() => v.pause()).catch(() => {
+          primado = false;
+        });
+      } else {
+        v.pause();
       }
     }
 
@@ -104,12 +117,6 @@ export default function ScrollExperience() {
       const r = trilho.getBoundingClientRect();
       const percurso = r.height - window.innerHeight;
       alvo = percurso > 0 ? clamp(-r.top / percurso, 0, 1) : 0;
-      // O vídeo 2 começa com preload="metadata" para não pesar no carregamento
-      // inicial; ao primeiro scroll pede-se o download completo, com folga
-      // até ao ponto de corte do percurso.
-      if (alvo > 0.05 && video2Ref.current && video2Ref.current.preload !== "auto") {
-        video2Ref.current.preload = "auto";
-      }
     }
 
     function tick() {
@@ -117,25 +124,17 @@ export default function ScrollExperience() {
       atual += (alvo - atual) * 0.12;
       if (Math.abs(alvo - atual) < 0.0005) atual = alvo;
 
-      const d1 = video1Ref.current?.duration;
-      const d2 = video2Ref.current?.duration;
-      // Divisão do percurso proporcional à duração de cada vídeo
-      const corte = d1 && d2 ? d1 / (d1 + d2) : 0.5;
-
-      if (atual <= corte) {
-        if (d1 && Number.isFinite(d1) && video1Ref.current) {
-          video1Ref.current.currentTime = (atual / corte) * d1;
-        }
-      } else if (d2 && Number.isFinite(d2) && video2Ref.current) {
-        video2Ref.current.currentTime = ((atual - corte) / (1 - corte)) * d2;
+      const v = videoRef.current;
+      const d = v?.duration;
+      if (v && d && Number.isFinite(d)) {
+        v.currentTime = atual * d;
       }
 
       setProgresso(atual);
       raf = requestAnimationFrame(tick);
     }
 
-    v1.pause();
-    v2.pause();
+    video.pause();
     onScroll();
     primar();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -150,71 +149,98 @@ export default function ScrollExperience() {
     };
   }, [reduzMotion]);
 
-  const d1 = video1Ref.current?.duration ?? 8;
-  const d2 = video2Ref.current?.duration ?? 7;
-  const corte = d1 / (d1 + d2);
-  const noSegundo = progresso > corte;
+  // Navegação por capítulos: rola até ao ponto do percurso correspondente
+  function irPara(p: number) {
+    const trilho = trilhoRef.current;
+    if (!trilho) return;
+    const topo = trilho.getBoundingClientRect().top + window.scrollY;
+    const percurso = trilho.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: topo + p * percurso, behavior: "smooth" });
+  }
+
+  const emViagem = progresso > 0.03 && progresso < FINAL && !reduzMotion;
+  const noFinal = progresso >= FINAL || reduzMotion;
 
   return (
     <div ref={trilhoRef} id="inicio" className="xp-trilho">
       <div className="xp-palco">
         <p className="sr-only">
           Sequência de vídeo: uma carrinha ProntoGo atravessa a ponte sobre o
-          canal de Aveiro ao pôr do sol, percorre a rua junto ao canal e um
-          estafeta entrega a encomenda à porta do cliente.
+          canal de Aveiro ao pôr do sol, percorre as ruas de azulejos da cidade
+          e um estafeta entrega a encomenda à porta do cliente.
         </p>
-        <video
-          ref={video1Ref}
-          className="xp-video"
-          style={{ opacity: noSegundo && !reduzMotion ? 0 : 1 }}
-          src="/assets/prontogo-xp-1.mp4"
-          poster="/assets/prontogo-xp-1-poster.webp"
-          muted
-          playsInline
-          preload="auto"
-          autoPlay={reduzMotion}
-          loop={reduzMotion}
-          aria-hidden="true"
-        />
-        <video
-          ref={video2Ref}
-          className="xp-video"
-          style={{ opacity: noSegundo || reduzMotion ? 1 : 0 }}
-          src="/assets/prontogo-xp-2.mp4"
-          poster="/assets/prontogo-xp-2-poster.webp"
-          muted
-          playsInline
-          preload="metadata"
-          autoPlay={reduzMotion}
-          loop={reduzMotion}
-          aria-hidden="true"
-        />
-        <div className="xp-vinheta" />
+        <div className={`xp-moldura${noFinal && !reduzMotion ? " fim" : ""}`}>
+          <video
+            ref={videoRef}
+            className="xp-video"
+            src="/assets/prontogo-xp.mp4"
+            poster="/assets/prontogo-xp-poster.webp"
+            muted
+            playsInline
+            preload="auto"
+            autoPlay={reduzMotion}
+            loop={reduzMotion}
+            aria-hidden="true"
+          />
+          <div className="xp-vinheta" />
+          <div className={`xp-barra xp-barra-topo${emViagem ? " on" : ""}`} />
+          <div className={`xp-barra xp-barra-fundo${emViagem ? " on" : ""}`} />
+        </div>
 
-        {legendas.map((l) => {
-          const ativa = progresso >= l.de && progresso < l.ate;
+        {capitulos.map((c) => {
+          const ativa = reduzMotion
+            ? c.principal === true
+            : progresso >= c.de && progresso < c.ate;
           return (
-            <div key={l.kicker} className={`xp-legenda${ativa ? " on" : ""}`}>
-              <div className="kicker">{l.kicker}</div>
-              {l.principal ? <h1>{l.titulo}</h1> : <h2>{l.titulo}</h2>}
+            <div key={c.rotulo} className={`xp-legenda${ativa ? " on" : ""}`}>
+              <div className="kicker">{c.kicker}</div>
+              {c.principal ? <h1>{c.titulo}</h1> : <h2>{c.titulo}</h2>}
             </div>
           );
         })}
 
         <div
-          className={`xp-final${progresso > 0.94 ? " on" : ""}`}
-          aria-hidden={progresso <= 0.94}
+          className={`xp-final${noFinal ? " on" : ""}`}
+          aria-hidden={!noFinal}
         >
-          <a href="#contacto" className="btn btn-primary">
-            Pedir orçamento
-          </a>
+          <Image
+            src="/assets/prontogo-icone-v2.svg"
+            alt=""
+            width={60}
+            height={60}
+          />
+          <h2>Pronta a entregar pelo país inteiro.</h2>
+          <div className="xp-final-ctas">
+            <a href="#contacto" className="btn btn-primary">
+              Pedir orçamento
+            </a>
+            <a href="#servicos" className="link-ghost">
+              Conhecer os serviços
+            </a>
+          </div>
         </div>
 
-        <div className="xp-progresso" aria-hidden="true">
-          <div className="xp-progresso-fill" style={{ transform: `scaleY(${progresso})` }} />
-        </div>
+        {!reduzMotion && (
+          <nav className="xp-caps" aria-label="Capítulos da experiência">
+            {capitulos.map((c) => {
+              const ativa =
+                progresso >= c.de && (progresso < c.ate || c.ate > FINAL);
+              return (
+                <button
+                  key={c.rotulo}
+                  type="button"
+                  className={`xp-cap${ativa ? " on" : ""}`}
+                  onClick={() => irPara(c.de + 0.08)}
+                >
+                  <span>{c.rotulo}</span>
+                  <span className="xp-cap-dot" aria-hidden="true" />
+                </button>
+              );
+            })}
+          </nav>
+        )}
 
-        <div className={`xp-dica${progresso > 0.04 ? " off" : ""}`} aria-hidden="true">
+        <div className={`xp-dica${progresso > 0.03 ? " off" : ""}`} aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
