@@ -1,0 +1,30 @@
+# ProntoGo
+
+> Empresa de logística e entregas com sede em Aveiro, Portugal. Entregas expressas urbanas no próprio dia, last-mile para e-commerce, transporte de mercadorias e logística para PMEs, em todo Portugal continental. Slogan: "Logística inteligente. Entregas que conectam."
+
+## Serviços
+
+- **Entregas expressas urbanas**: recolha e entrega no próprio dia dentro das principais cidades, com estafetas dedicados.
+- **Last-mile para e-commerce**: distribuição final integrada com lojas online, com notificações ao cliente em cada etapa.
+- **Transporte de mercadorias**: cargas paletizadas e volumes de maior dimensão entre armazéns, lojas e clientes finais.
+- **Logística para PMEs**: planos regulares e flexíveis para pequenas e médias empresas, sem mínimos exagerados, com gestor dedicado.
+
+## Factos principais
+
+- Sede: Aveiro, Portugal
+- Cobertura: todo o território de Portugal continental
+- Serviço expresso nacional: 24 horas
+- Entregas no prazo: 98%
+- Rastreamento em tempo real com prova de receção
+- Resposta a pedidos de orçamento: menos de 24 horas úteis
+
+## Contacto
+
+- Email: geral@prontogo.pt
+- Telefone: +351 234 000 000
+- Site: https://prontogo.pt
+- Pedidos de orçamento: https://prontogo.pt/#contacto
+
+## Páginas
+
+- [Página principal](https://prontogo.pt): serviços, como funciona, diferenciais, perguntas frequentes e formulário de orçamento.

@@ -5,11 +5,12 @@ import HowItWorks from "@/components/HowItWorks";
 import Differentials from "@/components/Differentials";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
+import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { siteUrl, siteDescription } from "@/lib/site";
-import { servicos } from "@/lib/content";
+import { servicos, perguntasFrequentes } from "@/lib/content";
 
 // Dados estruturados (schema.org) para SEO local — rich results no Google.
 const jsonLd = {
@@ -44,6 +45,18 @@ const jsonLd = {
   },
 };
 
+// FAQPage: elegível para rich results no Google e fonte direta de citações
+// em motores de resposta (AI Overviews, ChatGPT, Perplexity).
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: perguntasFrequentes.map((f) => ({
+    "@type": "Question",
+    name: f.pergunta,
+    acceptedAnswer: { "@type": "Answer", text: f.resposta },
+  })),
+};
+
 export default function Home() {
   return (
     <>
@@ -54,6 +67,12 @@ export default function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <SiteHeader />
       <main>
         <ScrollExperience />
@@ -62,6 +81,7 @@ export default function Home() {
         <Differentials />
         <About />
         <Testimonials />
+        <Faq />
         <Contact />
       </main>
       <Footer />

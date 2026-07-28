@@ -168,3 +168,49 @@ export const redesSociais = {
   instagram: "",
   facebook: "",
 };
+
+// FAQ — alimenta a secção da página e o schema FAQPage (SEO/AEO).
+// Respostas curtas e factuais: é este o texto que os motores de resposta
+// (Google AI Overviews, ChatGPT, Perplexity) tendem a citar.
+export interface PerguntaFrequente {
+  pergunta: string;
+  resposta: string;
+}
+
+export const perguntasFrequentes: PerguntaFrequente[] = [
+  {
+    pergunta: "Em que zonas é que a ProntoGo faz entregas?",
+    resposta:
+      "A ProntoGo tem sede em Aveiro e entrega em todo Portugal continental. Nas principais cidades fazemos entregas expressas urbanas com recolha e entrega no próprio dia; para o resto do país temos serviço expresso em 24 horas.",
+  },
+  {
+    pergunta: "Quanto tempo demora uma entrega expressa?",
+    resposta:
+      "Dentro das principais cidades, a recolha e a entrega acontecem no próprio dia. Para o restante território continental, o serviço expresso entrega em 24 horas, com 98% das entregas a chegar dentro do prazo.",
+  },
+  {
+    pergunta: "Como peço um orçamento?",
+    resposta:
+      "Pode pedir orçamento através do formulário do site, por telefone ou por email para geral@prontogo.pt. A nossa equipa responde em menos de 24 horas úteis com uma proposta à medida da sua operação.",
+  },
+  {
+    pergunta: "Fazem integração com lojas online?",
+    resposta:
+      "Sim. O serviço de last-mile para e-commerce integra-se com a sua loja online e envia notificações ao cliente final em cada etapa da entrega, do armazém à porta.",
+  },
+  {
+    pergunta: "Que tipos de mercadoria transportam?",
+    resposta:
+      "Desde encomendas urbanas e volumes de e-commerce até cargas paletizadas e volumes de maior dimensão entre armazéns, lojas e clientes finais.",
+  },
+  {
+    pergunta: "Posso acompanhar a minha encomenda em tempo real?",
+    resposta:
+      "Sim. Todas as encomendas ProntoGo têm rastreamento em tempo real, do momento da recolha até à entrega, com prova de receção imediata.",
+  },
+  {
+    pergunta: "Trabalham com pequenas e médias empresas?",
+    resposta:
+      "Sim, é uma das nossas especialidades: planos regulares e flexíveis para PMEs, sem mínimos exagerados, e um gestor dedicado que conhece a sua operação.",
+  },
+];

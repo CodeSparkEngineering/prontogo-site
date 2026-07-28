@@ -187,6 +187,17 @@ section{scroll-margin-top:80px}
 .t-name{font-weight:700;font-size:14.5px}
 .t-role{color:#6D7F9E;font-size:12.5px}
 
+/* ---------- FAQ ---------- */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .25s}
+.faq-item[open]{box-shadow:0 12px 30px rgba(14,42,86,.08)}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary h3{font-size:16px;font-weight:700;margin:0;letter-spacing:-.2px}
+.faq-item summary svg{flex:none;color:var(--accent);transition:transform .25s}
+.faq-item[open] summary svg{transform:rotate(180deg)}
+.faq-item p{color:var(--muted);font-size:14.5px;line-height:1.65;margin:0;padding:0 24px 20px}
+
 /* ---------- Contacto ---------- */
 .section-contact{background:linear-gradient(160deg,#0E2A56,#123566);color:#fff;position:relative;overflow:hidden}
 .contact-bg{position:absolute;inset:0;z-index:0;opacity:.12}
