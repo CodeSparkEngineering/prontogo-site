@@ -12,8 +12,8 @@ export default function Testimonials() {
         <div className="testimonials-grid">
           <div className="photo-card" data-reveal>
             <Image
-              src="/assets/prontogo-lastmile.png"
-              alt="Entrega ProntoGo à porta do cliente"
+              src="/assets/prontogo-entrega.webp"
+              alt="Estafeta ProntoGo a entregar uma encomenda em Aveiro"
               fill
               sizes="(max-width: 768px) 100vw, 280px"
             />
