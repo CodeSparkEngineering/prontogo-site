@@ -1,6 +1,11 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import Icon from "@/components/Icon";
+import {
+  contactoEmail,
+  contactoTelefone,
+  contactoTelefoneDisplay,
+} from "@/lib/site";
 
 interface Contacto {
   label: string;
@@ -9,19 +14,28 @@ interface Contacto {
   href?: string;
 }
 
+// Canais vazios em lib/site.ts ficam automaticamente de fora da lista
 const contactos: Contacto[] = [
-  {
-    label: "Telefone",
-    icon: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z"/>',
-    value: "+351 234 000 000",
-    href: "tel:+351234000000",
-  },
-  {
-    label: "Email",
-    icon: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
-    value: "geral@prontogo.pt",
-    href: "mailto:geral@prontogo.pt",
-  },
+  ...(contactoTelefone
+    ? [
+        {
+          label: "Telefone",
+          icon: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z"/>',
+          value: contactoTelefoneDisplay,
+          href: `tel:${contactoTelefone}`,
+        },
+      ]
+    : []),
+  ...(contactoEmail
+    ? [
+        {
+          label: "Email",
+          icon: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+          value: contactoEmail,
+          href: `mailto:${contactoEmail}`,
+        },
+      ]
+    : []),
   {
     label: "Área de cobertura",
     icon: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',

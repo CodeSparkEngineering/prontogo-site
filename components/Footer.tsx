@@ -1,5 +1,10 @@
 import Image from "next/image";
 import { redesSociais } from "@/lib/content";
+import {
+  contactoEmail,
+  contactoTelefone,
+  contactoTelefoneDisplay,
+} from "@/lib/site";
 
 const socialIcons: Record<keyof typeof redesSociais, { label: string; svg: React.ReactNode }> = {
   linkedin: {
@@ -69,8 +74,12 @@ export default function Footer() {
           <div>
             <div className="footer-title">Contactos</div>
             <div className="footer-links">
-              <a href="tel:+351234000000">+351 234 000 000</a>
-              <a href="mailto:geral@prontogo.pt">geral@prontogo.pt</a>
+              {contactoTelefone && (
+                <a href={`tel:${contactoTelefone}`}>{contactoTelefoneDisplay}</a>
+              )}
+              {contactoEmail && (
+                <a href={`mailto:${contactoEmail}`}>{contactoEmail}</a>
+              )}
               <span>Aveiro · Portugal</span>
             </div>
           </div>

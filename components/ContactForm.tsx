@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { tiposServico } from "@/lib/content";
+import { contactoEmail } from "@/lib/site";
 
 type Estado = "inicial" | "enviando" | "enviado" | "erro";
 
@@ -116,9 +117,16 @@ export default function ContactForm() {
       </label>
       {estado === "erro" && (
         <p className="form-error" role="alert">
-          Não foi possível enviar o pedido. Tente novamente ou escreva-nos
-          diretamente para{" "}
-          <a href="mailto:geral@prontogo.pt">geral@prontogo.pt</a>.
+          Não foi possível enviar o pedido. Tente novamente
+          {contactoEmail ? (
+            <>
+              {" "}
+              ou escreva-nos diretamente para{" "}
+              <a href={`mailto:${contactoEmail}`}>{contactoEmail}</a>.
+            </>
+          ) : (
+            "."
+          )}
         </p>
       )}
       <button

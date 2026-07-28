@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { tiposServico } from "@/lib/content";
+import { contactoEmail } from "@/lib/site";
 
 // Envio via Resend (https://resend.com) — REST API, sem dependências.
 // Variáveis de ambiente necessárias em produção:
@@ -118,7 +119,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: process.env.CONTACT_FROM_EMAIL ?? "ProntoGo <onboarding@resend.dev>",
-        to: [process.env.CONTACT_TO_EMAIL ?? "geral@prontogo.pt"],
+        to: [process.env.CONTACT_TO_EMAIL ?? contactoEmail ?? "geral@prontogo.pt"],
         reply_to: pedido.email,
         subject: `Pedido de orçamento — ${nome} (${pedido.servico})`,
         text: [

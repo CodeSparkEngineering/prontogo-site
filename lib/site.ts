@@ -10,3 +10,12 @@ export const siteTitle =
 
 export const siteDescription =
   "Logística e entregas rápidas em Aveiro e em todo Portugal. Entregas expressas urbanas, last-mile para e-commerce, transporte de mercadorias e logística para PMEs.";
+
+// Contactos públicos do site — fonte única usada em Contact, Footer,
+// formulário, JSON-LD e API. Valores vazios ("") escondem o canal
+// correspondente em todo o site (evita anunciar contactos falsos).
+// NOTA: geral@prontogo.pt será criado quando o email profissional for
+// contratado; o telefone é placeholder até haver número real.
+export const contactoEmail = "geral@prontogo.pt";
+export const contactoTelefone = "+351234000000"; // formato E.164
+export const contactoTelefoneDisplay = "+351 234 000 000";

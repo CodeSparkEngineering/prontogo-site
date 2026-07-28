@@ -9,7 +9,12 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { siteUrl, siteDescription } from "@/lib/site";
+import {
+  siteUrl,
+  siteDescription,
+  contactoEmail,
+  contactoTelefone,
+} from "@/lib/site";
 import { servicos, perguntasFrequentes } from "@/lib/content";
 
 // Dados estruturados (schema.org) para SEO local — rich results no Google.
@@ -22,8 +27,8 @@ const jsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/assets/prontogo-icone-v2.svg`,
   image: `${siteUrl}/assets/prontogo-og.jpg`,
-  telephone: "+351234000000",
-  email: "geral@prontogo.pt",
+  ...(contactoTelefone ? { telephone: contactoTelefone } : {}),
+  ...(contactoEmail ? { email: contactoEmail } : {}),
   address: {
     "@type": "PostalAddress",
     addressLocality: "Aveiro",
