@@ -30,10 +30,10 @@ export default function Differentials() {
           <div data-reveal>
             <div className="diff-visual">
               <Image
-                src="/assets/prontogo-rotas.webp"
-                alt="Vista aérea do canal de Aveiro com uma carrinha ProntoGo em rota"
+                src="/assets/prontogo-scan.webp"
+                alt="Estafeta ProntoGo a registar uma encomenda com o scanner de rastreamento"
                 width={1280}
-                height={720}
+                height={724}
                 sizes="(max-width: 768px) 100vw, 520px"
                 className="diff-img"
               />

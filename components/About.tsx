@@ -6,10 +6,10 @@ export default function About() {
       <div className="container split-grid">
         <div className="about-media" data-reveal>
           <Image
-            src="/assets/prontogo-hero-van-clean.png"
-            alt="Carrinha ProntoGo a atravessar a ponte do canal em Aveiro"
-            width={1024}
-            height={1024}
+            src="/assets/prontogo-equipa.webp"
+            alt="Equipa ProntoGo a carregar encomendas na carrinha, numa rua de Aveiro"
+            width={1100}
+            height={1100}
             sizes="(max-width: 768px) 100vw, 520px"
             className="about-img"
           />
@@ -20,7 +20,7 @@ export default function About() {
               width={24}
               height={24}
             />
-            <span>Em rota · Aveiro, Portugal</span>
+            <span>A nossa equipa · Aveiro, Portugal</span>
           </div>
         </div>
         <div data-reveal>
