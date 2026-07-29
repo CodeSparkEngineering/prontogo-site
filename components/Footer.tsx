@@ -4,6 +4,7 @@ import {
   contactoEmail,
   contactoTelefone,
   contactoTelefoneDisplay,
+  contactoWhatsapp,
 } from "@/lib/site";
 
 const socialIcons: Record<keyof typeof redesSociais, { label: string; svg: React.ReactNode }> = {
@@ -76,6 +77,15 @@ export default function Footer() {
             <div className="footer-links">
               {contactoTelefone && (
                 <a href={`tel:${contactoTelefone}`}>{contactoTelefoneDisplay}</a>
+              )}
+              {contactoWhatsapp && (
+                <a
+                  href={contactoWhatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp
+                </a>
               )}
               {contactoEmail && (
                 <a href={`mailto:${contactoEmail}`}>{contactoEmail}</a>

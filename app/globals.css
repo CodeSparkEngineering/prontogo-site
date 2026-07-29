@@ -237,6 +237,11 @@ a.contact-value:hover{color:var(--accent)}
 .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:600;font-size:14px;padding:11px 24px;border-radius:999px;cursor:pointer;margin-top:6px;transition:border-color .2s,color .2s}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
+/* ---------- Botão flutuante WhatsApp ---------- */
+.wa-fab{position:fixed;right:22px;bottom:22px;z-index:90;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff!important;font-weight:700;font-size:15px;padding:14px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s}
+.wa-fab:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(37,211,102,.55);color:#fff}
+.wa-fab svg{flex:none}
+
 /* ============================ FOOTER ============================ */
 .footer{background:var(--navy-deep);color:var(--faint);padding:56px 24px 32px}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
@@ -312,6 +317,9 @@ a.contact-value:hover{color:var(--accent)}
   .xp-final-ctas{flex-direction:column;width:100%;padding:0 28px;gap:12px}
   .xp-final-ctas .btn-primary{width:100%;justify-content:center}
   .xp-final-ctas .link-ghost{width:100%;justify-content:center;padding:14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(14,42,86,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff}
+  /* Em mobile o FAB fica compacto (só ícone) para não tapar conteúdo */
+  .wa-fab{right:16px;bottom:16px;padding:14px;gap:0}
+  .wa-fab span{display:none}
 }
 
 /* Ecrãs muito estreitos: tiles de números com menos padding para os valores respirarem */

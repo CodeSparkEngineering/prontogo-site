@@ -19,3 +19,6 @@ export const siteDescription =
 export const contactoEmail = "geral@prontogo.pt";
 export const contactoTelefone = "+351234000000"; // formato E.164
 export const contactoTelefoneDisplay = "+351 234 000 000";
+
+// Link curto do WhatsApp Business (vazio esconde o botão e o contacto)
+export const contactoWhatsapp = "https://wa.me/message/D4VY7QSTGWJXO1";

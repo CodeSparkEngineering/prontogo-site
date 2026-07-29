@@ -9,11 +9,13 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import WhatsappButton from "@/components/WhatsappButton";
 import {
   siteUrl,
   siteDescription,
   contactoEmail,
   contactoTelefone,
+  contactoWhatsapp,
 } from "@/lib/site";
 import { servicos, perguntasFrequentes } from "@/lib/content";
 
@@ -35,6 +37,7 @@ const jsonLd = {
     addressCountry: "PT",
   },
   areaServed: { "@type": "Country", name: "Portugal" },
+  ...(contactoWhatsapp ? { sameAs: [contactoWhatsapp] } : {}),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Serviços de logística",
@@ -90,6 +93,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsappButton />
       <ScrollReveal />
     </>
   );
