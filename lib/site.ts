@@ -17,8 +17,10 @@ export const siteDescription =
 // NOTA: geral@prontogo.pt será criado quando o email profissional for
 // contratado; o telefone é placeholder até haver número real.
 export const contactoEmail = "geral@prontogo.pt";
-export const contactoTelefone = "+351234000000"; // formato E.164
-export const contactoTelefoneDisplay = "+351 234 000 000";
+// Telefone escondido em todo o site até haver um número real da empresa.
+// Para o repor: preencher ambos os valores (E.164 + versão legível).
+export const contactoTelefone = ""; // formato E.164, ex.: "+351912345678"
+export const contactoTelefoneDisplay = ""; // ex.: "+351 912 345 678"
 
 // Link curto do WhatsApp Business (vazio esconde o botão e o contacto)
 export const contactoWhatsapp = "https://wa.me/message/D4VY7QSTGWJXO1";
