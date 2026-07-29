@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { redesSociais } from "@/lib/content";
 import {
   contactoEmail,
@@ -64,12 +65,12 @@ export default function Footer() {
           <div>
             <div className="footer-title">Navegação</div>
             <div className="footer-links">
-              <a href="#servicos">Serviços</a>
-              <a href="#como-funciona">Como funciona</a>
-              <a href="#diferenciais">Diferenciais</a>
-              <a href="#sobre">Sobre</a>
-              <a href="#faq">Perguntas frequentes</a>
-              <a href="#contacto">Contacto</a>
+              <a href="/#servicos">Serviços</a>
+              <a href="/#como-funciona">Como funciona</a>
+              <a href="/#diferenciais">Diferenciais</a>
+              <a href="/#sobre">Sobre</a>
+              <a href="/#faq">Perguntas frequentes</a>
+              <a href="/#contacto">Contacto</a>
             </div>
           </div>
           <div>
@@ -113,8 +114,18 @@ export default function Footer() {
           )}
         </div>
         <div className="footer-bottom">
-          <span>© 2026 ProntoGo. Todos os direitos reservados.</span>
-          <span>Logística inteligente. Entregas que conectam.</span>
+          <span>© {new Date().getFullYear()} ProntoGo. Todos os direitos reservados.</span>
+          <div className="footer-legal">
+            <Link href="/privacidade">Política de Privacidade</Link>
+            {/* Link obrigatório para empresas em Portugal (DL 156/2005) */}
+            <a
+              href="https://www.livroreclamacoes.pt/inicio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Livro de Reclamações
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -115,6 +115,11 @@ export default function ContactForm() {
         Empresa
         <input name="empresa" type="text" tabIndex={-1} autoComplete="off" />
       </label>
+      <p className="form-consent">
+        Ao enviar, concorda com o tratamento dos seus dados para lhe
+        respondermos, nos termos da{" "}
+        <a href="/privacidade">Política de Privacidade</a>.
+      </p>
       {estado === "erro" && (
         <p className="form-error" role="alert">
           Não foi possível enviar o pedido. Tente novamente
