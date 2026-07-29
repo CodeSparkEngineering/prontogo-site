@@ -23,6 +23,8 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* NOTA: não usar overflow-x:hidden em html/body — quebra o position:sticky
+   do palco da experiência de scroll. Conter o overflow no elemento em causa. */
 body{margin:0;font-family:var(--font-sora),system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:var(--blue);text-decoration:none}
 a:hover{color:var(--accent)}
@@ -337,6 +339,19 @@ a.contact-value:hover{color:var(--accent)}
   /* Em mobile o FAB fica compacto (só ícone) para não tapar conteúdo */
   .wa-fab{right:16px;bottom:16px;padding:14px;gap:0}
   .wa-fab span{display:none}
+  /* Rodapé: colunas mais juntas e espaço em baixo para o FAB não tapar
+     os links legais (que passam a ficar alinhados à esquerda) */
+  .footer{padding:44px 20px 24px}
+  .footer-grid{gap:30px;padding-bottom:30px}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;padding-bottom:72px}
+  .footer-legal{gap:16px}
+  /* Páginas legais: menos respiro no topo, texto mais compacto */
+  .legal-page{padding:104px 20px 72px}
+  .legal-content h2{margin-top:28px}
+  /* Alvos de toque confortáveis nos contactos e FAQ */
+  .contact-value{display:inline-block;padding:2px 0}
+  .faq-item summary{padding:18px 18px}
+  .faq-item p{padding:0 18px 18px}
 }
 
 /* Ecrãs muito estreitos: tiles de números com menos padding para os valores respirarem */
