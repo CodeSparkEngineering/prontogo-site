@@ -199,6 +199,56 @@ section{scroll-margin-top:80px}
 .faq-item[open] summary svg{transform:rotate(180deg)}
 .faq-item p{color:var(--muted);font-size:14.5px;line-height:1.65;margin:0;padding:0 24px 20px}
 
+/* ---------- Guias ---------- */
+.guias-page{padding-top:130px}
+.guias-head{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.guia-ver-todos{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-weight:700;font-size:15px;white-space:nowrap}
+.guia-ver-todos:hover{color:var(--accent)}
+.guias-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.guia-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;color:inherit;transition:transform .25s,box-shadow .25s}
+.guia-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(14,42,86,.1);color:inherit}
+.guia-card-media{aspect-ratio:16/9;overflow:hidden}
+.guia-card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.guia-card:hover .guia-card-media img{transform:scale(1.05)}
+.guia-card-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.guia-meta{color:var(--accent);font-size:12.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.guia-card h3{font-size:18px;font-weight:700;letter-spacing:-.3px;line-height:1.3;margin:0}
+.guia-card p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0}
+.guia-link{display:inline-flex;align-items:center;gap:7px;color:var(--blue);font-weight:700;font-size:14px;margin-top:auto;padding-top:6px}
+.guia-card:hover .guia-link{color:var(--accent)}
+
+/* Artigo */
+.guia-page{background:#fff;padding:120px 24px 80px}
+.guia-wrap{max-width:820px}
+.guia-voltar{display:inline-block;color:var(--muted);font-size:14px;font-weight:600;margin-bottom:26px}
+.guia-voltar:hover{color:var(--accent)}
+.guia-cabecalho h1{font-size:clamp(30px,4.2vw,46px);font-weight:800;letter-spacing:-1.2px;line-height:1.12;margin:12px 0 16px}
+.guia-resumo{color:var(--muted-2);font-size:18px;line-height:1.6;margin:0 0 32px}
+.guia-hero{border-radius:20px;overflow:hidden;margin-bottom:40px;box-shadow:0 20px 50px rgba(14,42,86,.14)}
+.guia-hero img{width:100%;height:auto;display:block}
+.guia-corpo h2{font-size:23px;font-weight:800;letter-spacing:-.5px;margin:40px 0 14px}
+.guia-corpo p{color:var(--muted);font-size:16.5px;line-height:1.75;margin:0 0 18px}
+.guia-corpo ul{margin:0 0 20px;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+.guia-corpo li{color:var(--muted);font-size:16.5px;line-height:1.7}
+.guia-destaque{background:#FFF7ED;border:1px solid rgba(245,130,11,.35);border-left:4px solid var(--accent);border-radius:14px;padding:22px 24px;margin:28px 0}
+.guia-destaque-titulo{font-weight:800;font-size:15.5px;margin-bottom:8px;color:var(--navy)}
+.guia-destaque p{margin:0;font-size:15.5px}
+.guia-citacao{border-left:4px solid var(--blue);background:var(--bg);border-radius:0 14px 14px 0;padding:22px 26px;margin:30px 0}
+.guia-citacao p{font-size:17.5px;line-height:1.6;color:var(--muted-2);font-style:italic;margin:0 0 10px}
+.guia-citacao cite{color:var(--muted);font-size:13.5px;font-style:normal;font-weight:600}
+.guia-tabela-wrap{overflow-x:auto;margin:26px 0}
+.guia-tabela{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
+.guia-tabela th{background:var(--navy);color:#fff;text-align:left;padding:13px 16px;font-weight:700;font-size:14px}
+.guia-tabela th:first-child{border-radius:10px 0 0 0}
+.guia-tabela th:last-child{border-radius:0 10px 0 0}
+.guia-tabela td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--muted)}
+.guia-tabela tbody tr:nth-child(even){background:var(--bg)}
+.guia-cta{background:linear-gradient(160deg,#0E2A56,#123566);color:#fff;border-radius:20px;padding:38px 34px;margin:48px 0 0;text-align:center}
+.guia-cta h2{font-size:24px;font-weight:800;letter-spacing:-.5px;margin:0 0 10px}
+.guia-cta p{color:var(--muted-dark);font-size:15.5px;line-height:1.6;margin:0 auto 22px;max-width:440px}
+.guia-relacionados{margin-top:60px}
+.guia-relacionados h2{font-size:22px;font-weight:800;letter-spacing:-.5px;margin:0 0 22px}
+
 /* ---------- Contacto ---------- */
 .section-contact{background:linear-gradient(160deg,#0E2A56,#123566);color:#fff;position:relative;overflow:hidden}
 .contact-bg{position:absolute;inset:0;z-index:0;opacity:.12}
