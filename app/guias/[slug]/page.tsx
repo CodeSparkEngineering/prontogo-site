@@ -54,24 +54,71 @@ export default async function GuiaPage({
 
   const relacionados = outrosGuias(guia.slug);
 
+  // Contagem de palavras a partir dos blocos — sinal de profundidade
+  // que o Google e os motores de resposta valorizam.
+  const palavras = guia.blocos.reduce((total, b) => {
+    const texto =
+      b.tipo === "lista"
+        ? b.itens.join(" ")
+        : b.tipo === "tabela"
+          ? [...b.cabecalho, ...b.linhas.flat()].join(" ")
+          : b.tipo === "destaque"
+            ? `${b.titulo} ${b.texto}`
+            : b.tipo === "citacao"
+              ? b.texto
+              : b.texto;
+    return total + texto.split(/\s+/).length;
+  }, 0);
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: guia.titulo,
-    description: guia.resumo,
-    image: `${siteUrl}${guia.img}`,
-    datePublished: guia.data,
-    dateModified: guia.data,
-    author: { "@type": "Person", name: guia.autor },
-    publisher: {
-      "@type": "Organization",
-      name: "ProntoGo",
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/assets/prontogo-icone-v2.svg`,
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: guia.titulo,
+        description: guia.resumo,
+        image: `${siteUrl}${guia.img}`,
+        datePublished: guia.data,
+        dateModified: guia.data,
+        wordCount: palavras,
+        timeRequired: `PT${guia.minutos}M`,
+        inLanguage: "pt-PT",
+        articleSection: "Logística",
+        author: {
+          "@type": "Person",
+          name: guia.autor,
+          worksFor: { "@type": "Organization", name: "ProntoGo" },
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "ProntoGo",
+          url: siteUrl,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteUrl}/assets/prontogo-icone-v2.svg`,
+          },
+        },
+        mainEntityOfPage: `${siteUrl}/guias/${guia.slug}`,
       },
-    },
-    mainEntityOfPage: `${siteUrl}/guias/${guia.slug}`,
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: siteUrl },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Guias",
+            item: `${siteUrl}/guias`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: guia.titulo,
+            item: `${siteUrl}/guias/${guia.slug}`,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -85,9 +132,13 @@ export default async function GuiaPage({
       <SiteHeader />
       <main className="guia-page">
         <div className="container guia-wrap">
-          <Link href="/guias" className="guia-voltar">
-            ← Todos os guias
-          </Link>
+          <nav className="guia-breadcrumb" aria-label="Navegação estrutural">
+            <Link href="/">Início</Link>
+            <span aria-hidden="true">›</span>
+            <Link href="/guias">Guias</Link>
+            <span aria-hidden="true">›</span>
+            <span className="guia-breadcrumb-atual">{guia.titulo}</span>
+          </nav>
           <div className="guia-cabecalho">
             <span className="guia-meta">
               {guia.dataDisplay} · {guia.minutos} min de leitura · {guia.autor}
@@ -107,6 +158,13 @@ export default async function GuiaPage({
           </div>
           <article className="guia-corpo">
             <GuiaConteudo blocos={guia.blocos} />
+            {guia.servico && (
+              <p className="guia-servico-link">
+                <Link href={guia.servico.href}>
+                  {guia.servico.texto} →
+                </Link>
+              </p>
+            )}
           </article>
 
           <div className="guia-cta">

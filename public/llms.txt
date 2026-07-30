@@ -21,10 +21,20 @@
 ## Contacto
 
 - Email: geral@prontogo.pt
-- Telefone: +351 234 000 000
+- WhatsApp: https://wa.me/message/D4VY7QSTGWJXO1
 - Site: https://prontogo.pt
 - Pedidos de orçamento: https://prontogo.pt/#contacto
+
+## Guias
+
+Conteúdo editorial próprio sobre logística em Portugal, escrito pela equipa ProntoGo:
+
+- [Quanto custa uma entrega expressa em Portugal?](https://prontogo.pt/guias/quanto-custa-entrega-expressa-portugal): os cinco fatores que definem o preço (peso e volume, distância, urgência, volume mensal, serviços adicionais), intervalos de preço praticados no mercado português por tipo de envio, e formas concretas de reduzir custos.
+- [Como escolher a transportadora da sua loja online: 7 critérios](https://prontogo.pt/guias/escolher-transportadora-loja-online): cobertura real, prazos de recolha, rastreamento, integração com a plataforma, resposta a falhas, devoluções e transparência de preço.
+- [Last-mile: o que é e porque decide a experiência do cliente](https://prontogo.pt/guias/last-mile-o-que-e): definição de última milha, porque representa mais de metade do custo de transporte, o que a faz correr bem, e comparação entre operação própria e parceiro logístico.
 
 ## Páginas
 
 - [Página principal](https://prontogo.pt): serviços, como funciona, diferenciais, perguntas frequentes e formulário de orçamento.
+- [Guias](https://prontogo.pt/guias): artigos práticos sobre logística e entregas.
+- [Política de Privacidade](https://prontogo.pt/privacidade): tratamento de dados pessoais, conforme o RGPD.

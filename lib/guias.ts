@@ -27,6 +27,9 @@ export interface Guia {
   img: string;
   imgAlt: string;
   blocos: Bloco[];
+  // Serviço relacionado — liga o artigo à secção correspondente da
+  // homepage (ligação interna que ajuda SEO e conversão)
+  servico?: { texto: string; href: string };
 }
 
 export const guias: Guia[] = [
@@ -42,6 +45,10 @@ export const guias: Guia[] = [
     img: "/assets/guia-precos.webp",
     imgAlt:
       "Lojista a calcular custos de envio ao balcão, com encomendas numa balança",
+    servico: {
+      texto: "Ver os nossos serviços de entregas",
+      href: "/#servicos",
+    },
     blocos: [
       {
         tipo: "p",
@@ -127,6 +134,10 @@ export const guias: Guia[] = [
     autor: "Israel Vieira da Silva",
     img: "/assets/guia-ecommerce.webp",
     imgAlt: "Lojista online a preparar encomendas rodeado de caixas de cartão",
+    servico: {
+      texto: "Conhecer o nosso last-mile para e-commerce",
+      href: "/#servicos",
+    },
     blocos: [
       {
         tipo: "p",
@@ -220,6 +231,10 @@ export const guias: Guia[] = [
     autor: "Israel Vieira da Silva",
     img: "/assets/guia-lastmile.webp",
     imgAlt: "Estafeta a entregar uma encomenda à porta de um prédio",
+    servico: {
+      texto: "Ver como funciona a nossa operação, passo a passo",
+      href: "/#como-funciona",
+    },
     blocos: [
       {
         tipo: "p",

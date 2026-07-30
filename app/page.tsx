@@ -56,14 +56,28 @@ const jsonLd = {
 
 // FAQPage: elegível para rich results no Google e fonte direta de citações
 // em motores de resposta (AI Overviews, ChatGPT, Perplexity).
+// WebSite: identifica a entidade do site (sitelinks e knowledge panel).
 const faqJsonLd = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: perguntasFrequentes.map((f) => ({
-    "@type": "Question",
-    name: f.pergunta,
-    acceptedAnswer: { "@type": "Answer", text: f.resposta },
-  })),
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "ProntoGo",
+      description: siteDescription,
+      inLanguage: "pt-PT",
+      publisher: { "@type": "Organization", name: "ProntoGo", url: siteUrl },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: perguntasFrequentes.map((f) => ({
+        "@type": "Question",
+        name: f.pergunta,
+        acceptedAnswer: { "@type": "Answer", text: f.resposta },
+      })),
+    },
+  ],
 };
 
 export default function Home() {

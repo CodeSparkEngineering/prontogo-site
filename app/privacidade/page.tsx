@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Política de Privacidade",
   description:
     "Como a ProntoGo recolhe, utiliza e protege os dados pessoais dos visitantes do site, em conformidade com o RGPD.",
+  // Sem isto herdaria o canonical "/" do layout, dizendo ao Google que
+  // esta página é a homepage
+  alternates: { canonical: "/privacidade" },
 };
 
 export default function PrivacidadePage() {
