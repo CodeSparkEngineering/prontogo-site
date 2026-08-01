@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" width="240" height="64" role="img" aria-label="Livro de Reclamações">
+  <rect width="240" height="64" rx="8" fill="#1D3B6E"/>
+  <g transform="translate(16 16)">
+    <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H14v28H4.5A2.5 2.5 0 0 1 2 27.5v-23z" fill="#fff"/>
+    <path d="M30 4.5A2.5 2.5 0 0 0 27.5 2H18v28h9.5a2.5 2.5 0 0 0 2.5-2.5v-23z" fill="#E8EEF7"/>
+    <path d="M16 2v28" stroke="#1D3B6E" stroke-width="2"/>
+    <path d="M6 9h5M6 14h5M21 9h5M21 14h5" stroke="#8FA3C2" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="16" cy="21" r="6.5" fill="#F5820B"/>
+    <path d="M16 17.5v4M16 24.4h.01" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="60" y="27" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#fff" letter-spacing="0.2">Livro de</text>
+  <text x="60" y="46" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#fff" letter-spacing="0.2">Reclamações</text>
+</svg>

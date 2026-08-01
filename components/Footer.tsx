@@ -118,13 +118,20 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} ProntoGo. Todos os direitos reservados.</span>
           <div className="footer-legal">
             <Link href="/privacidade">Política de Privacidade</Link>
-            {/* Link obrigatório para empresas em Portugal (DL 156/2005) */}
+            {/* Selo obrigatório para empresas em Portugal (DL 156/2005) */}
             <a
               href="https://www.livroreclamacoes.pt/inicio"
               target="_blank"
               rel="noopener noreferrer"
+              className="selo-livro"
+              aria-label="Livro de Reclamações Eletrónico (abre em nova janela)"
             >
-              Livro de Reclamações
+              <Image
+                src="/assets/livro-reclamacoes.svg"
+                alt="Livro de Reclamações"
+                width={240}
+                height={64}
+              />
             </a>
           </div>
         </div>
