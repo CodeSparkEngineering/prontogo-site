@@ -127,10 +127,10 @@ export default function Footer() {
               aria-label="Livro de Reclamações Eletrónico (abre em nova janela)"
             >
               <Image
-                src="/assets/livro-reclamacoes.svg"
+                src="/assets/livro-reclamacoes.png"
                 alt="Livro de Reclamações"
-                width={240}
-                height={64}
+                width={420}
+                height={166}
               />
             </a>
           </div>
