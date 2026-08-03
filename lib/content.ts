@@ -130,7 +130,8 @@ export const numeros: Numero[] = [
 export interface Compromisso {
   titulo: string;
   texto: string;
-  icon: string;
+  img: string;
+  imgAlt: string;
 }
 
 export const compromissos: Compromisso[] = [
@@ -138,19 +139,22 @@ export const compromissos: Compromisso[] = [
     titulo: "Resposta em menos de 24 horas úteis",
     texto:
       "Cada pedido de orçamento é analisado e respondido por uma pessoa, com uma proposta concreta — não por um autoresponder.",
-    icon: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+    img: "/assets/prontogo-compromisso-resposta.webp",
+    imgAlt: "Responsável da ProntoGo a responder a um pedido de orçamento",
   },
   {
     titulo: "Sem surpresas no preço",
     texto:
       "O valor que acordamos é o valor que fatura. Sobretaxas e condições ficam claras antes de fechar — não depois.",
-    icon: '<path d="M20 13c0 5-8 9-8 9s-8-4-8-9V5l8-3 8 3v8z"/><path d="m9 12 2 2 4-4"/>',
+    img: "/assets/prontogo-compromisso-preco.webp",
+    imgAlt: "Aperto de mão entre a ProntoGo e um lojista ao balcão",
   },
   {
     titulo: "Fala sempre com quem resolve",
     texto:
       "Somos uma equipa próxima: quem atende conhece a sua operação e decide na hora, sem tickets nem centrais de atendimento.",
-    icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    img: "/assets/prontogo-compromisso-contacto.webp",
+    imgAlt: "Estafeta da ProntoGo ao telefone junto à carrinha",
   },
 ];
 
