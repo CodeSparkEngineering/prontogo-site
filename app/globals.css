@@ -185,13 +185,10 @@ section{scroll-margin-top:80px}
 .photo-card img{object-fit:cover}
 .photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(14,42,86,.85))}
 .photo-caption{position:absolute;left:20px;right:20px;bottom:18px;color:#fff;font-weight:700;font-size:15.5px;line-height:1.45}
-.testimonial{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:30px 28px;margin:0;display:flex;flex-direction:column;gap:18px}
-.stars{color:var(--accent);font-size:15px;letter-spacing:3px}
-.testimonial blockquote{margin:0;color:var(--muted-2);font-size:15px;line-height:1.65}
-.testimonial figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
-.avatar{width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
-.t-name{font-weight:700;font-size:14.5px}
-.t-role{color:#6D7F9E;font-size:12.5px}
+.testimonial{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:30px 28px;margin:0;display:flex;flex-direction:column;gap:14px}
+.testimonial h3{font-size:17px;font-weight:700;letter-spacing:-.3px;margin:0;line-height:1.35}
+.testimonial p{margin:0;color:var(--muted-2);font-size:14.5px;line-height:1.65}
+.compromisso-icon{width:46px;height:46px;border-radius:13px;background:rgba(245,130,11,.12);color:var(--accent);display:flex;align-items:center;justify-content:center}
 
 /* ---------- FAQ ---------- */
 .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}

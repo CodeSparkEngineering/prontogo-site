@@ -115,41 +115,42 @@ export interface Numero {
   legenda: string;
 }
 
+// Apenas factos e promessas de serviço verificáveis — nada de estatísticas
+// que a empresa ainda não pode provar.
 export const numeros: Numero[] = [
-  { valor: "98%", legenda: "de entregas no prazo" },
-  { valor: "+120", legenda: "empresas parceiras" },
-  { valor: "24h", legenda: "expresso em todo o país" },
-  { valor: "4.9★", legenda: "satisfação média dos clientes" },
+  { valor: "24h", legenda: "serviço expresso em todo o continente" },
+  { valor: "Mesmo dia", legenda: "recolha e entrega nas principais cidades" },
+  { valor: "100%", legenda: "das encomendas com rastreio e prova de receção" },
+  { valor: "<24h", legenda: "para responder ao seu pedido de orçamento" },
 ];
 
-export interface Depoimento {
-  iniciais: string;
-  nome: string;
-  cargo: string;
+// Compromissos de serviço — promessas que a empresa consegue cumprir desde
+// o primeiro dia. Quando houver clientes reais dispostos a dar testemunho,
+// esta secção pode voltar a ser de depoimentos.
+export interface Compromisso {
+  titulo: string;
   texto: string;
+  icon: string;
 }
 
-export const depoimentos: Depoimento[] = [
+export const compromissos: Compromisso[] = [
   {
-    iniciais: "MS",
-    nome: "Marta Silveira",
-    cargo: "Loja online de cerâmica · Ílhavo",
+    titulo: "Resposta em menos de 24 horas úteis",
     texto:
-      "Desde que passámos o last-mile para a ProntoGo, as reclamações por atrasos praticamente desapareceram. Os clientes adoram as notificações.",
+      "Cada pedido de orçamento é analisado e respondido por uma pessoa, com uma proposta concreta — não por um autoresponder.",
+    icon: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
   },
   {
-    iniciais: "RC",
-    nome: "Rui Carvalho",
-    cargo: "Diretor de operações · PME industrial, Águeda",
+    titulo: "Sem surpresas no preço",
     texto:
-      "Flexibilidade que não encontrámos em operadores maiores. Ajustam as recolhas ao nosso ritmo de produção sem burocracia.",
+      "O valor que acordamos é o valor que fatura. Sobretaxas e condições ficam claras antes de fechar — não depois.",
+    icon: '<path d="M20 13c0 5-8 9-8 9s-8-4-8-9V5l8-3 8 3v8z"/><path d="m9 12 2 2 4-4"/>',
   },
   {
-    iniciais: "AF",
-    nome: "Ana Ferreira",
-    cargo: "Farmácia · Aveiro",
+    titulo: "Fala sempre com quem resolve",
     texto:
-      "Entregas urbanas no próprio dia, sempre com o mesmo cuidado. É raro encontrar este nível de atendimento personalizado.",
+      "Somos uma equipa próxima: quem atende conhece a sua operação e decide na hora, sem tickets nem centrais de atendimento.",
+    icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   },
 ];
 
@@ -186,7 +187,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Quanto tempo demora uma entrega expressa?",
     resposta:
-      "Dentro das principais cidades, a recolha e a entrega acontecem no próprio dia. Para o restante território continental, o serviço expresso entrega em 24 horas, com 98% das entregas a chegar dentro do prazo.",
+      "Dentro das principais cidades, a recolha e a entrega acontecem no próprio dia. Para o restante território continental, o serviço expresso entrega em 24 horas úteis, com rastreamento em tempo real do início ao fim.",
   },
   {
     pergunta: "Como peço um orçamento?",

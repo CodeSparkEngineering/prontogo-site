@@ -14,9 +14,9 @@
 - Sede: Aveiro, Portugal
 - Cobertura: todo o território de Portugal continental
 - Serviço expresso nacional: 24 horas
-- Entregas no prazo: 98%
-- Rastreamento em tempo real com prova de receção
+- Rastreamento em tempo real com prova de receção em todas as encomendas
 - Resposta a pedidos de orçamento: menos de 24 horas úteis
+- Preço fechado antes do serviço, sem sobretaxas surpresa
 
 ## Contacto
 

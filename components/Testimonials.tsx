@@ -1,13 +1,16 @@
 import Image from "next/image";
-import { depoimentos } from "@/lib/content";
+import Icon from "@/components/Icon";
+import { compromissos } from "@/lib/content";
 
+// Secção de compromissos de serviço. Nasceu como secção de depoimentos;
+// voltará a sê-lo quando houver clientes reais com testemunhos autênticos.
 export default function Testimonials() {
   return (
-    <section id="depoimentos" className="section">
+    <section className="section">
       <div className="container">
         <div className="section-head head-center" data-reveal>
-          <div className="kicker">Depoimentos</div>
-          <h2>Quem confia na ProntoGo</h2>
+          <div className="kicker">O nosso compromisso</div>
+          <h2>O que pode esperar de nós</h2>
         </div>
         <div className="testimonials-grid">
           <div className="photo-card" data-reveal>
@@ -22,18 +25,14 @@ export default function Testimonials() {
               Cada entrega é um momento de confiança.
             </div>
           </div>
-          {depoimentos.map((t) => (
-            <figure className="testimonial" key={t.nome} data-reveal>
-              <div className="stars">★★★★★</div>
-              <blockquote>“{t.texto}”</blockquote>
-              <figcaption>
-                <div className="avatar">{t.iniciais}</div>
-                <div>
-                  <div className="t-name">{t.nome}</div>
-                  <div className="t-role">{t.cargo}</div>
-                </div>
-              </figcaption>
-            </figure>
+          {compromissos.map((c) => (
+            <div className="testimonial" key={c.titulo} data-reveal>
+              <div className="compromisso-icon">
+                <Icon d={c.icon} size={22} />
+              </div>
+              <h3>{c.titulo}</h3>
+              <p>{c.texto}</p>
+            </div>
           ))}
         </div>
       </div>
