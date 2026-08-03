@@ -34,7 +34,28 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      { source: "/(.*)", headers: securityHeaders },
+      {
+        // Imagens e vídeos de /public são servidos com max-age=0 por
+        // omissão, obrigando a revalidar 20+ ficheiros (incl. o vídeo de
+        // 8.5MB) em cada visita. Como só mudam quando lhes mudamos o nome,
+        // podem ser cacheados por um ano.
+        source: "/assets/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:file(favicon.ico|apple-touch-icon.png|llms.txt)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400" },
+        ],
+      },
+    ];
   },
   // Domínio canónico único: www e o alias .vercel.app redirecionam para
   // prontogo.pt (evita conteúdo duplicado no Google)
