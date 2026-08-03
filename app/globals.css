@@ -35,6 +35,8 @@ input::placeholder,textarea::placeholder{color:var(--faint)}
 
 .container{max-width:1180px;margin:0 auto}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Navegação por teclado: anel de foco visível em toda a interação */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .rel{position:relative}
 section{scroll-margin-top:80px}
 
@@ -73,8 +75,11 @@ section{scroll-margin-top:80px}
 .nav-toggle{display:none;background:none;border:none;color:#fff;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;margin:-6px -8px -6px 0}
 .nav-toggle:hover{color:var(--accent)}
 
+.nav-cta-m{display:none}
 @media (max-width:880px){
   .nav-toggle{display:flex}
+  .nav-cta-m{display:inline-flex;font-size:13px;padding:9px 16px;margin-left:auto}
+  .nav{gap:12px}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(14,42,86,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);padding:8px 24px 20px}
   .nav-links.open{display:flex}
   .nav-links>a{font-size:15.5px;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -365,6 +370,9 @@ a.contact-value:hover{color:var(--accent)}
 .xp-cap-dot{width:10px;height:10px;border-radius:50%;border:2px solid currentColor;flex:none;transition:background .3s,border-color .3s,box-shadow .3s}
 .xp-cap.on{opacity:1;color:#fff}
 .xp-cap.on .xp-cap-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(245,130,11,.25)}
+.xp-saltar{position:absolute;right:22px;bottom:24px;z-index:6;background:rgba(14,42,86,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:var(--nav-link);font-family:inherit;font-size:12.5px;font-weight:700;letter-spacing:.4px;padding:9px 16px;border-radius:999px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,color .2s,border-color .2s}
+.xp-saltar.on{opacity:1;pointer-events:auto}
+.xp-saltar:hover{color:#fff;border-color:var(--accent)}
 .xp-dica{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:var(--nav-link);font-size:13px;font-weight:600;transition:opacity .4s;animation:xpdica 1.8s ease-in-out infinite;z-index:3}
 .xp-dica.off{opacity:0}
 @keyframes xpdica{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
@@ -383,7 +391,12 @@ a.contact-value:hover{color:var(--accent)}
   .section{padding:72px 20px}
   .hero-stats{gap:24px}
   .form-row{grid-template-columns:1fr}
-  /* Experiência em mobile: legenda mais alta, capítulos só com pontos */
+  /* iOS faz zoom automático em campos com fonte <16px — trava o formulário */
+  .form-card input,.form-card select,.form-card textarea{font-size:16px}
+  /* Experiência em mobile: percurso mais curto, legenda mais alta, capítulos só com pontos */
+  .xp-trilho{height:400vh}
+  .xp-saltar{right:16px;bottom:20px}
+  .xp-dica{left:24px;transform:none;animation:none}
   .xp-legenda{bottom:22vh;right:20px}
   .xp-legenda h1,.xp-legenda h2{font-size:clamp(26px,7.5vw,34px)}
   .xp-caps{right:14px;gap:18px}

@@ -43,6 +43,10 @@ export default function SiteHeader() {
             Pronto<span className="brand-go">Go</span>
           </span>
         </a>
+        {/* CTA compacto visível na barra em mobile (o completo vive no menu) */}
+        <a href="/#contacto" className="btn btn-nav nav-cta-m" onClick={fecharMenu}>
+          Orçamento
+        </a>
         <button
           type="button"
           className="nav-toggle"

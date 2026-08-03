@@ -100,6 +100,7 @@ export default function ScrollExperience() {
       const v = videoRef.current;
       if (!v) return;
       v.muted = true;
+      v.preload = "auto";
       if (v.readyState === 0) v.load();
       const p = v.play();
       if (p) {
@@ -117,6 +118,7 @@ export default function ScrollExperience() {
       const r = trilho.getBoundingClientRect();
       const percurso = r.height - window.innerHeight;
       alvo = percurso > 0 ? clamp(-r.top / percurso, 0, 1) : 0;
+      if (alvo > 0.005) primar();
     }
 
     function tick() {
@@ -136,7 +138,18 @@ export default function ScrollExperience() {
 
     video.pause();
     onScroll();
-    primar();
+    // Em mobile (ou com poupança de dados ativa) o vídeo de 8.5MB só começa
+    // a descarregar ao primeiro gesto — quem entra e sai não paga o download.
+    // Em desktop, o priming imediato garante scrub instantâneo.
+    const pouparDados =
+      window.matchMedia("(max-width: 640px)").matches ||
+      (navigator as { connection?: { saveData?: boolean } }).connection
+        ?.saveData === true;
+    if (pouparDados) {
+      video.preload = "metadata";
+    } else {
+      primar();
+    }
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("touchstart", primar, { passive: true });
     window.addEventListener("pointerdown", primar, { passive: true });
@@ -156,6 +169,14 @@ export default function ScrollExperience() {
     const topo = trilho.getBoundingClientRect().top + window.scrollY;
     const percurso = trilho.offsetHeight - window.innerHeight;
     window.scrollTo({ top: topo + p * percurso, behavior: "smooth" });
+  }
+
+  // Quem quer informação já não é obrigado a ver a intro toda
+  function saltarIntro() {
+    const trilho = trilhoRef.current;
+    if (!trilho) return;
+    const topo = trilho.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: topo + trilho.offsetHeight - window.innerHeight + 2 });
   }
 
   const emViagem = progresso > 0.03 && progresso < FINAL && !reduzMotion;
@@ -238,6 +259,17 @@ export default function ScrollExperience() {
               );
             })}
           </nav>
+        )}
+
+        {!reduzMotion && (
+          <button
+            type="button"
+            className={`xp-saltar${progresso < FINAL ? " on" : ""}`}
+            onClick={saltarIntro}
+            tabIndex={progresso < FINAL ? 0 : -1}
+          >
+            Saltar intro
+          </button>
         )}
 
         <div className={`xp-dica${progresso > 0.03 ? " off" : ""}`} aria-hidden="true">
