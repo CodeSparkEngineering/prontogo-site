@@ -9,7 +9,7 @@ export default function Differentials() {
       <div className="container rel">
         <div className="split-grid">
           <div data-reveal>
-            <div className="kicker">Porquê a ProntoGo</div>
+            <div className="kicker">A operação</div>
             <h2>
               Velocidade com confiança, do primeiro ao último quilómetro
             </h2>

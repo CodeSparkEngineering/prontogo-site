@@ -27,20 +27,21 @@ export default function About() {
           <div className="kicker">Sobre nós</div>
           <h2>Nascida em Aveiro, feita para Portugal inteiro</h2>
           <p className="about-p">
-            A ProntoGo é uma empresa jovem e tecnológica de logística e entregas
-            rápidas, sediada na região de Aveiro. Combinamos rotas otimizadas,
-            rastreamento em tempo real e uma equipa dedicada para levar cada
-            encomenda ao destino — no tempo certo.
+            A ProntoGo nasceu de uma constatação simples: quem tem um negócio
+            pequeno em Aveiro merece o mesmo nível de serviço que uma grande
+            marca em Lisboa — e raramente o consegue. As transportadoras
+            grandes tratam-nos como número; as pequenas nem sempre chegam
+            onde é preciso.
           </p>
           <p className="about-p">
-            Trabalhamos lado a lado com e-commerce, PMEs e particulares, com a
-            flexibilidade de quem conhece o terreno e a ambição de quem quer
-            conectar todo o país.
+            Somos uma empresa jovem, e fazemos disso uma vantagem: conhecemos
+            as ruas onde entregamos, respondemos sem passar por três
+            departamentos e adaptamos a operação ao ritmo de quem servimos.
+            Crescemos com os nossos clientes, não apesar deles.
           </p>
           <div className="pills">
-            <span className="pill">📍 Aveiro, Portugal</span>
-            <span className="pill">Cobertura nacional</span>
-            <span className="pill">Tecnologia própria</span>
+            <span className="pill">📍 Sede em Aveiro</span>
+            <span className="pill">E-commerce, PMEs e particulares</span>
           </div>
         </div>
       </div>

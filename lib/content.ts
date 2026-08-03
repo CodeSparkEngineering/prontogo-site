@@ -87,6 +87,9 @@ export interface Diferencial {
   icon: string;
 }
 
+// Capacidade operacional — o que a operação faz. As promessas de
+// atendimento vivem em `compromissos` e o percurso da empresa em About,
+// para não repetir a mesma ideia em três secções.
 export const diferenciais: Diferencial[] = [
   {
     titulo: "Rapidez real",
@@ -104,9 +107,9 @@ export const diferenciais: Diferencial[] = [
     icon: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
   },
   {
-    titulo: "Atendimento personalizado",
-    texto: "Um gestor dedicado que conhece a sua operação pelo nome.",
-    icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    titulo: "Do envelope à palete",
+    texto: "Documentos, encomendas ou cargas paletizadas — a mesma operação.",
+    icon: '<path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
   },
 ];
 
@@ -121,7 +124,7 @@ export const numeros: Numero[] = [
   { valor: "24h", legenda: "serviço expresso em todo o continente" },
   { valor: "Mesmo dia", legenda: "recolha e entrega nas principais cidades" },
   { valor: "100%", legenda: "das encomendas com rastreio e prova de receção" },
-  { valor: "<24h", legenda: "para responder ao seu pedido de orçamento" },
+  { valor: "Sem mínimos", legenda: "planos à medida do volume de cada negócio" },
 ];
 
 // Compromissos de serviço — promessas que a empresa consegue cumprir desde
