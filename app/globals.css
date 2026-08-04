@@ -50,6 +50,7 @@ section{scroll-margin-top:80px}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .sim-preco,.sim-contrato strong,.form-card.preenchido{animation:none!important}
   [data-reveal]{opacity:1;transform:none;transition:none}
   .dash-anim,.hero-float{animation:none!important}
 }
@@ -244,7 +245,10 @@ section{scroll-margin-top:80px}
 .sim-resultado{margin-top:32px;padding-top:28px;border-top:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .sim-preco-bloco{display:flex;flex-direction:column;gap:2px}
 .sim-preco-label{font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
-.sim-preco{font-size:clamp(38px,5.5vw,50px);font-weight:800;letter-spacing:-1.8px;color:var(--navy);line-height:1.05;font-variant-numeric:tabular-nums}
+.sim-preco{font-size:clamp(38px,5.5vw,50px);font-weight:800;letter-spacing:-1.8px;color:var(--navy);line-height:1.05;font-variant-numeric:tabular-nums;animation:simpreco .34s cubic-bezier(.22,1,.36,1)}
+@keyframes simpreco{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+.sim-contrato-selo{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-right:8px;vertical-align:1px}
+.sim-contrato strong{animation:simpreco .34s cubic-bezier(.22,1,.36,1)}
 .sim-preco-consulta{font-size:clamp(26px,3.6vw,34px);letter-spacing:-1px}
 .sim-preco-nota{font-size:13px;color:var(--muted);max-width:280px;line-height:1.5;margin-top:4px}
 .sim-contrato{flex:1;min-width:210px;background:var(--bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);line-height:1.55}
@@ -331,6 +335,18 @@ a.contact-value:hover{color:var(--accent)}
 .form-card select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:44px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23C7D4E8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 16px center}
 .form-card select option{color:var(--navy)}
 .form-opt{color:var(--faint);font-weight:400;font-size:12px}
+/* Confirma visualmente que o simulador preencheu o formulário */
+.form-card.preenchido{animation:formglow 1.8s ease-out}
+@keyframes formglow{
+  0%{border-color:var(--accent);box-shadow:0 0 0 0 rgba(245,130,11,.5)}
+  40%{border-color:var(--accent);box-shadow:0 0 0 14px rgba(245,130,11,0)}
+  100%{border-color:rgba(255,255,255,.12);box-shadow:none}
+}
+.form-error-vias{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.form-via{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:13.5px;font-weight:700;padding:9px 15px;border-radius:999px}
+.form-via:hover{background:rgba(255,255,255,.18);color:#fff}
+.form-via-wa{background:#25D366;border-color:#25D366}
+.form-via-wa:hover{background:#1FB855;color:#fff}
 .form-consent{color:var(--faint);font-size:12.5px;line-height:1.5;margin:0}
 .form-consent a{color:var(--accent-light)}
 .form-consent a:hover{color:#fff}
@@ -491,7 +507,7 @@ a.contact-value:hover{color:var(--accent)}
 }
 
 /* Ecrãs muito estreitos: tiles de números com menos padding para os valores respirarem */
-@media (max-width:380px){
+@media (max-width:400px){
   .number-tile{padding:18px 14px}
   .numbers-grid{gap:12px}
   /* Em ecrãs muito estreitos os escalões de peso não cabem a dois */

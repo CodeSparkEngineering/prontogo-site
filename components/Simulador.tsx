@@ -101,21 +101,35 @@ export default function Simulador() {
               <>
                 <div className="sim-preco-bloco">
                   <span className="sim-preco-label">Preço</span>
-                  <span className="sim-preco">{eur(preco)}</span>
+                  {/* A key faz o número remontar a cada mudança, disparando
+                      a animação que sinaliza que o valor mudou */}
+                  <span className="sim-preco" key={`${servico.id}-${escalaoIdx}`}>
+                    {eur(preco)}
+                  </span>
                   <span className="sim-preco-nota">
                     por entrega, sem IVA
                   </span>
                 </div>
                 <div className="sim-contrato">
+                  <span className="sim-contrato-selo">
+                    Poupa {Math.round(DESCONTO_CONTRATO * 100)}%
+                  </span>
                   Com contrato regular, a partir de 20 envios por mês:{" "}
-                  <strong>{eur(preco * (1 - DESCONTO_CONTRATO))}</strong> por
-                  entrega
+                  <strong key={`d-${servico.id}-${escalaoIdx}`}>
+                    {eur(preco * (1 - DESCONTO_CONTRATO))}
+                  </strong>{" "}
+                  por entrega
                 </div>
               </>
             ) : (
               <div className="sim-preco-bloco">
                 <span className="sim-preco-label">Preço</span>
-                <span className="sim-preco sim-preco-consulta">Sob consulta</span>
+                <span
+                  className="sim-preco sim-preco-consulta"
+                  key={`c-${servico.id}-${escalaoIdx}`}
+                >
+                  Sob consulta
+                </span>
                 <span className="sim-preco-nota">
                   Acima de 30 kg o valor depende do volume e da distância.
                   Transportamos até {CARGA_MAX_KG} kg.
