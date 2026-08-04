@@ -100,6 +100,20 @@ export default async function GuiaPage({
         },
         mainEntityOfPage: `${siteUrl}/guias/${guia.slug}`,
       },
+      // Perguntas do artigo em FAQPage: é o formato que os motores de
+      // resposta mais citam, e torna o guia elegível a rich results.
+      ...(guia.faq && guia.faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: guia.faq.map((f) => ({
+                "@type": "Question",
+                name: f.pergunta,
+                acceptedAnswer: { "@type": "Answer", text: f.resposta },
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -166,6 +180,35 @@ export default async function GuiaPage({
               </p>
             )}
           </article>
+
+          {guia.faq && guia.faq.length > 0 && (
+            <section className="guia-faq">
+              <h2>Perguntas frequentes</h2>
+              <div className="faq-list">
+                {guia.faq.map((f) => (
+                  <details className="faq-item" key={f.pergunta}>
+                    <summary>
+                      <h3>{f.pergunta}</h3>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </summary>
+                    <p>{f.resposta}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           <div className="guia-cta">
             <h2>Precisa de uma solução de entregas?</h2>

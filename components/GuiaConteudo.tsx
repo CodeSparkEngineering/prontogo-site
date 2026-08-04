@@ -1,4 +1,30 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
 import type { Bloco } from "@/lib/guias";
+
+// Converte [texto](/destino) em ligações reais, sem recorrer a HTML por
+// injeção. Só aceita caminhos internos — evita que uma edição futura ao
+// conteúdo introduza uma ligação externa por engano.
+const PADRAO_LIGACAO = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+
+function comLigacoes(texto: string): ReactNode {
+  const partes: ReactNode[] = [];
+  let ultimo = 0;
+  let m: RegExpExecArray | null;
+  PADRAO_LIGACAO.lastIndex = 0;
+  while ((m = PADRAO_LIGACAO.exec(texto)) !== null) {
+    if (m.index > ultimo) partes.push(texto.slice(ultimo, m.index));
+    partes.push(
+      <Link key={`${m[2]}-${m.index}`} href={m[2]}>
+        {m[1]}
+      </Link>
+    );
+    ultimo = m.index + m[0].length;
+  }
+  if (ultimo === 0) return texto;
+  if (ultimo < texto.length) partes.push(texto.slice(ultimo));
+  return partes;
+}
 
 // Renderiza os blocos tipados de um guia com estilo consistente.
 export default function GuiaConteudo({ blocos }: { blocos: Bloco[] }) {
@@ -9,7 +35,7 @@ export default function GuiaConteudo({ blocos }: { blocos: Bloco[] }) {
           case "h2":
             return <h2 key={i}>{bloco.texto}</h2>;
           case "p":
-            return <p key={i}>{bloco.texto}</p>;
+            return <p key={i}>{comLigacoes(bloco.texto)}</p>;
           case "lista":
             return (
               <ul key={i}>

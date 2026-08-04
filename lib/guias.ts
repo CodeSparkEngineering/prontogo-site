@@ -8,6 +8,8 @@
 // imagem de capa em /public/assets e fazer deploy. O sitemap, a listagem e
 // os dados estruturados atualizam-se sozinhos.
 
+// Nos blocos de parágrafo, [texto](/destino) vira ligação. É a forma mais
+// simples de ter ligações contextuais sem dependência de Markdown.
 export type Bloco =
   | { tipo: "p"; texto: string }
   | { tipo: "h2"; texto: string }
@@ -15,6 +17,14 @@ export type Bloco =
   | { tipo: "destaque"; titulo: string; texto: string }
   | { tipo: "citacao"; texto: string; autor: string }
   | { tipo: "tabela"; cabecalho: string[]; linhas: string[][] };
+
+// Perguntas no fim do artigo. Alimentam o schema FAQPage, que é o formato
+// que os motores de resposta (AI Overviews, ChatGPT, Perplexity) mais
+// citam — respostas curtas e autónomas funcionam melhor que parágrafos.
+export interface PerguntaGuia {
+  pergunta: string;
+  resposta: string;
+}
 
 export interface Guia {
   slug: string;
@@ -27,6 +37,7 @@ export interface Guia {
   img: string;
   imgAlt: string;
   blocos: Bloco[];
+  faq?: PerguntaGuia[];
   // Serviço relacionado — liga o artigo à secção correspondente da
   // homepage (ligação interna que ajuda SEO e conversão)
   servico?: { texto: string; href: string };
@@ -84,7 +95,7 @@ export const guias: Guia[] = [
           ["Urbano no próprio dia", "até 5 kg", "5 € – 12 €"],
           ["Nacional 24 horas", "até 5 kg", "4 € – 8 €"],
           ["Nacional 24 horas", "5 – 20 kg", "7 € – 15 €"],
-          ["Palete nacional", "até 500 kg", "45 € – 90 €"],
+          ["Palete nacional", "até 500 kg", "40 € – 90 €"],
         ],
       },
       {
@@ -114,12 +125,34 @@ export const guias: Guia[] = [
       {
         tipo: "p",
         texto:
-          "Um euro poupado por envio deixa de compensar à primeira encomenda perdida, ao primeiro cliente que não repete a compra, ou às horas que a sua equipa passa a responder a «onde está a minha encomenda?». Ao comparar propostas, ponha na balança a taxa de entregas no prazo, a existência de rastreamento e a facilidade de falar com alguém quando algo corre mal.",
+          "Um euro poupado por envio deixa de compensar à primeira encomenda perdida, ao primeiro cliente que não repete a compra, ou às horas que a sua equipa passa a responder a «onde está a minha encomenda?». Se está a comparar propostas, os [sete critérios que separam uma boa transportadora de uma barata](/guias/escolher-transportadora-loja-online) ajudam a decidir com cabeça.",
       },
       {
         tipo: "p",
         texto:
           "Se quiser um valor concreto para a sua operação, diga-nos o que envia, para onde e com que frequência. Respondemos em menos de 24 horas úteis com uma proposta à medida — sem taxas escondidas.",
+      },
+    ],
+    faq: [
+      {
+        pergunta: "Qual é o preço médio de uma entrega expressa em Portugal?",
+        resposta:
+          "Para um envio nacional em 24 horas até 5 kg, o mercado pratica entre 4 € e 8 € por encomenda em contratos de empresa. Ao balcão, sem contrato, os valores sobem: os CTT cobram cerca de 5,47 € por uma encomenda até 2 kg. Entregas urbanas no próprio dia custam tipicamente entre 5 € e 12 €.",
+      },
+      {
+        pergunta: "O que é o peso volumétrico e porque me cobram por ele?",
+        resposta:
+          "O peso volumétrico converte o espaço que a encomenda ocupa num valor equivalente em quilos. Como uma carrinha enche antes de atingir o peso máximo, as transportadoras cobram pelo maior valor entre o peso real e o volumétrico. Na prática: uma caixa grande e leve pode custar como uma pequena e pesada.",
+      },
+      {
+        pergunta: "Vale a pena fazer contrato com uma transportadora?",
+        resposta:
+          "Sim, a partir de cerca de 20 envios por mês. Os descontos de volume são o fator com maior impacto no preço unitário — quem envia 200 encomendas por mês paga substancialmente menos por unidade do que quem envia cinco. Leve dados reais (envios por mês, peso médio, destinos frequentes) para a negociação.",
+      },
+      {
+        pergunta: "Porque é que o mesmo envio tem preços tão diferentes?",
+        resposta:
+          "Cinco fatores explicam quase toda a diferença: peso e volume, distância e zona de entrega, urgência, volume mensal contratado e serviços adicionais como recolha ao domicílio, seguro ou prova de entrega assinada. Um mesmo volume pode custar 4 € ou 14 € consoante estas variáveis.",
       },
     ],
   },
@@ -219,6 +252,29 @@ export const guias: Guia[] = [
           "Na ProntoGo trabalhamos exatamente assim com as lojas que nos procuram: começamos pequeno, medimos, e crescemos quando os números justificarem. Se quiser fazer esse teste connosco, peça-nos uma proposta.",
       },
     ],
+    faq: [
+      {
+        pergunta:
+          "O que devo perguntar antes de contratar uma transportadora?",
+        resposta:
+          "Peça a taxa de entregas no prazo nas suas três zonas mais frequentes (não a média nacional), a hora limite de recolha, o preço final com todas as taxas incluídas, o custo de uma segunda tentativa de entrega, e o prazo de resolução de uma reclamação. Se alguma destas respostas for vaga, é sinal de alerta.",
+      },
+      {
+        pergunta: "Devo escolher a transportadora mais barata?",
+        resposta:
+          "Não sem olhar ao resto. Um euro poupado por envio deixa de compensar à primeira encomenda perdida ou ao primeiro cliente que não repete a compra. Para o consumidor, quem entrega é a sua loja — se a entrega corre mal, é a sua marca que leva a culpa, não a transportadora.",
+      },
+      {
+        pergunta: "Como testo uma transportadora sem arriscar a operação?",
+        resposta:
+          "Faça uma lista curta de dois ou três operadores, teste com um lote pequeno durante duas a três semanas e meça três indicadores: entregas no prazo, tempo de resposta do apoio ao cliente e número de contactos que recebe sobre entregas. Só depois negoceie volume, já com dados na mão.",
+      },
+      {
+        pergunta: "A transportadora precisa de integrar com a minha loja online?",
+        resposta:
+          "Se copia moradas à mão todos os dias, está a pagar em tempo o que julgava poupar em portes — e a introduzir erros. Confirme se existe integração com a sua plataforma ou, no mínimo, importação de ficheiro com as encomendas do dia.",
+      },
+    ],
   },
   {
     slug: "last-mile-o-que-e",
@@ -305,7 +361,29 @@ export const guias: Guia[] = [
       {
         tipo: "p",
         texto:
-          "É precisamente esse o serviço que fazemos: distribuição final integrada com a sua loja, com notificações ao cliente em cada etapa e prova de receção imediata. Se quiser perceber como funcionaria no seu caso, fale connosco.",
+          "É precisamente esse o serviço que fazemos: distribuição final integrada com a sua loja, com notificações ao cliente em cada etapa e prova de receção imediata. Se ainda está a decidir com quem trabalhar, veja [o que perguntar antes de contratar](/guias/escolher-transportadora-loja-online) — e [quanto deve custar](/guias/quanto-custa-entrega-expressa-portugal).",
+      },
+    ],
+    faq: [
+      {
+        pergunta: "O que significa last-mile?",
+        resposta:
+          "Last-mile, ou última milha, é o troço final da viagem de uma encomenda: do último ponto de distribuição até à porta do cliente. É o troço mais curto em quilómetros, mas aquele onde se concentra a maior parte do custo e toda a perceção que o cliente fica da marca.",
+      },
+      {
+        pergunta: "Porque é que a última milha é a parte mais cara?",
+        resposta:
+          "Porque troca uma viagem longa com mil volumes por centenas de paragens curtas com um volume em cada. Somam-se tempos de estacionamento, prédios sem elevador, clientes ausentes e segundas tentativas. Estima-se que represente mais de metade do custo total de transporte de uma encomenda.",
+      },
+      {
+        pergunta: "Como reduzo as entregas falhadas?",
+        resposta:
+          "A taxa de entregas à primeira tentativa é o indicador com maior retorno. Avisar o cliente na véspera e no dia, com uma janela horária realista, reduz drasticamente as ausências. Ter alternativas — entregar a um vizinho, deixar em ponto de recolha, reagendar num clique — resolve a maioria dos casos restantes.",
+      },
+      {
+        pergunta: "Compensa fazer as entregas com frota própria?",
+        resposta:
+          "Só a partir de um volume que poucas lojas atingem. A frota própria exige investimento em viaturas e equipa, tem custo por entrega alto sem escala e pouca flexibilidade em picos de procura. Para a maioria das lojas online e PMEs, um parceiro logístico é a opção mais racional até o volume justificar o contrário.",
       },
     ],
   },
