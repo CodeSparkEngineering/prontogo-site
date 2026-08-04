@@ -54,9 +54,14 @@ export default async function GuiaPage({
 
   const relacionados = outrosGuias(guia.slug);
 
-  // Contagem de palavras a partir dos blocos — sinal de profundidade
-  // que o Google e os motores de resposta valorizam.
-  const palavras = guia.blocos.reduce((total, b) => {
+  // Contagem de palavras de todo o conteúdo do artigo, blocos e perguntas
+  // frequentes incluídas — sinal de profundidade que o Google e os motores
+  // de resposta valorizam.
+  const palavrasFaq = (guia.faq ?? []).reduce(
+    (t, f) => t + `${f.pergunta} ${f.resposta}`.split(/\s+/).length,
+    0
+  );
+  const palavras = palavrasFaq + guia.blocos.reduce((total, b) => {
     const texto =
       b.tipo === "lista"
         ? b.itens.join(" ")
