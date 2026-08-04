@@ -33,7 +33,7 @@ export const servicos: Servico[] = [
   {
     titulo: "Transporte de mercadorias",
     texto:
-      "Cargas paletizadas e volumes de maior dimensão entre armazéns, lojas e clientes finais.",
+      "Volumes e cargas até 640 kg entre armazéns, lojas e clientes finais — o que não cabe numa encomenda normal.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
@@ -230,7 +230,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Que tipos de mercadoria transportam?",
     resposta:
-      "Desde encomendas urbanas e volumes de e-commerce até cargas paletizadas e volumes de maior dimensão entre armazéns, lojas e clientes finais.",
+      "Desde documentos e encomendas de e-commerce até volumes de maior dimensão e cargas até 640 kg, entre armazéns, lojas e clientes finais. Para cargas acima desse peso ou paletizadas, fale connosco: encaminhamos ou articulamos com parceiros.",
   },
   {
     pergunta: "Posso acompanhar a minha encomenda em tempo real?",

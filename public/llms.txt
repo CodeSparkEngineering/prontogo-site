@@ -6,7 +6,7 @@
 
 - **Entregas expressas urbanas**: recolha e entrega no próprio dia dentro das principais cidades, com estafetas dedicados.
 - **Last-mile para e-commerce**: distribuição final integrada com lojas online, com notificações ao cliente em cada etapa.
-- **Transporte de mercadorias**: cargas paletizadas e volumes de maior dimensão entre armazéns, lojas e clientes finais.
+- **Transporte de mercadorias**: volumes de maior dimensão e cargas até 640 kg entre armazéns, lojas e clientes finais.
 - **Logística para PMEs**: planos regulares e flexíveis para pequenas e médias empresas, sem mínimos exagerados, com gestor dedicado.
 
 ## Factos principais
