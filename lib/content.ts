@@ -93,7 +93,7 @@ export interface Diferencial {
 export const diferenciais: Diferencial[] = [
   {
     titulo: "Rapidez real",
-    texto: "Rotas otimizadas por tecnologia própria e recolhas no próprio dia.",
+    texto: "Rotas planeadas ao detalhe e recolhas no próprio dia, sem esperas.",
     icon: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>',
   },
   {
@@ -197,6 +197,36 @@ export const redesSociais = {
   instagram: "",
   facebook: "",
 };
+
+// App de rotas em desenvolvimento. É um projeto em curso, não um produto
+// disponível — o texto tem de o deixar claro em qualquer alteração futura.
+export interface CapacidadeApp {
+  titulo: string;
+  texto: string;
+}
+
+export const capacidadesApp: CapacidadeApp[] = [
+  {
+    titulo: "Rotas calculadas por IA",
+    texto:
+      "A ordem das paragens deixa de ser decidida no papel: o sistema pesa trânsito, janelas horárias e proximidade para propor o percurso mais curto do dia.",
+  },
+  {
+    titulo: "Menos quilómetros, mesma carga",
+    texto:
+      "Menos tempo ao volante significa mais entregas por dia, menos combustível gasto e uma pegada menor por encomenda.",
+  },
+  {
+    titulo: "Prova de entrega no telemóvel",
+    texto:
+      "Assinatura e fotografia no momento da entrega, associadas à encomenda — sem papel, sem dúvidas sobre quem recebeu.",
+  },
+  {
+    titulo: "Horas de chegada mais fiáveis",
+    texto:
+      "Com a rota calculada, a janela horária que damos ao cliente deixa de ser um palpite e passa a ser uma estimativa a sério.",
+  },
+];
 
 // FAQ — alimenta a secção da página e o schema FAQPage (SEO/AEO).
 // Respostas curtas e factuais: é este o texto que os motores de resposta

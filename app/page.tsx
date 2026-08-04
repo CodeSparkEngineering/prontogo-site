@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import GuiasPreview from "@/components/GuiasPreview";
 import Simulador from "@/components/Simulador";
+import AppRotas from "@/components/AppRotas";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -104,6 +105,7 @@ export default function Home() {
         <HowItWorks />
         <Differentials />
         <About />
+        <AppRotas />
         <Simulador />
         <Testimonials />
         <GuiasPreview />

@@ -17,6 +17,7 @@
 - Rastreamento em tempo real com prova de receção em todas as encomendas
 - Resposta a pedidos de orçamento: menos de 24 horas úteis
 - Preço fechado antes do serviço, sem sobretaxas surpresa
+- Em desenvolvimento: aplicação própria de apoio à distribuição, com inteligência artificial a calcular a melhor sequência de entregas porta a porta, prova de entrega digital e janelas horárias mais fiáveis. Ainda não está disponível.
 
 ## Contacto
 
