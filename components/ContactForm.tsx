@@ -1,13 +1,29 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { tiposServico, volumesEnvio, zonasEntrega } from "@/lib/content";
 import { contactoEmail } from "@/lib/site";
+import { EVENTO_SIMULACAO } from "@/components/Simulador";
 
 type Estado = "inicial" | "enviando" | "enviado" | "erro";
 
 export default function ContactForm() {
   const [estado, setEstado] = useState<Estado>("inicial");
+  const [mensagemInicial, setMensagemInicial] = useState("");
+  const msgRef = useRef<HTMLTextAreaElement>(null);
+
+  // O simulador de preços avisa quando o visitante escolhe um serviço,
+  // para chegar aqui com a mensagem já escrita.
+  useEffect(() => {
+    function onSimulacao(e: Event) {
+      const { mensagem } = (e as CustomEvent<{ mensagem: string }>).detail;
+      setEstado("inicial");
+      setMensagemInicial(mensagem);
+      if (msgRef.current) msgRef.current.value = mensagem;
+    }
+    window.addEventListener(EVENTO_SIMULACAO, onSimulacao);
+    return () => window.removeEventListener(EVENTO_SIMULACAO, onSimulacao);
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -137,8 +153,10 @@ export default function ContactForm() {
         Mensagem
         <textarea
           required
+          ref={msgRef}
           name="mensagem"
           rows={4}
+          defaultValue={mensagemInicial}
           placeholder="O que precisa de enviar, de onde para onde, com que urgência…"
         />
       </label>

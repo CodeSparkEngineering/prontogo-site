@@ -68,6 +68,7 @@ export default function Footer() {
               <a href="/#servicos">Serviços</a>
               <a href="/#como-funciona">Como funciona</a>
               <a href="/#diferenciais">Diferenciais</a>
+              <a href="/#precos">Preços</a>
               <a href="/#sobre">Sobre</a>
               <Link href="/guias">Guias</Link>
               <a href="/#faq">Perguntas frequentes</a>
