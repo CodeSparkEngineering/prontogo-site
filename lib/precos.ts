@@ -1,13 +1,20 @@
 // Tabela de preços ProntoGo — fonte única do simulador.
 //
 // Para alterar preços: editar apenas este ficheiro e fazer deploy.
-// Valores em euros, sem IVA. `null` = sob consulta (pedido de orçamento).
+// Valores em euros, sem IVA. `preco: null` = sob consulta.
 //
-// Limite operacional: a viatura tem 640 kg de carga útil, pelo que acima
-// de 30 kg o preço depende do volume, distância e meios de carga.
+// Dois critérios de preço, porque o custo real obedece a lógicas
+// diferentes:
+//   - `peso`      → a entrega segue numa rota com outras. O que pesa é o
+//                   manuseamento, não os quilómetros.
+//   - `distancia` → viagem exclusiva para essa entrega. O custo é
+//                   quilómetros, portagens e horas ao volante.
+//
+// Limite operacional: 640 kg de carga útil (Citroën Berlingo).
+
+export type Criterio = "peso" | "distancia";
 
 export interface Escalao {
-  ateKg: number;
   rotulo: string;
   preco: number | null;
 }
@@ -17,7 +24,9 @@ export interface ServicoPreco {
   nome: string;
   descricao: string;
   prazo: string;
+  criterio: Criterio;
   escaloes: Escalao[];
+  nota?: string;
 }
 
 export const CARGA_MAX_KG = 640;
@@ -31,35 +40,55 @@ export const servicosPreco: ServicoPreco[] = [
     nome: "Urbano",
     descricao: "Aveiro e concelhos limítrofes",
     prazo: "No próprio dia",
+    criterio: "peso",
     escaloes: [
-      { ateKg: 5, rotulo: "Até 5 kg", preco: 9 },
-      { ateKg: 15, rotulo: "5 a 15 kg", preco: 13 },
-      { ateKg: 30, rotulo: "15 a 30 kg", preco: 17 },
-      { ateKg: CARGA_MAX_KG, rotulo: "Mais de 30 kg", preco: null },
+      { rotulo: "Até 5 kg", preco: 9 },
+      { rotulo: "5 a 15 kg", preco: 13 },
+      { rotulo: "15 a 30 kg", preco: 17 },
+      { rotulo: "Mais de 30 kg", preco: null },
     ],
   },
   {
-    id: "urgente",
-    nome: "Urgente",
-    descricao: "Aveiro, entrega em 2 horas",
-    prazo: "2 horas",
+    id: "regional",
+    nome: "Regional",
+    descricao: "Até 100 km — Porto, Coimbra, Viseu",
+    prazo: "24 horas",
+    criterio: "peso",
     escaloes: [
-      { ateKg: 5, rotulo: "Até 5 kg", preco: 19 },
-      { ateKg: 30, rotulo: "Mais de 5 kg", preco: null },
-      { ateKg: CARGA_MAX_KG, rotulo: "Mais de 30 kg", preco: null },
+      { rotulo: "Até 5 kg", preco: 16 },
+      { rotulo: "5 a 15 kg", preco: 21 },
+      { rotulo: "15 a 30 kg", preco: 27 },
+      { rotulo: "Mais de 30 kg", preco: null },
     ],
+    nota: "Entrega direta por nós, sem passar por centros de triagem.",
   },
   {
     id: "nacional",
     nome: "Nacional",
     descricao: "Todo o continente",
     prazo: "24 horas úteis",
+    criterio: "peso",
     escaloes: [
-      { ateKg: 5, rotulo: "Até 5 kg", preco: 8 },
-      { ateKg: 10, rotulo: "5 a 10 kg", preco: 10 },
-      { ateKg: 20, rotulo: "10 a 20 kg", preco: 13 },
-      { ateKg: 30, rotulo: "20 a 30 kg", preco: 16 },
-      { ateKg: CARGA_MAX_KG, rotulo: "Mais de 30 kg", preco: null },
+      { rotulo: "Até 5 kg", preco: 8 },
+      { rotulo: "5 a 10 kg", preco: 10 },
+      { rotulo: "10 a 20 kg", preco: 13 },
+      { rotulo: "20 a 30 kg", preco: 16 },
+      { rotulo: "Mais de 30 kg", preco: null },
     ],
+    nota: "Recolhemos consigo e a entrega segue pela nossa rede parceira.",
+  },
+  {
+    id: "dedicada",
+    nome: "Dedicada",
+    descricao: "Viagem exclusiva, sem paragens",
+    prazo: "À hora marcada",
+    criterio: "distancia",
+    escaloes: [
+      { rotulo: "Aveiro e limítrofes", preco: 19 },
+      { rotulo: "Até 100 km", preco: 75 },
+      { rotulo: "Até 250 km", preco: 210 },
+      { rotulo: "Mais de 250 km", preco: null },
+    ],
+    nota: "A carrinha vai só para si. Preço por viagem, até 640 kg.",
   },
 ];

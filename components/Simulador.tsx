@@ -36,7 +36,7 @@ export default function Simulador() {
   function pedir() {
     const detalhe = preco
       ? `Simulei no site: ${servico.nome} (${servico.descricao}), ${escalao.rotulo} — ${eur(preco)}. Gostaria de avançar.`
-      : `Simulei no site: ${servico.nome} (${servico.descricao}), ${escalao.rotulo}. Preciso de um orçamento para este peso.`;
+      : `Simulei no site: ${servico.nome} (${servico.descricao}), ${escalao.rotulo}. Preciso de um orçamento.`;
     window.dispatchEvent(
       new CustomEvent(EVENTO_SIMULACAO, {
         detail: { servico: servico.nome, mensagem: detalhe },
@@ -80,9 +80,15 @@ export default function Simulador() {
 
           <div className="sim-passo">
             <span className="sim-num">2</span>
-            <span className="sim-label">Quanto pesa?</span>
+            <span className="sim-label">
+              {servico.criterio === "peso" ? "Quanto pesa?" : "Para onde vai?"}
+            </span>
           </div>
-          <div className="sim-opcoes sim-pesos" role="group" aria-label="Peso">
+          <div
+            className="sim-opcoes sim-pesos"
+            role="group"
+            aria-label={servico.criterio === "peso" ? "Peso" : "Distância"}
+          >
             {servico.escaloes.map((e, i) => (
               <button
                 key={e.rotulo}
@@ -96,6 +102,8 @@ export default function Simulador() {
             ))}
           </div>
 
+          {servico.nota && <p className="sim-nota-servico">{servico.nota}</p>}
+
           <div className="sim-resultado">
             {preco !== null ? (
               <>
@@ -107,7 +115,9 @@ export default function Simulador() {
                     {eur(preco)}
                   </span>
                   <span className="sim-preco-nota">
-                    por entrega, sem IVA
+                    {servico.criterio === "peso"
+                      ? "por entrega, sem IVA"
+                      : "por viagem, sem IVA"}
                   </span>
                 </div>
                 <div className="sim-contrato">
@@ -131,8 +141,9 @@ export default function Simulador() {
                   Sob consulta
                 </span>
                 <span className="sim-preco-nota">
-                  Acima de 30 kg o valor depende do volume e da distância.
-                  Transportamos até {CARGA_MAX_KG} kg.
+                  {servico.criterio === "peso"
+                    ? `Acima de 30 kg o valor depende do volume e do destino. Transportamos até ${CARGA_MAX_KG} kg.`
+                    : "Para distâncias maiores fazemos um orçamento à medida do percurso."}
                 </span>
               </div>
             )}

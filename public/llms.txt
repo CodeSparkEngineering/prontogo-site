@@ -12,7 +12,8 @@
 ## Factos principais
 
 - Sede: Aveiro, Portugal
-- Cobertura: todo o território de Portugal continental
+- Cobertura: todo o território de Portugal continental, em quatro modalidades — urbano (Aveiro e limítrofes, no próprio dia), regional (até 100 km, 24 horas, entrega direta), nacional (todo o continente, 24 horas úteis) e viagem dedicada (carrinha exclusiva, à hora marcada)
+- Preços publicados no site, com simulador: urbano desde 9 €, regional desde 16 €, nacional desde 8 €, dedicada desde 19 €
 - Serviço expresso nacional: 24 horas
 - Rastreamento em tempo real com prova de receção em todas as encomendas
 - Resposta a pedidos de orçamento: menos de 24 horas úteis

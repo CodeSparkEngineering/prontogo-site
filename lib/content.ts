@@ -240,7 +240,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Em que zonas é que a ProntoGo faz entregas?",
     resposta:
-      "A ProntoGo tem sede em Aveiro e entrega em todo Portugal continental. Nas principais cidades fazemos entregas expressas urbanas com recolha e entrega no próprio dia; para o resto do país temos serviço expresso em 24 horas.",
+      "A ProntoGo tem sede em Aveiro e entrega em todo Portugal continental, em quatro modalidades: urbano em Aveiro e concelhos limítrofes no próprio dia; regional até 100 km (Porto, Coimbra, Viseu) em 24 horas, com entrega direta feita por nós; nacional em 24 horas úteis para todo o continente; e viagens dedicadas, em que a carrinha vai exclusivamente para si, à hora marcada.",
   },
   {
     pergunta: "Quanto tempo demora uma entrega expressa?",
