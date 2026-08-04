@@ -286,6 +286,7 @@ a.contact-value:hover{color:var(--accent)}
 .form-card textarea{resize:vertical}
 .form-card select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:44px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23C7D4E8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 16px center}
 .form-card select option{color:var(--navy)}
+.form-opt{color:var(--faint);font-weight:400;font-size:12px}
 .form-consent{color:var(--faint);font-size:12.5px;line-height:1.5;margin:0}
 .form-consent a{color:var(--accent-light)}
 .form-consent a:hover{color:#fff}

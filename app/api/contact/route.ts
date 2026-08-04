@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { tiposServico } from "@/lib/content";
+import { tiposServico, volumesEnvio, zonasEntrega } from "@/lib/content";
 import { contactoEmail } from "@/lib/site";
 
 // Envio via Resend (https://resend.com) — REST API, sem dependências.
@@ -42,7 +42,16 @@ interface Pedido {
   email: string;
   servico: string;
   mensagem: string;
+  telefone?: string;
+  volume?: string;
+  zona?: string;
   empresa?: string; // honeypot — humanos nunca preenchem este campo
+}
+
+// Campos opcionais de qualificação: só entram no email se vierem
+// preenchidos e forem valores da lista (ou, no telefone, plausíveis).
+function opcionalDaLista(valor: unknown, lista: string[]): string | null {
+  return typeof valor === "string" && lista.includes(valor) ? valor : null;
 }
 
 function campoValido(valor: unknown, max: number): valor is string {
@@ -97,6 +106,14 @@ export async function POST(request: Request) {
   const nome = limpar(pedido.nome);
   const mensagem = limpar(pedido.mensagem, true);
 
+  const volume = opcionalDaLista(pedido.volume, volumesEnvio);
+  const zona = opcionalDaLista(pedido.zona, zonasEntrega);
+  const telefone =
+    typeof pedido.telefone === "string" &&
+    /^[+\d][\d\s().-]{6,24}$/.test(pedido.telefone.trim())
+      ? limpar(pedido.telefone)
+      : null;
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error(
@@ -125,7 +142,10 @@ export async function POST(request: Request) {
         text: [
           `Nome: ${nome}`,
           `Email: ${pedido.email}`,
+          ...(telefone ? [`Telefone: ${telefone}`] : []),
           `Tipo de serviço: ${pedido.servico}`,
+          ...(volume ? [`Volume estimado: ${volume}`] : []),
+          ...(zona ? [`Zona de entrega: ${zona}`] : []),
           "",
           "Mensagem:",
           mensagem,

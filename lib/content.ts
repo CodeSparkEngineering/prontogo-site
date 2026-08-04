@@ -169,6 +169,27 @@ export const tiposServico = [
   "Outro",
 ];
 
+// Campos de qualificação do formulário. São opcionais de propósito: cada
+// campo obrigatório a mais reduz a taxa de submissão, mas respondidos
+// permitem enviar uma proposta em vez de mais perguntas.
+export const volumesEnvio = [
+  "Ainda não sei",
+  "Até 20 envios por mês",
+  "20 a 100 por mês",
+  "100 a 500 por mês",
+  "Mais de 500 por mês",
+  "Envio pontual",
+];
+
+export const zonasEntrega = [
+  "Aveiro e arredores",
+  "Norte",
+  "Centro",
+  "Lisboa e Vale do Tejo",
+  "Sul",
+  "Todo o continente",
+];
+
 // Preencher com as URLs reais para cada rede aparecer no rodapé.
 // Redes com URL vazia ficam ocultas (evita links mortos em produção).
 export const redesSociais = {

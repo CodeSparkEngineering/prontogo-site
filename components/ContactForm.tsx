@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { tiposServico } from "@/lib/content";
+import { tiposServico, volumesEnvio, zonasEntrega } from "@/lib/content";
 import { contactoEmail } from "@/lib/site";
 
 type Estado = "inicial" | "enviando" | "enviado" | "erro";
@@ -22,7 +22,10 @@ export default function ContactForm() {
         body: JSON.stringify({
           nome: dados.get("nome"),
           email: dados.get("email"),
+          telefone: dados.get("telefone"),
           servico: dados.get("servico"),
+          volume: dados.get("volume"),
+          zona: dados.get("zona"),
           mensagem: dados.get("mensagem"),
           empresa: dados.get("empresa"),
         }),
@@ -94,6 +97,15 @@ export default function ContactForm() {
         </label>
       </div>
       <label>
+        Telefone <span className="form-opt">(opcional)</span>
+        <input
+          name="telefone"
+          type="tel"
+          placeholder="Para respondermos mais depressa"
+          autoComplete="tel"
+        />
+      </label>
+      <label>
         Tipo de serviço
         <select name="servico">
           {tiposServico.map((tipo) => (
@@ -101,13 +113,33 @@ export default function ContactForm() {
           ))}
         </select>
       </label>
+      <div className="form-row">
+        <label>
+          Volume estimado <span className="form-opt">(opcional)</span>
+          <select name="volume" defaultValue="">
+            <option value="">Selecione…</option>
+            {volumesEnvio.map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Zona de entrega <span className="form-opt">(opcional)</span>
+          <select name="zona" defaultValue="">
+            <option value="">Selecione…</option>
+            {zonasEntrega.map((z) => (
+              <option key={z}>{z}</option>
+            ))}
+          </select>
+        </label>
+      </div>
       <label>
         Mensagem
         <textarea
           required
           name="mensagem"
           rows={4}
-          placeholder="Descreva a sua necessidade: volumes, frequência, destinos…"
+          placeholder="O que precisa de enviar, de onde para onde, com que urgência…"
         />
       </label>
       {/* Honeypot anti-spam: invisível para humanos, bots tendem a preenchê-lo */}
