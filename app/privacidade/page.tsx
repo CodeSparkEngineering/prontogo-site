@@ -85,13 +85,41 @@ export default function PrivacidadePage() {
             <li>
               <strong>Google Workspace</strong> — receção e arquivo do email.
             </li>
+            <li>
+              <strong>Google Ads</strong> — cookies de medição da eficácia dos
+              nossos anúncios, ativados apenas com o seu consentimento (ver
+              secção seguinte).
+            </li>
           </ul>
 
-          <h2>Cookies e análise de tráfego</h2>
+          <h2>Cookies e publicidade</h2>
           <p>
-            Este site <strong>não utiliza cookies de rastreamento</strong>, nem
-            ferramentas de publicidade ou de análise de comportamento. Por esse
-            motivo não apresentamos banner de consentimento de cookies.
+            O funcionamento do site <strong>não depende de cookies</strong> e
+            não usamos ferramentas de análise de comportamento. Quando corremos
+            campanhas publicitárias, utilizamos cookies de publicidade do{" "}
+            <strong>Google Ads</strong> com uma única finalidade: medir quantas
+            pessoas que clicam nos nossos anúncios acabam por pedir um orçamento
+            (conversões). Estes cookies são <strong>opcionais</strong>.
+          </p>
+          <p>
+            São ativados apenas <strong>com o seu consentimento explícito</strong>:
+            não carregamos qualquer script ou cookie do Google enquanto não
+            aceitar no banner que aparece na primeira visita. Se recusar, nada é
+            carregado. Pode rever ou mudar a sua escolha a qualquer momento em{" "}
+            <strong>«Definições de cookies»</strong>, no fundo de qualquer
+            página.
+          </p>
+          <p>
+            Ao aceitar, os dados recolhidos por estes cookies passam a ser
+            também tratados pela Google, nos termos da{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              política de privacidade da Google
+            </a>
+            .
           </p>
 
           <h2>Durante quanto tempo guardamos</h2>

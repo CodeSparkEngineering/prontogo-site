@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
+import CookieConsent from "@/components/CookieConsent";
 import { siteUrl, siteTitle, siteDescription } from "@/lib/site";
 import "./globals.css";
 
@@ -66,7 +67,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-PT" className={sora.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

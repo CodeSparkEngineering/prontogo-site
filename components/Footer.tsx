@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CookieSettingsLink from "@/components/CookieSettingsLink";
 import { redesSociais } from "@/lib/content";
 import {
   contactoEmail,
@@ -120,6 +121,7 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} ProntoGo. Todos os direitos reservados.</span>
           <div className="footer-legal">
             <Link href="/privacidade">Política de Privacidade</Link>
+            <CookieSettingsLink />
             {/* Selo obrigatório para empresas em Portugal (DL 156/2005) */}
             <a
               href="https://www.livroreclamacoes.pt/inicio"

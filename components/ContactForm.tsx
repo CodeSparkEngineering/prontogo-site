@@ -5,23 +5,33 @@ import { tiposServico, volumesEnvio, zonasEntrega } from "@/lib/content";
 import { contactoEmail, contactoWhatsapp } from "@/lib/site";
 import { EVENTO_SIMULACAO } from "@/components/Simulador";
 
-type Estado = "inicial" | "enviando" | "enviado" | "erro";
+type Estado = "inicial" | "enviando" | "erro";
 
 export default function ContactForm() {
   const [estado, setEstado] = useState<Estado>("inicial");
   const [mensagemInicial, setMensagemInicial] = useState("");
   const [destacado, setDestacado] = useState(false);
   const msgRef = useRef<HTMLTextAreaElement>(null);
+  const servicoRef = useRef<HTMLSelectElement>(null);
 
-  // O simulador de preços avisa quando o visitante escolhe um serviço,
-  // para chegar aqui com a mensagem já escrita. O destaque temporário
-  // confirma visualmente que o preenchimento aconteceu.
+  // O simulador de preços e os cartões de serviços avisam quando o visitante
+  // escolhe um serviço, para chegar aqui com a mensagem já escrita e o tipo
+  // de serviço pré-selecionado. O destaque temporário confirma visualmente
+  // que o preenchimento aconteceu.
   useEffect(() => {
     function onSimulacao(e: Event) {
-      const { mensagem } = (e as CustomEvent<{ mensagem: string }>).detail;
+      const { mensagem, servico } = (
+        e as CustomEvent<{ mensagem: string; servico?: string }>
+      ).detail;
       setEstado("inicial");
       setMensagemInicial(mensagem);
       if (msgRef.current) msgRef.current.value = mensagem;
+      // Só pré-selecciona quando o serviço bate certo com uma opção do
+      // formulário — os nomes do simulador (Urbano, Regional…) não batem,
+      // e nesse caso o dropdown fica como está.
+      if (servicoRef.current && servico && tiposServico.includes(servico)) {
+        servicoRef.current.value = servico;
+      }
       setDestacado(true);
       window.setTimeout(() => setDestacado(false), 1800);
     }
@@ -52,44 +62,13 @@ export default function ContactForm() {
       });
       if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
       form.reset();
-      setEstado("enviado");
+      // Redireciona para a página de confirmação: dá um URL próprio ao Google
+      // Ads para medir conversões e mostra o "obrigado" com os passos
+      // seguintes. Navegação real (não SPA) para o tag de conversão disparar.
+      window.location.href = "/pedido-enviado";
     } catch {
       setEstado("erro");
     }
-  }
-
-  if (estado === "enviado") {
-    return (
-      <div className="success-panel">
-        <div className="success-icon">
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M20 6 9 17l-5-5" />
-          </svg>
-        </div>
-        <div className="success-title">Pedido enviado!</div>
-        <p>
-          Obrigado pelo contacto. A nossa equipa responderá em menos de 24
-          horas úteis.
-        </p>
-        <button
-          type="button"
-          className="btn-ghost"
-          onClick={() => setEstado("inicial")}
-        >
-          Enviar novo pedido
-        </button>
-      </div>
-    );
   }
 
   return (
@@ -130,7 +109,7 @@ export default function ContactForm() {
       </label>
       <label>
         Tipo de serviço
-        <select name="servico">
+        <select name="servico" ref={servicoRef}>
           {tiposServico.map((tipo) => (
             <option key={tipo}>{tipo}</option>
           ))}

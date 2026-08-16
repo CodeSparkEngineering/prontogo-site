@@ -24,3 +24,9 @@ export const contactoTelefoneDisplay = ""; // ex.: "+351 912 345 678"
 
 // Link curto do WhatsApp Business (vazio esconde o botão e o contacto)
 export const contactoWhatsapp = "https://wa.me/message/D4VY7QSTGWJXO1";
+
+// ID do Google Ads / Google tag (formato "AW-XXXXXXXXX"), definido em
+// NEXT_PUBLIC_GOOGLE_ADS_ID. Só é carregado DEPOIS de o visitante aceitar os
+// cookies de publicidade no banner de consentimento (RGPD/ePrivacy). Enquanto
+// estiver vazio, o site não carrega qualquer script do Google nem cookies.
+export const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "";
