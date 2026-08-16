@@ -230,7 +230,7 @@ export default function ScrollExperience() {
             width={60}
             height={60}
           />
-          <h2>Pronta a entregar pelo país inteiro.</h2>
+          <h2>Pronta a entregar em Portugal e na Europa.</h2>
           <div className="xp-final-ctas">
             <a href="#contacto" className="btn btn-primary">
               Pedir orçamento

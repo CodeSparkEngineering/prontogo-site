@@ -145,6 +145,17 @@ section{scroll-margin-top:80px}
 .card-cta svg{transition:transform .25s}
 .card:hover .card-cta{color:var(--accent)}
 .card:hover .card-cta svg{transform:translateX(3px)}
+/* Faixa de destaque das entregas internacionais */
+.intl-band{margin-top:26px;background:linear-gradient(135deg,var(--navy),var(--navy-2));border-radius:20px;padding:32px 36px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;color:#fff}
+.intl-band-icon{width:60px;height:60px;border-radius:16px;background:rgba(245,130,11,.16);color:var(--accent-light);display:flex;align-items:center;justify-content:center;flex:none}
+.intl-band-body{flex:1;min-width:260px}
+.intl-kicker{color:var(--accent-light);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.intl-band h3{font-size:22px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;color:#fff}
+.intl-band p{margin:0 0 16px;color:var(--muted-dark);font-size:14.5px;line-height:1.6;max-width:660px}
+.intl-points{display:flex;gap:20px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.intl-points li{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#E7EEF9}
+.intl-points svg{color:var(--accent-light);flex:none}
+.intl-cta{flex:none}
 
 /* ---------- Como funciona ---------- */
 .steps-wrap{position:relative}
@@ -529,6 +540,9 @@ a.contact-value:hover{color:var(--accent)}
   /* Banner de cookies em largura total, acima do FAB do WhatsApp */
   .cookie-banner{left:12px;right:12px;bottom:12px;max-width:none;padding:18px}
   .cookie-acoes .cookie-btn{flex:1}
+  /* Faixa internacional: empilha e CTA à largura total */
+  .intl-band{padding:26px 22px;gap:22px}
+  .intl-cta{width:100%;justify-content:center}
   /* Páginas legais: menos respiro no topo, texto mais compacto */
   .legal-page{padding:104px 20px 72px}
   .legal-content h2{margin-top:28px}

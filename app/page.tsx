@@ -39,20 +39,35 @@ const jsonLd = {
     addressLocality: "Aveiro",
     addressCountry: "PT",
   },
-  areaServed: { "@type": "Country", name: "Portugal" },
+  areaServed: [
+    { "@type": "Country", name: "Portugal" },
+    { "@type": "Place", name: "Europa" },
+  ],
   ...(contactoWhatsapp ? { sameAs: [contactoWhatsapp] } : {}),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Serviços de logística",
-    itemListElement: servicos.map((s) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: s.titulo,
-        description: s.texto,
-        areaServed: "PT",
+    itemListElement: [
+      ...servicos.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.titulo,
+          description: s.texto,
+          areaServed: "PT",
+        },
+      })),
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Entregas internacionais na Europa",
+          description:
+            "Entregas internacionais para a Europa com frota própria, sem transbordos: cargas, paletes e encomendas de e-commerce, com rastreamento de ponta a ponta.",
+          areaServed: "Europa",
+        },
       },
-    })),
+    ],
   },
 };
 

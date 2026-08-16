@@ -6,10 +6,10 @@ export const siteUrl =
 // Título com termos de pesquisa reais (entregas expressas, logística,
 // Aveiro) — o slogan da marca vive no hero da página e no JSON-LD.
 export const siteTitle =
-  "ProntoGo — Entregas Expressas e Logística em Aveiro e todo Portugal";
+  "ProntoGo — Entregas Expressas e Logística em Aveiro, Portugal e Europa";
 
 export const siteDescription =
-  "Logística e entregas rápidas em Aveiro e em todo Portugal. Entregas expressas urbanas, last-mile para e-commerce, transporte de mercadorias e logística para PMEs.";
+  "Logística e entregas rápidas em Aveiro, em todo Portugal e na Europa. Entregas expressas urbanas, last-mile para e-commerce, transporte de mercadorias, logística para PMEs e entregas internacionais na Europa com frota própria.";
 
 // Contactos públicos do site — fonte única usada em Contact, Footer,
 // formulário, JSON-LD e API. Valores vazios ("") escondem o canal

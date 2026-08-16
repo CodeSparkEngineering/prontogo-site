@@ -102,8 +102,9 @@ export const diferenciais: Diferencial[] = [
     icon: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',
   },
   {
-    titulo: "Cobertura nacional",
-    texto: "De Aveiro para todo o território — continente, de norte a sul.",
+    titulo: "Cobertura nacional e europeia",
+    texto:
+      "De Aveiro para todo o continente e, com frota própria, para a Europa — a mesma carrinha faz a viagem toda, sem transbordos.",
     icon: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
   },
   {
@@ -166,6 +167,7 @@ export const tiposServico = [
   "Last-mile para e-commerce",
   "Transporte de mercadorias",
   "Logística para PMEs",
+  "Entregas internacionais (Europa)",
   "Outro",
 ];
 
@@ -188,6 +190,7 @@ export const zonasEntrega = [
   "Lisboa e Vale do Tejo",
   "Sul",
   "Todo o continente",
+  "Europa / internacional",
 ];
 
 // Preencher com as URLs reais para cada rede aparecer no rodapé.
@@ -240,7 +243,12 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Em que zonas é que a ProntoGo faz entregas?",
     resposta:
-      "A ProntoGo tem sede em Aveiro e entrega em todo Portugal continental, em quatro modalidades: urbano em Aveiro e concelhos limítrofes no próprio dia; regional até 100 km (Porto, Coimbra, Viseu) em 24 horas, com entrega direta feita por nós; nacional em 24 horas úteis para todo o continente; e viagens dedicadas, em que a carrinha vai exclusivamente para si, à hora marcada.",
+      "A ProntoGo tem sede em Aveiro e entrega em todo Portugal continental, em quatro modalidades: urbano em Aveiro e concelhos limítrofes no próprio dia; regional até 100 km (Porto, Coimbra, Viseu) em 24 horas, com entrega direta feita por nós; nacional em 24 horas úteis para todo o continente; e viagens dedicadas, em que a carrinha vai exclusivamente para si, à hora marcada. Além do território nacional, fazemos também entregas internacionais para a Europa, com frota própria.",
+  },
+  {
+    pergunta: "Fazem entregas para fora de Portugal?",
+    resposta:
+      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e encomendas de e-commerce, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume — peça-nos uma proposta.",
   },
   {
     pergunta: "Quanto tempo demora uma entrega expressa?",
