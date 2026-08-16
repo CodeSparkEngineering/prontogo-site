@@ -137,22 +137,23 @@ section{scroll-margin-top:80px}
 .zona-cidade>section{position:relative;z-index:1;background:transparent}
 /* Encostar os vídeos: menos espaço morto entre os passos e o vídeo da estrada */
 .zona-cidade>section:last-child{padding-bottom:56px}
-/* Legibilidade sobre o vídeo: halo claro em todo o texto solto da zona e cores
-   mais escuras nos parágrafos (o muted normal lava-se sobre o vídeo). */
-.zona-cidade .section-head h2,.zona-cidade .section-head p{text-shadow:0 1px 12px rgba(245,247,250,.9),0 1px 2px rgba(245,247,250,.7)}
-.zona-cidade .section-head p{color:var(--muted-2)}
-/* Kicker em pastilha fosca (como no hero): o laranja fundia-se nos tons
-   dourados do vídeo. */
-.zona-cidade .section-head .kicker{display:inline-block;background:rgba(255,255,255,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 14px;border-radius:999px}
-.zona-cidade .step h3{text-shadow:0 1px 10px rgba(245,247,250,.95),0 1px 2px rgba(245,247,250,.8)}
-.zona-cidade .step p{color:var(--muted-2);text-shadow:0 1px 10px rgba(245,247,250,.95),0 1px 2px rgba(245,247,250,.8)}
+/* Legibilidade sobre o vídeo a força total: texto branco com sombra escura,
+   como no hero — funciona sobre zonas claras e escuras do vídeo. */
+.zona-cidade .section-head h2{color:#fff;text-shadow:0 2px 20px rgba(10,33,68,.85),0 1px 3px rgba(10,33,68,.7)}
+.zona-cidade .section-head p{color:#E7EEF9;text-shadow:0 1px 14px rgba(10,33,68,.85),0 1px 2px rgba(10,33,68,.7)}
+/* Kicker em pastilha fosca (como no hero) */
+.zona-cidade .section-head .kicker{display:inline-block;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 14px;border-radius:999px}
+.zona-cidade .step h3{color:#fff;text-shadow:0 1px 14px rgba(10,33,68,.85),0 1px 2px rgba(10,33,68,.7)}
+.zona-cidade .step p{color:#DCE6F5;text-shadow:0 1px 12px rgba(10,33,68,.85),0 1px 2px rgba(10,33,68,.7)}
 /* Transição hero->cidade: corte limpo de vídeo para vídeo, como num filme —
    o hero termina em vídeo puro e a cidade entra logo a seguir, sem overlays. */
 .section-services{padding-top:120px;padding-bottom:36px}
 /* Sticky: o vídeo fica fixo ao ecrã (enquadramento correto, sem esticar) ao
    percorrer a zona; overflow:clip na zona recorta-o nos limites sem quebrar o
    sticky (ao contrário de overflow:hidden). */
-.services-bg{position:sticky;top:0;height:100vh;height:100dvh;margin-bottom:-100vh;margin-bottom:-100dvh;z-index:0;overflow:hidden;opacity:.68;pointer-events:none}
+/* Opacidade total: a graduação navy do céu está gravada no próprio vídeo e só
+   casa com o hero sem atenuação (com opacidade parcial lavava para cinza). */
+.services-bg{position:sticky;top:0;height:100vh;height:100dvh;margin-bottom:-100vh;margin-bottom:-100dvh;z-index:0;overflow:hidden;pointer-events:none}
 /* Frame completo original, SEM zoom: o clip é 16:9 como o ecrã, por isso o
    cover quase não amplia (igual ao hero) — máxima nitidez. Sem recortes, sem
    offsets, sem filtros: a qualidade é a do ficheiro original. */
