@@ -496,7 +496,10 @@ a.contact-value:hover{color:var(--accent)}
 .xp-moldura{position:absolute;inset:0;overflow:hidden}
 .xp-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .xp-vinheta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(10,33,68,.5)),linear-gradient(180deg,rgba(10,33,68,.4),transparent 28%,transparent 72%,rgba(10,33,68,.55))}
-.xp-barra{position:absolute;left:0;right:0;height:6.5vh;background:var(--navy-deep);transition:transform .6s cubic-bezier(.22,1,.36,1);z-index:2}
+/* Barras letterbox removidas: com o hero e a secção seguinte ambos em vídeo
+   full-bleed, a barra inferior aparecia como um "espaço preto" entre os dois
+   vídeos ao chegar à fronteira. */
+.xp-barra{display:none}
 .xp-barra-topo{top:0;transform:translateY(-101%)}
 .xp-barra-fundo{bottom:0;transform:translateY(101%)}
 .xp-barra.on{transform:translateY(0)}

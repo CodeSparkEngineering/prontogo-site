@@ -179,7 +179,10 @@ export default function ScrollExperience() {
     window.scrollTo({ top: topo + trilho.offsetHeight - window.innerHeight + 2 });
   }
 
-  const emViagem = progresso > 0.03 && progresso < FINAL && !reduzMotion;
+  // Barras letterbox recolhem bem antes do desfecho (0.7, não FINAL): com o
+  // easing do scrub, ao chegar à fronteira com a secção seguinte ainda
+  // estariam à vista — criavam um "espaço preto" entre os dois vídeos.
+  const emViagem = progresso > 0.03 && progresso < 0.7 && !reduzMotion;
   const noFinal = progresso >= FINAL || reduzMotion;
 
   return (
