@@ -80,6 +80,11 @@ section{scroll-margin-top:80px}
    e ganharia por ordem no ficheiro, mostrando o CTA duplicado em desktop */
 .nav-cta-m{display:none!important}
 @media (max-width:880px){
+  /* Vídeos de fundo só em ecrãs largos: os clips são ultra-panorâmicos e num
+     ecrã vertical o object-fit:cover ampliava-os ~10x (mancha desfocada), além
+     de ~10MB em dados móveis. Em mobile as secções usam os fundos sólidos; o
+     vídeo do hero (16:9) mantém-se. */
+  .services-bg,.rota-bg{display:none}
   .nav-toggle{display:flex}
   .nav-cta-m{display:inline-flex!important;font-size:13px;padding:9px 16px;margin-left:auto}
   .nav{gap:12px}
