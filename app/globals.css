@@ -136,7 +136,11 @@ section{scroll-margin-top:80px}
 .zona-cidade{position:relative;overflow:clip;background:var(--bg)}
 .zona-cidade>section{position:relative;z-index:1;background:transparent}
 .zona-cidade .section-head h2,.zona-cidade .section-head p{text-shadow:0 1px 12px rgba(245,247,250,.9),0 1px 2px rgba(245,247,250,.7)}
-.section-services{padding-top:100px;padding-bottom:36px}
+/* Transição suave hero->cidade: o navy do desfecho do hero continua no topo da
+   zona e dissolve-se no vídeo — mesma linguagem da união Serviços/Como funciona,
+   sem corte seco. O conteúdo começa depois da dissolução (padding-top). */
+.zona-cidade::before{content:"";position:absolute;top:0;left:0;right:0;height:240px;background:linear-gradient(180deg,var(--navy-deep) 0%,rgba(10,33,68,.5) 45%,rgba(10,33,68,0) 100%);z-index:1;pointer-events:none}
+.section-services{padding-top:280px;padding-bottom:36px}
 /* Sticky: o vídeo fica fixo ao ecrã (enquadramento correto, sem esticar) ao
    percorrer a zona; overflow:clip na zona recorta-o nos limites sem quebrar o
    sticky (ao contrário de overflow:hidden). */
