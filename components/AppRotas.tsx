@@ -1,4 +1,4 @@
-import Image from "next/image";
+import RotasMapa from "@/components/RotasMapa";
 import { capacidadesApp } from "@/lib/content";
 
 // Secção sobre a app de rotas em desenvolvimento. Está deliberadamente
@@ -7,7 +7,8 @@ import { capacidadesApp } from "@/lib/content";
 export default function AppRotas() {
   return (
     <section id="tecnologia" className="section section-app">
-      <div className="container split-grid">
+      <div className="blob blob-dark-br" />
+      <div className="container split-grid rel">
         <div data-reveal>
           <div className="app-badge">
             <span className="app-badge-ponto" aria-hidden="true" />
@@ -35,13 +36,7 @@ export default function AppRotas() {
           </p>
         </div>
         <div className="app-media" data-reveal>
-          <Image
-            src="/assets/prontogo-app-rotas.webp"
-            alt="Telemóvel na cabina da carrinha a mostrar a rota de entregas calculada"
-            width={900}
-            height={675}
-            sizes="(max-width: 768px) 100vw, 520px"
-          />
+          <RotasMapa />
         </div>
       </div>
     </section>

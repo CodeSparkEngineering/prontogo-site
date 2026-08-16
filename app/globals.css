@@ -266,19 +266,26 @@ section{scroll-margin-top:80px}
 .faq-item p{color:var(--muted);font-size:14.5px;line-height:1.65;margin:0;padding:0 24px 20px}
 
 /* ---------- App de rotas (em desenvolvimento) ---------- */
-.section-app{background:var(--bg)}
-.app-badge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);color:var(--muted-2);font-size:12.5px;font-weight:700;letter-spacing:.4px;padding:8px 16px;border-radius:999px;margin-bottom:20px}
+/* Secção "tech" escura: quebra o troço branco e dá palco ao mapa animado */
+.section-app{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;position:relative;overflow:hidden}
+.section-app h2{color:#fff}
+.app-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(14,42,86,.6);border:1px solid rgba(245,130,11,.45);color:var(--accent-light);font-size:12.5px;font-weight:700;letter-spacing:.4px;padding:8px 16px;border-radius:999px;margin-bottom:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .app-badge-ponto{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;animation:apppulse 2s ease-in-out infinite}
 @keyframes apppulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(245,130,11,.5)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(245,130,11,0)}}
 .section-app h2{margin:0 0 16px}
-.app-intro{color:var(--muted);font-size:16.5px;line-height:1.7;margin:0 0 28px;max-width:520px}
+.app-intro{color:var(--muted-dark);font-size:16.5px;line-height:1.7;margin:0 0 28px;max-width:520px}
 .app-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px 26px}
-.app-item-titulo{font-weight:700;font-size:15.5px;letter-spacing:-.2px;margin-bottom:6px;padding-left:14px;position:relative}
+.app-item-titulo{font-weight:700;font-size:15.5px;letter-spacing:-.2px;margin-bottom:6px;padding-left:14px;position:relative;color:#fff}
 .app-item-titulo::before{content:"";position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
-.app-item p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0;padding-left:14px}
-.app-nota{margin:30px 0 0;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:13.5px;line-height:1.6}
+.app-item p{color:var(--muted-dark);font-size:14.5px;line-height:1.6;margin:0;padding-left:14px}
+.app-nota{margin:30px 0 0;padding:16px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:var(--muted-dark);font-size:13.5px;line-height:1.6}
 .app-media{display:flex;justify-content:center}
-.app-media img{width:min(520px,100%);height:auto;border-radius:22px;box-shadow:0 24px 60px rgba(14,42,86,.18);border:1px solid var(--line)}
+/* Painel do mapa de rotas animado */
+.mapa-rotas{width:min(560px,100%);background:rgba(10,33,68,.55);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.mapa-rotas svg{width:100%;height:auto;display:block}
+.mapa-no{transform-box:fill-box;transform-origin:center}
+.mapa-hub-halo{animation:apppulse 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:reduce){.mapa-hub-halo{animation:none}}
 @media (prefers-reduced-motion:reduce){.app-badge-ponto{animation:none}}
 
 /* ---------- Simulador de preços ---------- */
