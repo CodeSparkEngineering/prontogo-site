@@ -38,8 +38,11 @@ export default function CidadeBackground() {
       <video
         ref={videoRef}
         className="services-bg-video"
-        src="/assets/prontogo-cidade.mp4"
-        poster="/assets/prontogo-cidade-poster.webp"
+        // ?v=2: o ficheiro foi reescrito várias vezes com o mesmo nome durante a
+        // produção — o sufixo força os browsers a irem buscar a versão final em
+        // vez de servirem uma antiga do cache.
+        src="/assets/prontogo-cidade.mp4?v=2"
+        poster="/assets/prontogo-cidade-poster.webp?v=2"
         muted
         loop
         playsInline
