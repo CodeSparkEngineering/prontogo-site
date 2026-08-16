@@ -133,7 +133,7 @@ section{scroll-margin-top:80px}
    secção (overflow:hidden) — nunca transborda para a secção seguinte e, como o
    vídeo já não tem céu, não aparece a faixa cinzenta. Opacidade uniforme. Ao
    terminar a secção, o fundo claro/branco da secção seguinte aparece limpo. */
-.section-services{position:relative;overflow:hidden;padding-top:100px}
+.section-services{position:relative;overflow:hidden;padding-top:100px;padding-bottom:36px}
 .services-bg{position:absolute;inset:0;z-index:0;overflow:hidden;opacity:.5;pointer-events:none}
 .services-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.35);background:var(--bg)}
 .section-services .container{position:relative;z-index:1}
