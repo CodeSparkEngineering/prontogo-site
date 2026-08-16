@@ -40,8 +40,8 @@ export default function CidadeBackground() {
         className="services-bg-video"
         // Sufixo de versão: incrementar sempre que o ficheiro for substituído,
         // para nenhum browser servir uma versão antiga do cache.
-        src="/assets/prontogo-cidade.mp4?v=4"
-        poster="/assets/prontogo-cidade-poster.webp?v=4"
+        src="/assets/prontogo-cidade.mp4?v=5"
+        poster="/assets/prontogo-cidade-poster.webp?v=5"
         muted
         loop
         playsInline
