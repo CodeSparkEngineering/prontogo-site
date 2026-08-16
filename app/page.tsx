@@ -3,7 +3,6 @@ import ScrollExperience from "@/components/ScrollExperience";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import Differentials from "@/components/Differentials";
-import RotaExperience from "@/components/RotaExperience";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
@@ -120,7 +119,6 @@ export default function Home() {
         <Services />
         <HowItWorks />
         <Differentials />
-        <RotaExperience />
         <About />
         <AppRotas />
         <Simulador />

@@ -172,6 +172,13 @@ section{scroll-margin-top:80px}
 /* ---------- Diferenciais (seção escura) ---------- */
 .section-dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .section-dark h2{margin:0 0 28px}
+/* Vídeo "Em rota" como fundo de uma secção (camada sticky atrás do conteúdo).
+   overflow:visible é preciso para o sticky se fixar ao ecrã. */
+.section-rota{overflow:visible}
+.rota-bg{position:sticky;top:0;height:100vh;height:100dvh;margin-bottom:-100vh;margin-bottom:-100dvh;z-index:0;overflow:hidden;pointer-events:none}
+.rota-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rota-bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,68,.82),rgba(10,33,68,.72) 45%,rgba(10,33,68,.9))}
+.section-rota .container{position:relative;z-index:1}
 .split-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:center}
 .features{display:flex;flex-direction:column;gap:18px}
 .feature{display:flex;gap:16px;align-items:flex-start}
@@ -481,18 +488,12 @@ a.contact-value:hover{color:var(--accent)}
 .xp-dica{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:var(--nav-link);font-size:13px;font-weight:600;transition:opacity .4s;animation:xpdica 1.8s ease-in-out infinite;z-index:3}
 .xp-dica.off{opacity:0}
 @keyframes xpdica{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
-/* Segunda experiência de scroll (Em rota) — reaproveita .xp-moldura/.xp-video/
-   .xp-vinheta/.xp-barra/.xp-legenda; só o trilho e o palco são próprios. */
-.xp2-trilho{height:340vh;position:relative}
-.xp2-palco{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:var(--navy-deep)}
 @media (prefers-reduced-motion:reduce){
   .xp-trilho{height:auto}
   .xp-palco{position:relative}
   .xp-dica,.xp-caps,.xp-barra{display:none}
   .xp-final{opacity:1;transform:none;pointer-events:auto;justify-content:flex-end;padding-bottom:9vh}
   .xp-final h2{display:none}
-  .xp2-trilho{height:auto}
-  .xp2-palco{position:relative}
 }
 
 /* ============================ MOBILE ============================ */
@@ -522,7 +523,6 @@ a.contact-value:hover{color:var(--accent)}
   .app-intro{font-size:15.5px}
   /* Experiência em mobile: percurso mais curto, legenda mais alta, capítulos só com pontos */
   .xp-trilho{height:400vh}
-  .xp2-trilho{height:300vh}
   .xp-saltar{right:16px;bottom:20px}
   .xp-dica{left:24px;transform:none;animation:none}
   .xp-legenda{bottom:22vh;right:20px}

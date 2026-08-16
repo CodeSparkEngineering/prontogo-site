@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Icon from "@/components/Icon";
+import RotaBackground from "@/components/RotaBackground";
 import { diferenciais, numeros } from "@/lib/content";
 
 export default function Differentials() {
   return (
-    <section id="diferenciais" className="section section-dark">
-      <div className="blob blob-dark-br" />
+    <section id="diferenciais" className="section section-dark section-rota">
+      <RotaBackground />
       <div className="container rel">
         <div className="split-grid">
           <div data-reveal>
