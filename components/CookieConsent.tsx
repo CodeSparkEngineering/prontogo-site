@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { googleAdsId } from "@/lib/site";
+import { googleAdsId, gaId } from "@/lib/site";
 
 // Banner de consentimento de cookies (RGPD/ePrivacy).
 //
@@ -25,32 +25,32 @@ declare global {
 
 let tagCarregado = false;
 
-// Carrega o Google tag apenas depois do consentimento e apenas se houver um ID
-// configurado. Idempotente: nunca injeta o script duas vezes.
+// Carrega o(s) tag(s) do Google apenas depois do consentimento e apenas para os
+// IDs configurados (Ads e/ou Analytics). Idempotente: nunca injeta duas vezes.
 function carregarGoogleTag() {
-  if (tagCarregado || !googleAdsId) return;
+  const ids = [gaId, googleAdsId].filter(Boolean);
+  if (tagCarregado || ids.length === 0) return;
   tagCarregado = true;
 
   const s = document.createElement("script");
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${ids[0]}`;
   document.head.appendChild(s);
 
   window.dataLayer = window.dataLayer || [];
   function gtag(...args: unknown[]) {
     window.dataLayer!.push(args);
   }
-  gtag("js", new Date());
-  // Consent Mode v2 — só chegamos aqui depois de o utilizador aceitar, por
-  // isso concedemos o armazenamento de publicidade. Análise fica negada
-  // (o site não usa ferramentas de analítica).
+  // Consent Mode v2 — só chegamos aqui depois de o utilizador aceitar. Concede
+  // apenas os tipos de armazenamento correspondentes às etiquetas ativas.
   gtag("consent", "default", {
-    ad_storage: "granted",
-    ad_user_data: "granted",
-    ad_personalization: "granted",
-    analytics_storage: "denied",
+    ad_storage: googleAdsId ? "granted" : "denied",
+    ad_user_data: googleAdsId ? "granted" : "denied",
+    ad_personalization: googleAdsId ? "granted" : "denied",
+    analytics_storage: gaId ? "granted" : "denied",
   });
-  gtag("config", googleAdsId);
+  gtag("js", new Date());
+  ids.forEach((id) => gtag("config", id));
 }
 
 export default function CookieConsent() {
@@ -88,11 +88,12 @@ export default function CookieConsent() {
       aria-label="Consentimento de cookies"
     >
       <div className="cookie-text">
-        <strong>Cookies de publicidade</strong>
+        <strong>Cookies de publicidade e análise</strong>
         <p>
-          Usamos cookies do Google Ads para medir a eficácia dos nossos
-          anúncios. São opcionais e só ativados com a sua autorização. Saiba
-          mais na <Link href="/privacidade">Política de Privacidade</Link>.
+          Usamos cookies do Google (Ads e Analytics) para medir a eficácia dos
+          nossos anúncios e perceber como o site é usado. São opcionais e só
+          ativados com a sua autorização. Saiba mais na{" "}
+          <Link href="/privacidade">Política de Privacidade</Link>.
         </p>
       </div>
       <div className="cookie-acoes">

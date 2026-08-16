@@ -86,20 +86,22 @@ export default function PrivacidadePage() {
               <strong>Google Workspace</strong> — receção e arquivo do email.
             </li>
             <li>
-              <strong>Google Ads</strong> — cookies de medição da eficácia dos
-              nossos anúncios, ativados apenas com o seu consentimento (ver
-              secção seguinte).
+              <strong>Google Ads e Google Analytics</strong> — cookies de
+              medição da eficácia dos anúncios e de análise de utilização do
+              site, ativados apenas com o seu consentimento (ver secção
+              seguinte).
             </li>
           </ul>
 
-          <h2>Cookies e publicidade</h2>
+          <h2>Cookies de publicidade e análise</h2>
           <p>
-            O funcionamento do site <strong>não depende de cookies</strong> e
-            não usamos ferramentas de análise de comportamento. Quando corremos
-            campanhas publicitárias, utilizamos cookies de publicidade do{" "}
-            <strong>Google Ads</strong> com uma única finalidade: medir quantas
-            pessoas que clicam nos nossos anúncios acabam por pedir um orçamento
-            (conversões). Estes cookies são <strong>opcionais</strong>.
+            O funcionamento do site <strong>não depende de cookies</strong>.
+            Utilizamos apenas cookies do <strong>Google</strong>, com duas
+            finalidades: os do <strong>Google Ads</strong> medem quantas pessoas
+            que clicam nos nossos anúncios acabam por pedir um orçamento
+            (conversões); os do <strong>Google Analytics</strong> ajudam-nos a
+            perceber, de forma agregada, como o site é utilizado. Estes cookies
+            são <strong>opcionais</strong>.
           </p>
           <p>
             São ativados apenas <strong>com o seu consentimento explícito</strong>:
