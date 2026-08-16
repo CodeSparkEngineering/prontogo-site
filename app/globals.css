@@ -490,8 +490,7 @@ a.contact-value:hover{color:var(--accent)}
 /* ============================ EXPERIÊNCIA (scroll-trigger, abertura da home) ============================ */
 .xp-trilho{height:500vh;position:relative}
 .xp-palco{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:var(--navy-deep)}
-.xp-moldura{position:absolute;inset:0;overflow:hidden;transition:transform .7s cubic-bezier(.22,1,.36,1),border-radius .7s cubic-bezier(.22,1,.36,1)}
-.xp-moldura.fim{transform:scale(.9);border-radius:26px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.xp-moldura{position:absolute;inset:0;overflow:hidden}
 .xp-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .xp-vinheta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(10,33,68,.5)),linear-gradient(180deg,rgba(10,33,68,.4),transparent 28%,transparent 72%,rgba(10,33,68,.55))}
 .xp-barra{position:absolute;left:0;right:0;height:6.5vh;background:var(--navy-deep);transition:transform .6s cubic-bezier(.22,1,.36,1);z-index:2}
@@ -560,7 +559,6 @@ a.contact-value:hover{color:var(--accent)}
   .xp-caps{right:14px;gap:18px}
   .xp-cap span:first-child{display:none}
   .xp-barra{height:5vh}
-  .xp-moldura.fim{transform:scale(.94);border-radius:18px}
   /* CTAs do desfecho empilhados, largura total e legíveis sobre o vídeo */
   .xp-final-ctas{flex-direction:column;width:100%;padding:0 28px;gap:12px}
   .xp-final-ctas .btn-primary{width:100%;justify-content:center}

@@ -190,7 +190,8 @@ export default function ScrollExperience() {
           canal de Aveiro ao pôr do sol, percorre as ruas de azulejos da cidade
           e um estafeta entrega a encomenda à porta do cliente.
         </p>
-        <div className={`xp-moldura${noFinal && !reduzMotion ? " fim" : ""}`}>
+        {/* Vídeo puro de ecrã inteiro até ao fim — sem encolher em cartão */}
+        <div className="xp-moldura">
           <video
             ref={videoRef}
             className="xp-video"
