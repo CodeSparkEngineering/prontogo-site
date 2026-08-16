@@ -144,12 +144,9 @@ section{scroll-margin-top:80px}
 .zona-cidade .section-head .kicker{display:inline-block;background:rgba(255,255,255,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 14px;border-radius:999px}
 .zona-cidade .step h3{text-shadow:0 1px 10px rgba(245,247,250,.95),0 1px 2px rgba(245,247,250,.8)}
 .zona-cidade .step p{color:var(--muted-2);text-shadow:0 1px 10px rgba(245,247,250,.95),0 1px 2px rgba(245,247,250,.8)}
-/* Transição hero->cidade: fade longo e progressivo (curva com vários passos,
-   sem degraus) — o navy-deep do hero, exatamente o mesmo tom, dissolve-se
-   devagar no vídeo como um anoitecer a abrir para o dia. Um só tom de azul em
-   sequência, nada de bandas. O conteúdo começa depois da dissolução. */
-.zona-cidade::before{content:"";position:absolute;top:0;left:0;right:0;height:620px;background:linear-gradient(180deg,var(--navy-deep) 0,var(--navy-deep) 48px,rgba(10,33,68,.94) 140px,rgba(10,33,68,.78) 240px,rgba(10,33,68,.52) 340px,rgba(10,33,68,.26) 440px,rgba(10,33,68,.08) 540px,rgba(10,33,68,0) 620px);z-index:1;pointer-events:none}
-.section-services{padding-top:480px;padding-bottom:36px}
+/* Transição hero->cidade: corte limpo de vídeo para vídeo, como num filme —
+   o hero termina em vídeo puro e a cidade entra logo a seguir, sem overlays. */
+.section-services{padding-top:120px;padding-bottom:36px}
 /* Sticky: o vídeo fica fixo ao ecrã (enquadramento correto, sem esticar) ao
    percorrer a zona; overflow:clip na zona recorta-o nos limites sem quebrar o
    sticky (ao contrário de overflow:hidden). */
