@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { servicos } from "@/lib/content";
 import { EVENTO_SIMULACAO } from "@/components/Simulador";
-import CidadeBackground from "@/components/CidadeBackground";
 
 export default function Services() {
   // Ao clicar num serviço, leva ao formulário com o tipo de serviço já
@@ -23,7 +22,6 @@ export default function Services() {
 
   return (
     <section id="servicos" className="section section-alt section-services">
-      <CidadeBackground />
       <div className="container rel">
         <div className="section-head" data-reveal>
           <div className="kicker">Serviços</div>

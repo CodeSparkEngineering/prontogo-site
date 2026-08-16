@@ -129,15 +129,19 @@ section{scroll-margin-top:80px}
 .section-head p{color:var(--muted);font-size:16px;line-height:1.6;margin:0}
 
 /* ---------- Serviços ---------- */
-/* Fundo em vídeo (trânsito aéreo, sem céu) como camada ABSOLUTA recortada à
-   secção (overflow:hidden) — nunca transborda para a secção seguinte e, como o
-   vídeo já não tem céu, não aparece a faixa cinzenta. Opacidade uniforme. Ao
-   terminar a secção, o fundo claro/branco da secção seguinte aparece limpo. */
-.section-services{position:relative;overflow:hidden;padding-top:100px;padding-bottom:36px}
-.services-bg{position:absolute;inset:0;z-index:0;overflow:hidden;opacity:.5;pointer-events:none}
+/* Zona com fundo de vídeo partilhado: o trânsito aéreo (sem céu, recortado)
+   cobre Serviços + Como funciona como um só cenário contínuo — sem emenda
+   entre as duas secções. Opacidade uniforme; as secções ficam transparentes
+   e o conteúdo sobe acima do vídeo (z-index). */
+.zona-cidade{position:relative;overflow:clip;background:var(--bg)}
+.zona-cidade>section{position:relative;z-index:1;background:transparent}
+.zona-cidade .section-head h2,.zona-cidade .section-head p{text-shadow:0 1px 12px rgba(245,247,250,.9),0 1px 2px rgba(245,247,250,.7)}
+.section-services{padding-top:100px;padding-bottom:36px}
+/* Sticky: o vídeo fica fixo ao ecrã (enquadramento correto, sem esticar) ao
+   percorrer a zona; overflow:clip na zona recorta-o nos limites sem quebrar o
+   sticky (ao contrário de overflow:hidden). */
+.services-bg{position:sticky;top:0;height:100vh;height:100dvh;margin-bottom:-100vh;margin-bottom:-100dvh;z-index:0;overflow:hidden;opacity:.5;pointer-events:none}
 .services-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.35);background:var(--bg)}
-.section-services .container{position:relative;z-index:1}
-.section-services .section-head h2,.section-services .section-head p{text-shadow:0 1px 12px rgba(245,247,250,.9),0 1px 2px rgba(245,247,250,.7)}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
 .card{background:#fff;border-radius:18px;padding:0;border:1px solid var(--line);transition:transform .25s,box-shadow .25s;overflow:hidden;display:flex;flex-direction:column;color:inherit;text-decoration:none}
 .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(14,42,86,.1);color:inherit}

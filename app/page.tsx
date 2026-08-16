@@ -2,6 +2,7 @@ import SiteHeader from "@/components/SiteHeader";
 import ScrollExperience from "@/components/ScrollExperience";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
+import CidadeBackground from "@/components/CidadeBackground";
 import Differentials from "@/components/Differentials";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
@@ -116,8 +117,13 @@ export default function Home() {
       <SiteHeader />
       <main>
         <ScrollExperience />
-        <Services />
-        <HowItWorks />
+        {/* Zona com fundo de vídeo partilhado: o trânsito aéreo corre por trás
+            dos Serviços E do Como funciona, como um só cenário contínuo. */}
+        <div className="zona-cidade">
+          <CidadeBackground />
+          <Services />
+          <HowItWorks />
+        </div>
         <Differentials />
         <About />
         <AppRotas />
