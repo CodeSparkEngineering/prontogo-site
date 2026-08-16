@@ -172,12 +172,13 @@ section{scroll-margin-top:80px}
 /* ---------- Diferenciais (seção escura) ---------- */
 .section-dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .section-dark h2{margin:0 0 28px}
-/* Vídeo "Em rota" como fundo de uma secção (camada sticky atrás do conteúdo).
-   overflow:visible é preciso para o sticky se fixar ao ecrã. */
-.section-rota{overflow:visible}
-.rota-bg{position:sticky;top:0;height:100vh;height:100dvh;margin-bottom:-100vh;margin-bottom:-100dvh;z-index:0;overflow:hidden;pointer-events:none}
+/* Vídeo "Em rota" como fundo de uma secção: camada absoluta que preenche
+   exatamente a caixa da secção (object-fit:cover) — enquadra o vídeo à secção,
+   sem folgas de azul/branco. A secção mantém overflow:hidden (de .section-dark)
+   para recortar o vídeo aos seus limites. */
+.rota-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .rota-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.rota-bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,68,.82),rgba(10,33,68,.72) 45%,rgba(10,33,68,.9))}
+.rota-bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,68,.7),rgba(10,33,68,.58) 45%,rgba(10,33,68,.8))}
 .section-rota .container{position:relative;z-index:1}
 .split-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:center}
 .features{display:flex;flex-direction:column;gap:18px}
