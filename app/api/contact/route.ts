@@ -116,9 +116,11 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
+    // Sem dados pessoais no log (minimização RGPD) — o serviço identifica-se
+    // pelo tipo; o visitante recebe o erro e o fallback de contacto direto.
     console.error(
       "[contacto] RESEND_API_KEY não configurada — pedido de orçamento NÃO foi enviado.",
-      { nome, email: pedido.email, servico: pedido.servico }
+      { servico: pedido.servico }
     );
     return NextResponse.json(
       { error: "O envio automático está indisponível de momento." },

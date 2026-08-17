@@ -1,17 +1,21 @@
 import type { NextConfig } from "next";
 
-// CSP: o site não usa scripts/estilos/imagens externos, por isso a política
-// pode ser restrita. 'unsafe-inline' em script-src é exigido pelo bootstrap
-// inline do Next.js (sem nonces neste setup estático). Aplicada apenas em
+// CSP: além do próprio site, só os domínios do Google tag (Ads + GA4),
+// que o CookieConsent injeta apenas após consentimento — sem estas
+// exceções o browser bloqueava o tag mesmo com o visitante a aceitar.
+// Lista conforme a documentação oficial de CSP para gtag.js.
+// 'unsafe-inline' em script-src é exigido pelo bootstrap inline do
+// Next.js (sem nonces neste setup estático). Aplicada apenas em
 // produção — o dev server precisa de eval para HMR.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data:",
+  "img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.pt",
   "media-src 'self'",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com",
+  "frame-src https://td.doubleclick.net https://www.googletagmanager.com",
   "object-src 'none'",
   "frame-ancestors 'none'",
   "base-uri 'self'",
