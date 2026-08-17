@@ -5,19 +5,54 @@ import Image from "next/image";
 
 // Paths absolutos para os links funcionarem também fora da homepage
 const links = [
-  { href: "/#servicos", label: "Serviços" },
-  { href: "/#como-funciona", label: "Como funciona" },
-  { href: "/#precos", label: "Preços" },
-  { href: "/#sobre", label: "Sobre" },
-  { href: "/guias", label: "Guias" },
+  { href: "/#servicos", id: "servicos", label: "Serviços" },
+  { href: "/#como-funciona", id: "como-funciona", label: "Como funciona" },
+  { href: "/#precos", id: "precos", label: "Preços" },
+  { href: "/#sobre", id: "sobre", label: "Sobre" },
+  { href: "/guias", id: "guias", label: "Guias" },
 ];
 
 export default function SiteHeader() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   function fecharMenu() {
     setMenuAberto(false);
   }
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 30);
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Scrollspy para detetar a secção ativa
+  useEffect(() => {
+    const sectionIds = ["servicos", "como-funciona", "precos", "sobre"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0.1 },
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!menuAberto) return;
@@ -29,7 +64,7 @@ export default function SiteHeader() {
   }, [menuAberto]);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <nav className="nav container">
         <a href="/#inicio" className="brand" onClick={fecharMenu}>
           <Image
@@ -76,11 +111,19 @@ export default function SiteHeader() {
           id="menu-principal"
           className={`nav-links${menuAberto ? " open" : ""}`}
         >
-          {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={fecharMenu}>
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={isActive ? "is-nav-active" : ""}
+                onClick={fecharMenu}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a href="/#contacto" className="btn btn-nav" onClick={fecharMenu}>
             Pedir orçamento
           </a>

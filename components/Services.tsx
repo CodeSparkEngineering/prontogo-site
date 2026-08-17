@@ -32,49 +32,58 @@ export default function Services() {
           </p>
         </div>
         <div className="cards-grid" data-reveal>
-          {servicos.map((s) => (
-            <a
-              className="card"
-              key={s.titulo}
-              href="#contacto"
-              onClick={() => pedir(s.titulo)}
-              aria-label={`Pedir orçamento para ${s.titulo}`}
-            >
-              <div className="card-media">
-                <Image
-                  src={s.img}
-                  alt={s.imgAlt}
-                  width={800}
-                  height={600}
-                  sizes="(max-width: 640px) 100vw, 300px"
-                />
-              </div>
-              <div className="card-body">
-                <h3>{s.titulo}</h3>
-                <p>{s.texto}</p>
-                <span className="card-cta">
-                  Pedir orçamento
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-          ))}
+          {servicos.map((s, idx) => {
+            const badges = [
+              "⚡ No próprio dia",
+              "📦 Integrado & Rastreável",
+              "🚚 Até 640 kg",
+              "✦ Sem mínimos",
+            ];
+            return (
+              <a
+                className="card card-interactive"
+                key={s.titulo}
+                href="#contacto"
+                onClick={() => pedir(s.titulo)}
+                aria-label={`Pedir orçamento para ${s.titulo}`}
+              >
+                <div className="card-media">
+                  <Image
+                    src={s.img}
+                    alt={s.imgAlt}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 640px) 100vw, 300px"
+                  />
+                  <div className="card-badge-pill">{badges[idx % badges.length]}</div>
+                </div>
+                <div className="card-body">
+                  <h3>{s.titulo}</h3>
+                  <p>{s.texto}</p>
+                  <span className="card-cta">
+                    Pedir orçamento
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </div>
 
         <div className="intl-band" data-reveal>
-          <div className="intl-band-icon">
+          <div className="intl-band-icon intl-icon-animated">
             <svg
               width="30"
               height="30"
@@ -92,7 +101,7 @@ export default function Services() {
             </svg>
           </div>
           <div className="intl-band-body">
-            <div className="intl-kicker">Internacional</div>
+            <div className="intl-kicker">Internacional • Frota Própria</div>
             <h3>Também entregamos na Europa</h3>
             <p>
               A mesma carrinha ProntoGo faz a viagem completa até ao destino,

@@ -38,7 +38,7 @@ input::placeholder,textarea::placeholder{color:var(--faint)}
 /* Navegação por teclado: anel de foco visível em toda a interação */
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .rel{position:relative}
-section{scroll-margin-top:80px}
+section, [id]{scroll-margin-top:100px}
 
 /* ---------- Reveal on scroll (movimento via anime.js) ---------- */
 [data-reveal]{opacity:0;transform:translateY(28px)}
@@ -64,16 +64,18 @@ section{scroll-margin-top:80px}
 .blob-contact-tl{left:-140px;top:-140px;width:420px;height:420px;background:radial-gradient(circle,rgba(245,130,11,.14),transparent 70%)}
 
 /* ============================ NAV ============================ */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,42,86,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,42,86,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.site-header.is-scrolled{background:rgba(10,33,68,.96);border-bottom-color:rgba(245,130,11,.25);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 24px}
-.brand{display:flex;align-items:center;gap:10px;color:#fff}
-.brand:hover{color:#fff}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;transition:transform .2s ease}
+.brand:hover{color:#fff;transform:scale(1.02)}
 .brand-icon{width:38px;height:38px;object-fit:contain}
 .brand-word{font-weight:800;font-style:italic;font-size:21px;letter-spacing:-.5px}
 .brand-go{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:26px;justify-content:flex-end}
-.nav-links>a{color:var(--nav-link);font-size:14px;font-weight:500}
-.nav-links>a:hover{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:18px;justify-content:flex-end}
+.nav-links>a{color:var(--nav-link);font-size:13.5px;font-weight:600;padding:6px 12px;border-radius:999px;transition:all .2s ease}
+.nav-links>a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-links>a.is-nav-active{color:#fff;background:rgba(245,130,11,.2);border:1px solid rgba(245,130,11,.45);box-shadow:0 0 12px rgba(245,130,11,.2)}
 .nav-toggle{display:none;background:none;border:none;color:#fff;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;margin:-6px -8px -6px 0}
 .nav-toggle:hover{color:var(--accent)}
 
@@ -172,9 +174,16 @@ section{scroll-margin-top:80px}
 .card-cta svg{transition:transform .25s}
 .card:hover .card-cta{color:var(--accent)}
 .card:hover .card-cta svg{transform:translateX(3px)}
+
+/* Card Badge Pill */
+.card-interactive{position:relative}
+.card-badge-pill{position:absolute;top:14px;left:14px;background:rgba(14,42,86,.85);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.3px;padding:5px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:2}
+
 /* Faixa de destaque das entregas internacionais */
-.intl-band{margin-top:26px;background:linear-gradient(135deg,var(--navy),var(--navy-2));border-radius:20px;padding:32px 36px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;color:#fff}
+.intl-band{margin-top:26px;background:linear-gradient(135deg,var(--navy),var(--navy-2));border-radius:20px;padding:32px 36px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(14,42,86,.25)}
 .intl-band-icon{width:60px;height:60px;border-radius:16px;background:rgba(245,130,11,.16);color:var(--accent-light);display:flex;align-items:center;justify-content:center;flex:none}
+.intl-icon-animated svg{animation:intlPulse 4s ease-in-out infinite}
+@keyframes intlPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12);color:var(--accent)}}
 .intl-band-body{flex:1;min-width:260px}
 .intl-kicker{color:var(--accent-light);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 .intl-band h3{font-size:22px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;color:#fff}
@@ -186,12 +195,12 @@ section{scroll-margin-top:80px}
 
 /* ---------- Como funciona ---------- */
 .steps-wrap{position:relative}
-.steps-path{position:absolute;top:28px;left:8%;width:84%;height:40px;display:block;color:var(--accent)}
+.steps-path{position:absolute;top:28px;left:8%;width:84%;height:60px;display:block;color:var(--accent);pointer-events:none}
 .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;position:relative}
-.step{text-align:center;padding:0 12px}
-.step-circle{width:104px;height:104px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:4px solid #fff;box-shadow:0 0 0 2px var(--line),0 16px 34px rgba(14,42,86,.18);position:relative;transition:transform .25s}
+.step{text-align:center;padding:0 12px;transition:transform .3s ease}
+.step-circle{width:104px;height:104px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:4px solid #fff;box-shadow:0 0 0 2px var(--line),0 16px 34px rgba(14,42,86,.18);position:relative;transition:transform .25s ease,box-shadow .25s ease}
 .step-circle img{width:82%;height:82%;object-fit:contain;border-radius:50%}
-.step:hover .step-circle{transform:translateY(-5px)}
+.step:hover .step-circle{transform:translateY(-6px) scale(1.04);box-shadow:0 0 0 3px var(--accent-light),0 20px 40px rgba(245,130,11,.2)}
 .step-num{position:absolute;top:-5px;right:-5px;width:31px;height:31px;border-radius:50%;background:var(--accent);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 4px 12px rgba(245,130,11,.4)}
 .step h3{font-size:19px;font-weight:700;margin:0 0 10px;letter-spacing:-.3px}
 .step p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 auto;max-width:280px}
@@ -199,32 +208,33 @@ section{scroll-margin-top:80px}
 /* ---------- Diferenciais (seção escura) ---------- */
 .section-dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .section-dark h2{margin:0 0 28px}
-/* Vídeo "Em rota" como fundo de uma secção: camada absoluta que preenche
-   exatamente a caixa da secção (object-fit:cover) — enquadra o vídeo à secção,
-   sem folgas de azul/branco. A secção mantém overflow:hidden (de .section-dark)
-   para recortar o vídeo aos seus limites. */
 .rota-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .rota-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-/* Scrim mais leve para o vídeo respirar; a legibilidade do texto branco é
-   garantida com sombra de texto e os cartões de números ficam foscos. */
-/* Scrim mais leve no topo: a estrada aparece logo na fronteira com a cidade,
-   encostando os dois vídeos sem "gap" escura. */
 .rota-bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,68,.3),rgba(10,33,68,.34) 45%,rgba(10,33,68,.5))}
 .section-rota .container{position:relative;z-index:1}
 .section-rota .kicker,.section-rota h2,.section-rota .feature-title,.section-rota .feature-text{text-shadow:0 2px 16px rgba(10,33,68,.9),0 1px 3px rgba(10,33,68,.75)}
-.section-rota .number-tile{background:rgba(10,33,68,.42);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border-color:rgba(255,255,255,.16)}
+.section-rota .number-tile{background:rgba(10,33,68,.42);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border-color:rgba(255,255,255,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.section-rota .number-tile:hover{transform:translateY(-4px);border-color:rgba(245,130,11,.45);box-shadow:0 14px 35px rgba(0,0,0,.4)}
 .split-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:center}
-.features{display:flex;flex-direction:column;gap:18px}
-.feature{display:flex;gap:16px;align-items:flex-start}
-.feature-icon{width:40px;height:40px;flex:none;border-radius:11px;background:rgba(245,130,11,.15);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.features{display:flex;flex-direction:column;gap:14px}
+.feature{display:flex;gap:16px;align-items:flex-start;padding:8px 12px;border-radius:14px;transition:background .25s ease,transform .25s ease}
+.feature:hover{background:rgba(255,255,255,.05);transform:translateX(5px)}
+.feature-icon{width:40px;height:40px;flex:none;border-radius:11px;background:rgba(245,130,11,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:background .25s ease,transform .25s ease}
+.feature:hover .feature-icon{background:rgba(245,130,11,.28);transform:scale(1.08)}
 .feature-title{font-weight:700;font-size:16px;margin-bottom:3px}
 .feature-text{color:var(--muted-dark);font-size:14px;line-height:1.55}
+
+/* Laser Scanner Beam */
 .diff-visual{position:relative;margin-bottom:28px;border-radius:20px;overflow:hidden}
 .diff-img{width:100%;height:auto;display:block;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12)}
+.diff-laser-scanner{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:20px}
+.diff-laser-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.8) 20%,#38BDF8 50%,rgba(56,189,248,.8) 80%,transparent);box-shadow:0 0 15px #38BDF8,0 0 30px #38BDF8;animation:laserScan 3.6s ease-in-out infinite}
+@keyframes laserScan{0%,100%{top:8%;opacity:0}15%,85%{opacity:1}50%{top:90%}}
+
 .diff-img-badge{position:absolute;left:16px;bottom:14px;background:rgba(14,42,86,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 18px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#fff}
 .numbers-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .number-tile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:28px 22px}
-.number-value{font-size:clamp(28px,3vw,38px);font-weight:800;color:var(--accent);letter-spacing:-1px}
+.number-value{font-size:clamp(28px,3vw,38px);font-weight:800;color:var(--accent);letter-spacing:-1px;font-variant-numeric:tabular-nums}
 .number-label{color:var(--muted-dark);font-size:13.5px;margin-top:6px;line-height:1.4}
 
 /* ---------- Sobre ---------- */
@@ -267,61 +277,192 @@ section{scroll-margin-top:80px}
 
 /* ---------- App de rotas (em desenvolvimento) ---------- */
 /* Secção "tech" escura: quebra o troço branco e dá palco ao mapa animado */
-.section-app{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;position:relative;overflow:hidden}
-.section-app h2{color:#fff}
-.app-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(14,42,86,.6);border:1px solid rgba(245,130,11,.45);color:var(--accent-light);font-size:12.5px;font-weight:700;letter-spacing:.4px;padding:8px 16px;border-radius:999px;margin-bottom:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.section-app{background:radial-gradient(ellipse at 85% 20%, #13396d 0%, var(--navy) 45%, var(--navy-2) 100%);color:#fff;position:relative;overflow:hidden;padding:100px 0}
+.section-app h2{color:#fff;margin:0 0 16px;font-size:clamp(28px, 3.8vw, 42px);letter-spacing:-1px;line-height:1.18}
+
+/* Ambient glow orbs */
+.app-ambient-glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:0.25}
+.glow-cyan{width:380px;height:380px;background:#38BDF8;top:-60px;right:10%}
+.glow-orange{width:320px;height:320px;background:#F5820B;bottom:-40px;left:5%}
+
+/* Badges & Headers */
+.app-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(14,42,86,0.75);border:1px solid rgba(245,130,11,0.5);color:var(--accent-light);font-size:12px;font-weight:800;letter-spacing:.6px;padding:7px 14px;border-radius:999px;margin-bottom:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(245,130,11,0.15)}
 .app-badge-ponto{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;animation:apppulse 2s ease-in-out infinite}
-@keyframes apppulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(245,130,11,.5)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(245,130,11,0)}}
-.section-app h2{margin:0 0 16px}
-.app-intro{color:var(--muted-dark);font-size:16.5px;line-height:1.7;margin:0 0 28px;max-width:520px}
-.app-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px 26px}
-.app-item-titulo{font-weight:700;font-size:15.5px;letter-spacing:-.2px;margin-bottom:6px;padding-left:14px;position:relative;color:#fff}
-.app-item-titulo::before{content:"";position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
-.app-item p{color:var(--muted-dark);font-size:14.5px;line-height:1.6;margin:0;padding-left:14px}
-.app-nota{margin:30px 0 0;padding:16px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:var(--muted-dark);font-size:13.5px;line-height:1.6}
-.app-media{display:flex;justify-content:center}
-/* Painel do mapa de rotas animado */
-.mapa-rotas{width:min(560px,100%);background:rgba(10,33,68,.55);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-.mapa-rotas svg{width:100%;height:auto;display:block}
-.mapa-no{transform-box:fill-box;transform-origin:center}
-.mapa-hub-halo{animation:apppulse 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-@media (prefers-reduced-motion:reduce){.mapa-hub-halo{animation:none}}
-@media (prefers-reduced-motion:reduce){.app-badge-ponto{animation:none}}
+.app-badge-tag{background:rgba(245,130,11,0.25);color:#FFB259;font-size:10px;font-weight:900;padding:2px 7px;border-radius:6px;letter-spacing:0.5px}
+
+@keyframes apppulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(245,130,11,.6)}50%{opacity:.6;box-shadow:0 0 0 8px rgba(245,130,11,0)}}
+
+.app-intro{color:var(--muted-dark);font-size:16px;line-height:1.7;margin:0 0 22px;max-width:540px}
+
+/* Live Simulation Ticker */
+.app-sim-ticker{display:inline-flex;align-items:center;gap:10px;background:rgba(10,33,68,0.7);border:1px solid rgba(56,189,248,0.25);border-radius:10px;padding:8px 14px;margin-bottom:26px;font-size:13px;color:#CBD5E1;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.app-sim-icon{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:rgba(245,130,11,0.2);color:#FFB259;font-size:12px}
+.app-sim-highlight{color:#38BDF8;font-weight:700}
+
+/* Lista de capacidades modernizada */
+.app-lista-tech{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:26px}
+.app-item-card{background:rgba(14,42,86,0.45);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:16px 18px;display:flex;gap:14px;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.app-item-card:hover{transform:translateY(-3px);border-color:rgba(245,130,11,0.4);background:rgba(14,42,86,0.7);box-shadow:0 12px 30px rgba(0,0,0,0.3)}
+.app-item-icon-box{flex:none;width:38px;height:38px;border-radius:10px;background:rgba(245,130,11,0.12);border:1px solid rgba(245,130,11,0.25);display:flex;align-items:center;justify-content:center;color:#FFB259;transition:background .25s ease,transform .25s ease}
+.app-item-card:hover .app-item-icon-box{background:rgba(245,130,11,0.25);transform:scale(1.06)}
+.app-item-content{flex:1}
+.app-item-card .app-item-titulo{font-weight:700;font-size:15px;letter-spacing:-.2px;margin:0 0 4px;color:#fff;padding-left:0}
+.app-item-card .app-item-titulo::before{display:none}
+.app-item-card p{color:var(--muted-dark);font-size:13.5px;line-height:1.55;margin:0;padding-left:0}
+
+/* Nota da tecnologia */
+.app-nota-card{padding:14px 18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:var(--muted-dark);font-size:13px;line-height:1.6}
+.app-nota-badge{display:inline-flex;align-items:center;gap:6px;color:#FFB259;font-weight:700;font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.app-nota-card p{margin:0;color:#94A3B8;font-size:13px}
+
+.app-media{display:flex;justify-content:center;align-items:center;position:relative;z-index:2}
+
+/* Terminal HUD do Mapa de Rotas */
+.mapa-card-tech{width:min(580px,100%);background:linear-gradient(175deg, rgba(14,42,86,0.85) 0%, rgba(8,24,50,0.95) 100%);border:1px solid rgba(255,255,255,0.14);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(245,130,11,0.15);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+
+/* HUD Top Header */
+.mapa-hud-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(6,19,41,0.7);border-bottom:1px solid rgba(255,255,255,0.08);font-size:11px}
+.mapa-hud-status{display:flex;align-items:center;gap:8px}
+.mapa-hud-live-dot{width:7px;height:7px;border-radius:50%;background:#10B981;box-shadow:0 0 10px #10B981;animation:apppulse 1.8s ease-in-out infinite}
+.mapa-hud-title{font-weight:800;letter-spacing:1px;color:#E2E8F0}
+.mapa-hud-telemetria{display:flex;align-items:center;gap:12px}
+.mapa-hud-badge{background:rgba(56,189,248,0.15);color:#38BDF8;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid rgba(56,189,248,0.3);letter-spacing:0.5px}
+.mapa-hud-time{color:#94A3B8;font-family:monospace;font-weight:600;font-size:11.5px}
+
+/* City Destination Chips */
+.mapa-city-chips{display:flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(10,33,68,0.5);border-bottom:1px solid rgba(255,255,255,0.06);overflow-x:auto;scrollbar-width:none}
+.mapa-city-chips::-webkit-scrollbar{display:none}
+.mapa-chips-label{font-size:10px;font-weight:800;letter-spacing:0.8px;color:#64748B;flex:none}
+.mapa-chips-list{display:flex;align-items:center;gap:6px;flex:1}
+.mapa-chip-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#94A3B8;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;cursor:pointer;transition:all .2s ease;white-space:nowrap}
+.mapa-chip-btn:hover{background:rgba(245,130,11,0.2);color:#FFB259;border-color:rgba(245,130,11,0.4)}
+.mapa-chip-btn.is-active{background:rgba(245,130,11,0.3);color:#FFFFFF;border-color:#F5820B;box-shadow:0 0 12px rgba(245,130,11,0.35)}
+
+/* SVG Wrapper e Canvas */
+.mapa-svg-wrapper{position:relative;width:100%;background:rgba(3,11,26,0.4)}
+.mapa-svg-canvas{width:100%;height:auto;display:block}
+
+/* Elementos SVG */
+.mapa-no-ponto{transform-box:fill-box;transform-origin:center;transition:transform .2s ease,fill .2s ease}
+.mapa-no-item:hover .mapa-no-ponto, .mapa-no-item.is-active .mapa-no-ponto{transform:scale(1.35)}
+.mapa-beacon-ring{transform-box:fill-box;transform-origin:center}
+.mapa-hub-halo{transform-box:fill-box;transform-origin:center;animation:apppulse 2.2s ease-in-out infinite}
+
+/* Active Route Detail Card below SVG */
+.mapa-active-route-bar{position:relative;background:rgba(8,24,50,0.85);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.mapa-active-tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:#94A3B8;letter-spacing:0.5px}
+.mapa-active-tag strong{color:#FFFFFF;font-size:12.5px;font-weight:800;letter-spacing:0.8px}
+.mapa-active-pulse{width:6px;height:6px;border-radius:50%;background:#F5820B;box-shadow:0 0 8px #F5820B;animation:apppulse 1.5s infinite}
+.mapa-active-meta{display:inline-flex;align-items:center;gap:6px;font-size:11.5px}
+.mapa-active-dist{color:#94A3B8;font-weight:600}
+.mapa-active-divider{color:#475569}
+.mapa-active-eta{background:rgba(245,130,11,0.25);color:#FFB259;font-weight:800;font-size:11px;padding:2px 7px;border-radius:4px}
+.mapa-active-desc{font-size:11px;color:#CBD5E1;width:100%;border-top:1px solid rgba(255,255,255,0.06);padding-top:5px;margin-top:2px}
+
+/* HUD Footer Bar */
+.mapa-hud-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 18px;background:rgba(6,19,41,0.7);font-size:11px;color:#94A3B8;flex-wrap:wrap}
+.mapa-hud-metric{display:inline-flex;align-items:center;gap:5px;font-weight:600}
+.mapa-hud-icon{color:#FFB259;font-size:12px}
+
+@media (max-width: 640px){
+  .section-app{padding:50px 0}
+  .app-lista-tech{grid-template-columns:1fr;gap:12px}
+  .app-item-card{padding:14px 15px}
+  .app-sim-ticker{font-size:12px;padding:6px 12px;width:100%;box-sizing:border-box}
+  .mapa-hud-header{padding:10px 14px;flex-direction:row;gap:8px}
+  .mapa-hud-telemetria{gap:8px}
+  .mapa-hud-badge{display:none}
+  .mapa-city-chips{padding:6px 12px;gap:6px}
+  .mapa-chip-btn{font-size:10px;padding:3px 7px}
+  .mapa-active-route-bar{padding:8px 12px}
+  .mapa-hud-footer{justify-content:center;gap:8px;padding:8px 12px;font-size:10px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .mapa-hub-halo{animation:none}
+  .app-badge-ponto{animation:none}
+  .mapa-hud-live-dot{animation:none}
+}
 
 /* ---------- Simulador de preços ---------- */
-.sim{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 32px;box-shadow:0 20px 50px rgba(14,42,86,.08)}
-.sim-passo{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.section-sim-wrapper{padding-top:110px}
+.sim-card-enhanced{max-width:960px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px 36px;box-shadow:0 24px 60px rgba(14,42,86,.08);position:relative}
+
+/* Header Strip */
+.sim-header-strip{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.sim-header-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,130,11,.1);border:1px solid rgba(245,130,11,.3);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.5px;padding:5px 12px;border-radius:999px}
+.sim-header-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px var(--accent);animation:pulseLive 2s infinite}
+.sim-header-note{font-size:12.5px;color:var(--muted);font-weight:600}
+
+/* Step Header */
+.sim-passo{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
 .sim-passo:not(:first-child){margin-top:32px}
-.sim-num{width:26px;height:26px;flex:none;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
-.sim-label{font-weight:700;font-size:16px;letter-spacing:-.2px}
-.sim-opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.sim-opcao{display:flex;flex-direction:column;gap:3px;text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s,transform .15s}
-.sim-opcao:hover{border-color:var(--accent-light);transform:translateY(-2px)}
-.sim-opcao.on{border-color:var(--accent);background:#FFF7ED}
-.sim-opcao-nome{font-weight:800;font-size:16.5px;color:var(--navy);letter-spacing:-.3px}
-.sim-opcao-desc{font-size:13px;color:var(--muted)}
-.sim-opcao-prazo{font-size:12.5px;font-weight:700;color:var(--accent);margin-top:3px}
-.sim-pesos{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
-.sim-peso{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--muted-2);transition:border-color .2s,background .2s,color .2s}
-.sim-peso:hover{border-color:var(--accent-light)}
-.sim-peso.on{border-color:var(--accent);background:#FFF7ED;color:var(--navy);font-weight:700}
-.sim-nota-servico{margin:16px 0 0;padding:12px 15px;background:var(--bg);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;font-size:13.5px;color:var(--muted);line-height:1.55}
+.sim-num{width:28px;height:28px;flex:none;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.sim-label{font-weight:800;font-size:17px;color:var(--navy);letter-spacing:-.3px;display:block}
+.sim-sublabel{font-size:12.5px;color:var(--muted);display:block;margin-top:2px}
+
+/* 4-Card Service Grid */
+.sim-opcoes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sim-card-opt{display:flex;flex-direction:column;text-align:left;background:#F8FAFC;border:2px solid var(--line);border-radius:16px;padding:18px 16px;cursor:pointer;font-family:inherit;transition:border-color .2s ease,background .2s ease,transform .2s ease,box-shadow .2s ease;position:relative}
+.sim-card-opt:hover{border-color:var(--accent-light);background:#FFFBF5;transform:translateY(-2px);box-shadow:0 8px 20px rgba(14,42,86,.05)}
+.sim-card-opt.on{border-color:var(--accent);background:#FFF7ED;box-shadow:0 10px 24px rgba(245,130,11,.15)}
+
+.sim-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sim-icon-circle{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--navy);transition:background .2s ease,color .2s ease}
+.sim-card-opt.on .sim-icon-circle{background:var(--accent);color:#fff;border-color:var(--accent)}
+.sim-check-badge{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+.sim-opcao-nome{font-weight:800;font-size:16.5px;color:var(--navy);letter-spacing:-.3px;margin-bottom:4px}
+.sim-opcao-desc{font-size:12.5px;color:var(--muted);line-height:1.4;margin-bottom:10px;min-height:34px}
+.sim-opcao-prazo{font-size:12px;font-weight:700;color:var(--accent);background:rgba(245,130,11,.12);padding:4px 8px;border-radius:6px;display:inline-block;width:fit-content;margin-top:auto}
+
+/* Weight / Distance Grid */
+.sim-pesos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sim-peso-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#F8FAFC;border:2px solid var(--line);border-radius:14px;padding:14px 12px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;color:var(--muted-2);transition:all .2s ease}
+.sim-peso-btn:hover{border-color:var(--accent-light);background:#FFFBF5}
+.sim-peso-icon{display:inline-flex;align-items:center;justify-content:center;color:var(--muted);transition:color .2s ease,transform .2s ease}
+.sim-peso-btn:hover .sim-peso-icon{color:var(--accent);transform:scale(1.1)}
+.sim-peso-btn.on .sim-peso-icon{color:var(--accent);transform:scale(1.1)}
+
+.sim-nota-servico{margin:18px 0 0;padding:12px 16px;background:#F1F5F9;border-left:3px solid var(--accent);border-radius:0 12px 12px 0;font-size:13px;color:var(--muted);line-height:1.5;display:flex;align-items:center;gap:10px}
+.sim-nota-servico svg{color:var(--accent);flex:none}
+
+/* Result Card */
 .sim-resultado{margin-top:32px;padding-top:28px;border-top:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.sim-preco-bloco{display:flex;flex-direction:column;gap:2px}
-.sim-preco-label{font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
-.sim-preco{font-size:clamp(38px,5.5vw,50px);font-weight:800;letter-spacing:-1.8px;color:var(--navy);line-height:1.05;font-variant-numeric:tabular-nums;animation:simpreco .34s cubic-bezier(.22,1,.36,1)}
+.sim-result-box{display:flex;align-items:center;gap:32px;flex-wrap:wrap;flex:1}
+.sim-preco-bloco{display:flex;flex-direction:column;gap:3px;min-width:140px}
+.sim-preco-label{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.sim-preco{font-size:clamp(36px,4.5vw,46px);font-weight:800;letter-spacing:-1.8px;color:var(--navy);line-height:1.05;font-variant-numeric:tabular-nums;animation:simpreco .34s cubic-bezier(.22,1,.36,1)}
 @keyframes simpreco{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
-.sim-contrato-selo{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-right:8px;vertical-align:1px}
-.sim-contrato strong{animation:simpreco .34s cubic-bezier(.22,1,.36,1)}
-.sim-preco-consulta{font-size:clamp(26px,3.6vw,34px);letter-spacing:-1px}
-.sim-preco-nota{font-size:13px;color:var(--muted);max-width:280px;line-height:1.5;margin-top:4px}
-.sim-contrato{flex:1;min-width:210px;background:var(--bg);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--muted);line-height:1.55}
-.sim-contrato strong{color:var(--accent);font-size:15px}
-.sim-cta{font-size:15.5px;padding:14px 26px;border:none;cursor:pointer;font-family:inherit}
-.sim-rodape{margin:24px 0 0;font-size:12.5px;color:var(--faint);line-height:1.6;text-align:center}
-/* Com quatro serviços, dois por linha lê-se melhor que quatro apertados */
-@media (min-width:641px) and (max-width:900px){
-  .sim-opcoes:not(.sim-pesos){grid-template-columns:1fr 1fr}
+.sim-preco-consulta{font-size:clamp(24px,3.2vw,32px);letter-spacing:-1px}
+.sim-preco-nota{font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:4px}
+
+.sim-consulta-bloco{max-width:440px}
+
+/* Contract Savings Card */
+.sim-contrato{background:#F8FAFC;border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:5px;min-width:240px}
+.sim-contrato-header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sim-contrato-selo{background:#22C55E;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.sim-contrato-title{font-size:12.5px;font-weight:700;color:var(--navy)}
+.sim-contrato-val{font-size:13.5px;color:var(--muted)}
+.sim-contrato-val strong{color:var(--accent);font-size:16px}
+
+.sim-cta{font-size:15.5px;padding:15px 30px;border:none;cursor:pointer;font-family:inherit;box-shadow:0 8px 24px rgba(245,130,11,.35);transition:transform .2s ease,box-shadow .2s ease}
+.sim-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(245,130,11,.5)}
+
+.sim-rodape{margin:24px 0 0;font-size:12px;color:var(--faint);line-height:1.6;text-align:center}
+
+/* Responsividade do Simulador */
+@media (max-width:880px){
+  .sim-opcoes-grid{grid-template-columns:repeat(2,1fr)}
+  .sim-pesos-grid{grid-template-columns:repeat(2,1fr)}
+  .sim-card-enhanced{padding:26px 22px}
+}
+@media (max-width:540px){
+  .sim-opcoes-grid{grid-template-columns:1fr}
+  .sim-pesos-grid{grid-template-columns:1fr}
+  .sim-result-box{flex-direction:column;align-items:stretch;gap:18px}
+  .sim-cta{width:100%;justify-content:center}
 }
 
 /* ---------- Guias ---------- */
@@ -385,60 +526,103 @@ section{scroll-margin-top:80px}
 .guia-relacionados h2{font-size:22px;font-weight:800;letter-spacing:-.5px;margin:0 0 22px}
 
 /* ---------- Contacto ---------- */
-.section-contact{background:linear-gradient(160deg,#0E2A56,#123566);color:#fff;position:relative;overflow:hidden}
-.contact-bg{position:absolute;inset:0;z-index:0;opacity:.12}
+.section-contact{background:linear-gradient(160deg,#0E2A56 0%,#123566 50%,#0B2246 100%);color:#fff;position:relative;overflow:hidden}
+.contact-bg{position:absolute;inset:0;z-index:0;opacity:.14}
 .contact-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(14,42,86,.92),rgba(18,53,102,.88))}
 .contact-bg img{filter:saturate(.7)}
-.section-contact h2{margin:0 0 18px}
-.section-contact .split-grid{align-items:start}
-.contact-sub{color:var(--muted-dark);font-size:16px;line-height:1.65;margin:0 0 36px;max-width:420px}
-.contact-list{display:flex;flex-direction:column;gap:20px}
-.contact-item{display:flex;gap:14px;align-items:center}
-.contact-icon{width:44px;height:44px;flex:none;border-radius:12px;background:rgba(245,130,11,.15);color:var(--accent);display:flex;align-items:center;justify-content:center}
-.contact-label{font-size:12.5px;color:var(--faint)}
-.contact-value{color:#fff;font-weight:600;font-size:15.5px}
-a.contact-value:hover{color:var(--accent)}
+.section-contact h2{margin:0 0 18px;font-size:clamp(30px,3.8vw,44px);font-weight:800;letter-spacing:-1px}
+.section-contact .split-grid{align-items:start;gap:60px}
+.contact-sub{color:var(--muted-dark);font-size:16px;line-height:1.65;margin:0 0 32px;max-width:460px}
 
-.form-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;gap:16px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
-.form-card label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:600;color:var(--nav-link)}
-.form-card input,.form-card select,.form-card textarea{background:rgba(14,42,86,.5);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 16px;color:#fff;font-size:14.5px;outline:none;transition:border-color .2s}
-.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--accent)}
-.form-card textarea{resize:vertical}
-.form-card select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:44px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23C7D4E8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 16px center}
-.form-card select option{color:var(--navy)}
-.form-opt{color:var(--faint);font-weight:400;font-size:12px}
-/* Confirma visualmente que o simulador preencheu o formulário */
-.form-card.preenchido{animation:formglow 1.8s ease-out}
+/* Live Response Status Badge */
+.contact-live-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#4ADE80;font-size:11.5px;font-weight:700;letter-spacing:1px;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+.contact-live-dot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 8px #22C55E;animation:pulseLive 2s infinite}
+@keyframes pulseLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+/* Modern Contact Channel Cards */
+.contact-list-modern{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.contact-card-item{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .25s ease,border-color .25s ease,transform .25s ease}
+.contact-card-item:hover{background:rgba(255,255,255,.09);border-color:rgba(245,130,11,.4);transform:translateX(5px)}
+.contact-icon-box{width:44px;height:44px;flex:none;border-radius:12px;background:rgba(245,130,11,.16);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:transform .25s ease,background .25s ease}
+.contact-card-item:hover .contact-icon-box{background:rgba(245,130,11,.3);transform:scale(1.08)}
+.contact-card-info{display:flex;flex-direction:column;gap:2px;flex:1}
+.contact-label-row{display:flex;align-items:center;gap:8px}
+.contact-card-label{font-size:12px;font-weight:700;color:var(--accent-light);text-transform:uppercase;letter-spacing:.5px}
+.contact-card-sub{font-size:11.5px;color:var(--faint)}
+.contact-card-value{color:#fff;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px;transition:color .2s ease}
+.contact-card-value svg{color:var(--accent);transition:transform .2s ease}
+.contact-card-value:hover{color:var(--accent)}
+.contact-card-value:hover svg{transform:translateX(3px)}
+.contact-card-value.static{color:#E2E8F0}
+
+/* Guarantees & Support Hours */
+.contact-guarantees{display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.contact-guarantee-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted-dark)}
+.contact-guarantee-icon{font-size:16px}
+
+/* ---------- Modern Form Card ---------- */
+.modern-form-card{background:rgba(12,36,75,.75);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:36px 32px;display:flex;flex-direction:column;gap:18px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 60px rgba(0,0,0,.35);position:relative}
+.form-card-header{margin-bottom:4px}
+.form-header-badge{display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.form-card-title{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.4px;margin:0 0 6px}
+.form-card-desc{color:var(--muted-dark);font-size:13.5px;line-height:1.5;margin:0}
+
+/* Simulation Alert Badge */
+.form-sim-alert{display:flex;align-items:center;gap:9px;background:rgba(245,130,11,.15);border:1px solid rgba(245,130,11,.45);color:#FED7AA;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:10px;animation:simAlertPulse .4s cubic-bezier(.22,1,.36,1)}
+.form-sim-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+@keyframes simAlertPulse{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* Field Groups & Input Wrappers */
+.form-field-group{display:flex;flex-direction:column;gap:6px;width:100%}
+.form-field-label{font-size:12.5px;font-weight:700;color:#CBD5E1;letter-spacing:.2px}
+.form-input-wrapper{position:relative;display:flex;align-items:center}
+.form-field-icon{position:absolute;left:14px;color:#94A3B8;pointer-events:none;transition:color .2s ease}
+.form-input-wrapper:focus-within .form-field-icon{color:var(--accent)}
+
+.form-card input,.form-card select,.form-card textarea{background:rgba(10,28,58,.65);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px 12px 42px;color:#fff;font-size:14px;width:100%;outline:none;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;font-family:inherit}
+.form-card textarea{padding:14px 16px;resize:vertical;min-height:95px}
+.form-card input::placeholder,.form-card textarea::placeholder{color:#64748B}
+.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--accent);background:rgba(10,28,58,.9);box-shadow:0 0 0 3px rgba(245,130,11,.22)}
+
+.form-card select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:38px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23C7D4E8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
+.form-card select option{color:var(--navy);background:#fff}
+
+.form-opt{color:#64748B;font-weight:400;font-size:11.5px}
+
+/* Preenchido Highlight */
+.form-card.preenchido{animation:formglow 2s ease-out}
 @keyframes formglow{
-  0%{border-color:var(--accent);box-shadow:0 0 0 0 rgba(245,130,11,.5)}
-  40%{border-color:var(--accent);box-shadow:0 0 0 14px rgba(245,130,11,0)}
-  100%{border-color:rgba(255,255,255,.12);box-shadow:none}
+  0%{border-color:var(--accent);box-shadow:0 0 0 0 rgba(245,130,11,.6)}
+  40%{border-color:var(--accent);box-shadow:0 0 0 16px rgba(245,130,11,0)}
+  100%{border-color:rgba(255,255,255,.16);box-shadow:0 24px 60px rgba(0,0,0,.35)}
 }
+
+/* Modern Submit Button */
+.btn-submit-modern{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#F5820B 0%,#EA580C 100%);border:none;color:#fff;font-weight:800;font-size:15.5px;padding:15px 24px;border-radius:14px;cursor:pointer;box-shadow:0 8px 24px rgba(245,130,11,.38);transition:transform .2s ease,box-shadow .2s ease;margin-top:6px}
+.btn-submit-modern:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(245,130,11,.55)}
+.btn-submit-modern:hover svg{transform:translateX(3px)}
+.btn-submit-modern svg{transition:transform .2s ease}
+.btn-submit-modern:disabled{opacity:.7;cursor:wait;transform:none;box-shadow:none}
+
+.btn-spinner{width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spinnerRotate .7s linear infinite}
+@keyframes spinnerRotate{to{transform:rotate(360deg)}}
+
+.form-footer-guarantee{display:flex;align-items:center;justify-content:center;gap:8px;color:#94A3B8;font-size:12px;margin-top:2px}
+.form-footer-guarantee svg{color:var(--accent);flex:none}
+.form-footer-guarantee .form-consent{margin:0;color:#94A3B8;font-size:12px}
+.form-footer-guarantee .form-consent a{color:var(--accent-light);text-decoration:underline;text-underline-offset:2px}
+
 .form-error-vias{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 .form-via{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:13.5px;font-weight:700;padding:9px 15px;border-radius:999px}
 .form-via:hover{background:rgba(255,255,255,.18);color:#fff}
 .form-via-wa{background:#25D366;border-color:#25D366}
 .form-via-wa:hover{background:#1FB855;color:#fff}
-.form-consent{color:var(--faint);font-size:12.5px;line-height:1.5;margin:0}
-.form-consent a{color:var(--accent-light)}
-.form-consent a:hover{color:#fff}
-.btn-submit{background:var(--accent);border:none;color:#fff;font-weight:700;font-size:16px;padding:15px;border-radius:999px;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:4px}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(245,130,11,.45)}
-.btn-submit:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
 
-/* Honeypot anti-spam: fora do ecrã, invisível para humanos */
+/* Honeypot anti-spam */
 .hp-field{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 .form-error{background:rgba(220,60,60,.14);border:1px solid rgba(255,120,120,.45);border-radius:12px;padding:12px 16px;color:#FFC9C9;font-size:13.5px;line-height:1.5;margin:0}
 .form-error a{color:#fff;font-weight:700;text-decoration:underline}
-
-.success-panel{background:rgba(255,255,255,.06);border:1px solid rgba(245,130,11,.5);border-radius:20px;padding:48px 36px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
-.success-icon{width:64px;height:64px;border-radius:50%;background:rgba(245,130,11,.18);color:var(--accent);display:flex;align-items:center;justify-content:center}
-.success-title{font-size:22px;font-weight:800}
-.success-panel p{color:var(--muted-dark);font-size:15px;line-height:1.6;margin:0;max-width:340px}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:600;font-size:14px;padding:11px 24px;border-radius:999px;cursor:pointer;margin-top:6px;transition:border-color .2s,color .2s}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
 /* ---------- Botão flutuante WhatsApp ---------- */
 .wa-fab{position:fixed;right:22px;bottom:22px;z-index:90;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff!important;font-weight:700;font-size:15px;padding:14px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s}
