@@ -659,6 +659,8 @@ section, [id]{scroll-margin-top:100px}
 .socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.07);color:var(--nav-link);display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
 .socials a:hover{background:var(--accent);color:#fff}
 .footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:12.5px;color:var(--footer-dim)}
+.footer-bottom a{color:var(--footer-dim)}
+.footer-bottom a:hover{color:var(--accent)}
 
 /* ============================ PÁGINAS LEGAIS ============================ */
 .legal-page{background:#fff;padding:130px 24px 90px}

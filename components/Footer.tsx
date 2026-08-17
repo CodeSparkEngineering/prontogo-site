@@ -118,7 +118,17 @@ export default function Footer() {
           )}
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} ProntoGo. Todos os direitos reservados.</span>
+          <span>
+            © {new Date().getFullYear()} ProntoGo. Todos os direitos
+            reservados. · Site por{" "}
+            <a
+              href="https://www.codesparkengineering.com/pt"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CodeSpark Engineering
+            </a>
+          </span>
           <div className="footer-legal">
             <Link href="/privacidade">Política de Privacidade</Link>
             <CookieSettingsLink />
