@@ -55,7 +55,7 @@ export const guias: Guia[] = [
     autor: "Israel Vieira da Silva",
     img: "/assets/guia-palete.webp",
     imgAlt:
-      "Carrinha de mercadorias laranja em viagem numa estrada nacional portuguesa",
+      "Europalete embalada com caixas e película retrátil pronta para carregamento num cais logístico com carrinha de transporte",
     servico: {
       texto: "Ver os preços das viagens dedicadas",
       href: "/#precos",
