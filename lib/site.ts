@@ -26,11 +26,12 @@ export const contactoTelefoneDisplay = ""; // ex.: "+351 912 345 678"
 export const contactoWhatsapp = "https://wa.me/message/D4VY7QSTGWJXO1";
 
 // IDs das etiquetas do Google, carregadas via gtag.js SÓ depois de o visitante
-// aceitar no banner de consentimento (RGPD/ePrivacy). Enquanto ambas estiverem
-// vazias, o site não carrega qualquer script do Google nem escreve cookies.
+// aceitar no banner de consentimento (RGPD/ePrivacy). Um ID vazio desativa a
+// etiqueta correspondente; sem consentimento nunca se carrega script nenhum.
 //   - Google Ads: formato "AW-XXXXXXXXX" (ID da conversão / etiqueta Google),
 //     em NEXT_PUBLIC_GOOGLE_ADS_ID. NÃO é o ID de cliente (609-749-4280).
 //   - Google Analytics 4: formato "G-XXXXXXXXXX" (ID de medição do fluxo web),
 //     em NEXT_PUBLIC_GA_ID. NÃO é o número da propriedade (550080143).
-export const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "";
+export const googleAdsId =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "AW-18371534478";
 export const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "";

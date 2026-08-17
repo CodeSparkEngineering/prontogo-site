@@ -83,15 +83,14 @@ export const servicosPreco: ServicoPreco[] = [
     descricao: "Viagem exclusiva, sem paragens",
     prazo: "À hora marcada",
     criterio: "distancia",
-    // Escalões apertados a partir dos 100 km: entre Porto (75 km) e
-    // Lisboa (250 km) há destinos muito procurados — Braga, Guarda,
-    // Leiria — que num salto de 100 para 250 km ficariam mal orçamentados.
+    // Acima de 150 km a viagem exclusiva paga o retorno vazio e portagens
+    // pesadas (Aveiro–Lisboa ~39 € ida e volta) — a margem fica no fio,
+    // por isso orçamenta-se caso a caso.
     escaloes: [
       { rotulo: "Aveiro e limítrofes", preco: 19 },
       { rotulo: "Até 100 km", preco: 75 },
       { rotulo: "Até 150 km", preco: 130 },
-      { rotulo: "Até 250 km", preco: 210 },
-      { rotulo: "Mais de 250 km", preco: null },
+      { rotulo: "Mais de 150 km", preco: null },
     ],
     nota: "A carrinha vai só para si, à hora que marcar. Preço por viagem, com qualquer peso até 640 kg.",
   },
