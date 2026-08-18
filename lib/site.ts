@@ -15,12 +15,12 @@ export const siteDescription =
 // formulário, JSON-LD e API. Valores vazios ("") escondem o canal
 // correspondente em todo o site (evita anunciar contactos falsos).
 // NOTA: geral@prontogo.pt será criado quando o email profissional for
-// contratado; o telefone é placeholder até haver número real.
+// contratado.
 export const contactoEmail = "geral@prontogo.pt";
-// Telefone escondido em todo o site até haver um número real da empresa.
-// Para o repor: preencher ambos os valores (E.164 + versão legível).
-export const contactoTelefone = ""; // formato E.164, ex.: "+351912345678"
-export const contactoTelefoneDisplay = ""; // ex.: "+351 912 345 678"
+// Telefone da empresa. Manter os dois valores sincronizados:
+// E.164 (para os links tel:) + versão legível (para mostrar).
+export const contactoTelefone = "+351913942714"; // formato E.164
+export const contactoTelefoneDisplay = "+351 913 942 714"; // versão legível
 
 // Link curto do WhatsApp Business (vazio esconde o botão e o contacto)
 export const contactoWhatsapp = "https://wa.me/message/D4VY7QSTGWJXO1";
