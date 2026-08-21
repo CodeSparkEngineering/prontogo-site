@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import CookieConsent from "@/components/CookieConsent";
 import { siteUrl, siteTitle, siteDescription } from "@/lib/site";
 import "./globals.css";
@@ -70,6 +71,7 @@ export default function RootLayout({
       <body>
         {children}
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );
