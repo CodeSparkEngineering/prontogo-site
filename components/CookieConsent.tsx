@@ -20,6 +20,7 @@ type Escolha = "accepted" | "rejected";
 declare global {
   interface Window {
     dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -38,9 +39,21 @@ function carregarGoogleTag() {
   document.head.appendChild(s);
 
   window.dataLayer = window.dataLayer || [];
-  function gtag(...args: unknown[]) {
-    window.dataLayer!.push(args);
+  // CRÍTICO: o gtag.js só processa comandos empurrados como objeto `arguments`
+  // (Object.prototype.toString → "[object Arguments]"). Um array normal — o que
+  // um rest parameter (...args) produz — é descartado em silêncio e a etiqueta
+  // nunca dispara. Por isso usa-se aqui `arguments`, tal como no snippet oficial
+  // do Google (`function gtag(){dataLayer.push(arguments)}`). NÃO reescrever para
+  // rest params nem para arrow function.
+  function gtag(..._args: unknown[]) {
+    // Empurra o objeto `arguments` (NÃO `_args`, que seria um array). `_args`
+    // existe só para tipar as chamadas abaixo; o que o gtag.js lê é `arguments`.
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments);
   }
+  // Expõe gtag globalmente: o `typeof gtag === "function"` esperado pelo Google e
+  // pelos snippets de evento de conversão do Google Ads.
+  window.gtag = gtag;
   // Consent Mode v2 — só chegamos aqui depois de o utilizador aceitar. Concede
   // apenas os tipos de armazenamento correspondentes às etiquetas ativas.
   gtag("consent", "default", {
