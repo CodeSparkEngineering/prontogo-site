@@ -23,3 +23,9 @@ npm-debug.log*
 
 # vercel
 .vercel
+
+# ferramentas locais do Claude Code
+.claude/
+
+# canvas de trabalho dos ícones (ficheiro grande, não faz parte do site)
+.design-icones/

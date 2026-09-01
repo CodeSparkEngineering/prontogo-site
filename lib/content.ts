@@ -62,7 +62,7 @@ export const passos: Passo[] = [
     num: "1",
     titulo: "Solicite",
     texto:
-      "Peça o serviço online ou por telefone. Confirmamos preço e janela de recolha em minutos.",
+      "Peça por WhatsApp, telefone ou pelo formulário. Confirmamos preço e janela de recolha em minutos.",
     img: "/assets/prontogo-passo-solicite.webp",
   },
   {

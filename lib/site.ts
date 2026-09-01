@@ -25,6 +25,17 @@ export const contactoTelefoneDisplay = "+351 913 942 714"; // versão legível
 // Link curto do WhatsApp Business (vazio esconde o botão e o contacto)
 export const contactoWhatsapp = "https://wa.me/message/D4VY7QSTGWJXO1";
 
+// Conversa de WhatsApp com a mensagem já escrita. O link curto
+// (wa.me/message/...) NÃO aceita texto pré-preenchido — só a forma com o
+// número aceita —, por isso constrói-se a partir do telefone e só se cai
+// no link curto se não houver número configurado.
+export function whatsappLink(texto?: string): string {
+  const numero = contactoTelefone.replace(/\D/g, "");
+  if (!numero) return contactoWhatsapp;
+  const base = `https://wa.me/${numero}`;
+  return texto ? `${base}?text=${encodeURIComponent(texto)}` : base;
+}
+
 // IDs das etiquetas do Google, carregadas via gtag.js SÓ depois de o visitante
 // aceitar no banner de consentimento (RGPD/ePrivacy). Um ID vazio desativa a
 // etiqueta correspondente; sem consentimento nunca se carrega script nenhum.

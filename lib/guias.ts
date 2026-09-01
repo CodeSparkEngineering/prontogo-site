@@ -57,7 +57,7 @@ export const guias: Guia[] = [
     imgAlt:
       "Europalete embalada com caixas e película retrátil pronta para carregamento num cais logístico com carrinha de transporte",
     servico: {
-      texto: "Ver os preços das viagens dedicadas",
+      texto: "Pedir orçamento para uma palete",
       href: "/#precos",
     },
     blocos: [
@@ -136,9 +136,14 @@ export const guias: Guia[] = [
         linhas: [
           ["Grupagem económica, 1 palete", "48 a 72 horas", "40 € – 60 €"],
           ["Grupagem prioritária, 1 palete", "24 a 48 horas", "70 € – 90 €"],
-          ["Viagem dedicada, até 100 km", "No próprio dia", "70 € – 90 €"],
-          ["Viagem dedicada, até 250 km", "No próprio dia", "180 € – 250 €"],
+          ["Viagem dedicada, até 100 km", "No próprio dia", "70 € – 120 €"],
+          ["Viagem dedicada, até 250 km", "No próprio dia", "180 € – 300 €"],
         ],
+      },
+      {
+        tipo: "p",
+        texto:
+          "Os valores mais baixos destes intervalos são praticados por operadores que conseguem combinar carga de retorno na mesma viagem. Numa viagem verdadeiramente dedicada, sem partilha, os valores situam-se no topo do intervalo ou acima.",
       },
       {
         tipo: "p",
@@ -172,7 +177,7 @@ export const guias: Guia[] = [
       {
         tipo: "p",
         texto:
-          "Pagar 130 € por algo que custaria 50 € em grupagem só faz sentido se estiver a comprar mais do que transporte. Normalmente é uma destas cinco coisas:",
+          "Pagar 200 € por algo que custaria 50 € em grupagem só faz sentido se estiver a comprar mais do que transporte. Normalmente é uma destas cinco coisas:",
       },
       {
         tipo: "lista",
@@ -193,23 +198,23 @@ export const guias: Guia[] = [
       {
         tipo: "lista",
         itens: [
-          "Uma europalete por viagem, até 640 kg de carga.",
-          "Preço por viagem e não por quilo: 19 € em Aveiro e concelhos limítrofes, 75 € até 100 km, 130 € até 150 km e 210 € até 250 km.",
+          "Uma europalete por viagem, até 640 kg e 1,20 m de altura carregada. Acima disso, orçamento à medida.",
+          "Preço por viagem e não por quilo, orçamentado ao percurso concreto — recebe o valor fechado, sem IVA, antes de confirmar a recolha.",
           "Sem centros de triagem pelo meio — quem recolhe é quem entrega.",
-          "Acima de 250 km ou de 640 kg damos orçamento à medida, em vez de inventar uma tabela que não cumpríamos.",
+          "Acima de 250 km ou de 640 kg avaliamos o percurso antes de aceitar, em vez de prometer o que não cumpríamos.",
         ],
       },
       {
         tipo: "p",
         texto:
-          "Pode ver todos os valores e simular o seu envio na [tabela de preços](/#precos). Se está a comparar propostas de vários operadores, os [sete critérios que separam uma boa transportadora de uma barata](/guias/escolher-transportadora-loja-online) ajudam a decidir. E se o que envia são encomendas e não paletes, o guia de [quanto custa uma entrega expressa](/guias/quanto-custa-entrega-expressa-portugal) é o mais adequado.",
+          "Diga-nos o percurso e o que vai na palete e devolvemos o valor no mesmo dia — [peça o orçamento aqui](/#precos). Se está a comparar propostas de vários operadores, os [sete critérios que separam uma boa transportadora de uma barata](/guias/escolher-transportadora-loja-online) ajudam a decidir. E se o que envia são encomendas e não paletes, o guia de [quanto custa uma entrega expressa](/guias/quanto-custa-entrega-expressa-portugal) é o mais adequado.",
       },
     ],
     faq: [
       {
         pergunta: "Quanto custa enviar uma palete em Portugal?",
         resposta:
-          "Em grupagem, uma palete nacional custa tipicamente entre 40 € e 90 €, consoante o peso, a altura e a urgência — os operadores anunciam a partir de cerca de 40 € no serviço económico, com entrega em 24 a 72 horas. Numa viagem dedicada, em que a viatura vai direta ao destino no próprio dia, os valores começam em cerca de 19 € dentro do mesmo concelho e sobem com a distância: cerca de 75 € até 100 km e 210 € até 250 km.",
+          "Em grupagem, uma palete nacional custa tipicamente entre 40 € e 90 €, consoante o peso, a altura e a urgência — os operadores anunciam a partir de cerca de 40 € no serviço económico, com entrega em 24 a 72 horas. Numa viagem dedicada, em que a viatura vai direta ao destino no próprio dia, paga-se a viagem inteira e não o peso: no mercado português isso significa cerca de 70 € a 120 € até 100 km e 180 € a 300 € até 250 km, sempre sem IVA. Como o valor depende do percurso concreto, das portagens e do horário, a ProntoGo orçamenta caso a caso.",
       },
       {
         pergunta: "Quanto pesa e quanto mede uma europalete?",
