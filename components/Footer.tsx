@@ -62,10 +62,10 @@ export default function Footer() {
             <p className="footer-tagline">
               Logística inteligente. Entregas que conectam. Aveiro, Portugal.
             </p>
-            {/* Selo do Zaask servido de /assets em vez do widget deles: a CSP
-                só admite imagens do próprio site, e um selo de credibilidade
-                partido faz mais mal do que selo nenhum. Trocar o ficheiro
-                quando o ano mudar. */}
+            {/* O selo TEM de vir do servidor da Zaask: é esse pedido que
+                dispara a verificação do perfil. Servi-lo de /assets deixava
+                a validação pendente. Por isso o www.zaask.pt está no img-src
+                da CSP, em next.config.ts. */}
             <a
               className="footer-selo"
               href="https://www.zaask.pt/user/prontogo"
@@ -73,11 +73,10 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <img
-                src="/assets/zaask-profissional-verificado.svg"
-                alt="ProntoGo, profissional verificado no Zaask desde 2026 — ver perfil"
+                src="https://www.zaask.pt/widget?user=1075679&widget=pro-since"
+                alt="ProntoGo, profissional verificado no Zaask — ver perfil"
                 width={72}
                 height={72}
-                loading="lazy"
               />
             </a>
           </div>

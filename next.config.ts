@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
-// CSP: além do próprio site, só os domínios do Google tag (Ads + GA4),
+// CSP: além do próprio site, os domínios do Google tag (Ads + GA4) e o
+// www.zaask.pt em img-src — o selo TEM de ser servido por eles, porque é o
+// pedido ao servidor da Zaask que dispara a verificação do perfil. Uma
+// cópia local do SVG deixaria a validação pendente para sempre.
 // que o CookieConsent injeta apenas após consentimento — sem estas
 // exceções o browser bloqueava o tag mesmo com o visitante a aceitar.
 // Lista conforme a documentação oficial de CSP para gtag.js.
@@ -11,7 +14,7 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.pt",
+  "img-src 'self' data: https://www.zaask.pt https://*.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.pt",
   "media-src 'self'",
   "font-src 'self'",
   "connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com",
