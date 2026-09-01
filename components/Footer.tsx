@@ -62,6 +62,24 @@ export default function Footer() {
             <p className="footer-tagline">
               Logística inteligente. Entregas que conectam. Aveiro, Portugal.
             </p>
+            {/* Selo do Zaask servido de /assets em vez do widget deles: a CSP
+                só admite imagens do próprio site, e um selo de credibilidade
+                partido faz mais mal do que selo nenhum. Trocar o ficheiro
+                quando o ano mudar. */}
+            <a
+              className="footer-selo"
+              href="https://www.zaask.pt/user/prontogo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/assets/zaask-profissional-verificado.svg"
+                alt="ProntoGo, profissional verificado no Zaask desde 2026 — ver perfil"
+                width={72}
+                height={72}
+                loading="lazy"
+              />
+            </a>
           </div>
           <div>
             <div className="footer-title">Navegação</div>
