@@ -5,7 +5,7 @@ import type { Guia } from "@/lib/guias";
 export default function GuiaCard({ guia }: { guia: Guia }) {
   return (
     <Link href={`/guias/${guia.slug}`} className="guia-card">
-      <div className="guia-card-media">
+      <div className="guia-card-media" data-parallax="6">
         <Image
           src={guia.img}
           alt={guia.imgAlt}

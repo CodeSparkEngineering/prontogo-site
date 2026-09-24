@@ -100,7 +100,7 @@ export default function Differentials() {
             </div>
           </div>
           <div data-reveal>
-            <div className="diff-visual">
+            <div className="diff-visual" data-parallax="5">
               <Image
                 src="/assets/prontogo-scan.webp"
                 alt="Estafeta ProntoGo a registar uma encomenda com o scanner de rastreamento"

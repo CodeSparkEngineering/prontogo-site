@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { servicosPreco, CARGA_MAX_KG } from "@/lib/precos";
 import { whatsappLink } from "@/lib/site";
+import { rolarPara } from "@/lib/lenis";
 
 // O ficheiro mantém o nome, e a secção mantém o id #precos, para não partir
 // ligações externas nem os anúncios que já apontam para /#precos. Deixou de
@@ -59,7 +60,7 @@ export default function Simulador() {
         },
       })
     );
-    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+    rolarPara("#contacto");
   }
 
   return (

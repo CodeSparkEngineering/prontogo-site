@@ -14,7 +14,7 @@ export default function Testimonials() {
         <div className="compromissos-grid">
           {compromissos.map((c) => (
             <div className="compromisso" key={c.titulo} data-reveal>
-              <div className="compromisso-media">
+              <div className="compromisso-media" data-parallax="6">
                 <Image
                   src={c.img}
                   alt={c.imgAlt}

@@ -12,7 +12,6 @@ import Simulador from "@/components/Simulador";
 import AppRotas from "@/components/AppRotas";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ScrollReveal from "@/components/ScrollReveal";
 import WhatsappButton from "@/components/WhatsappButton";
 import {
   siteUrl,
@@ -135,7 +134,6 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsappButton />
-      <ScrollReveal />
     </>
   );
 }

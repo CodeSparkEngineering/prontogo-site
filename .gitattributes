@@ -1,0 +1,8 @@
+# Terminações de linha normalizadas: LF no repositório, evita diffs
+# de ficheiros inteiros quando o editor grava em CRLF (Windows).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp4 binary
+*.ico binary

@@ -47,7 +47,7 @@ export default function Services() {
                 onClick={() => pedir(s.titulo)}
                 aria-label={`Pedir orçamento para ${s.titulo}`}
               >
-                <div className="card-media">
+                <div className="card-media" data-parallax="6">
                   <Image
                     src={s.img}
                     alt={s.imgAlt}
