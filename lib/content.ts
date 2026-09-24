@@ -33,7 +33,7 @@ export const servicos: Servico[] = [
   {
     titulo: "Transporte de mercadorias",
     texto:
-      "Volumes e cargas até 640 kg entre armazéns, lojas e clientes finais — o que não cabe numa encomenda normal.",
+      "Volumes, cargas e paletes até 640 kg entre armazéns, lojas e clientes finais — o que não cabe numa encomenda normal.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
@@ -109,7 +109,8 @@ export const diferenciais: Diferencial[] = [
   },
   {
     titulo: "Do envelope à palete",
-    texto: "Documentos, encomendas ou cargas paletizadas — a mesma operação.",
+    texto:
+      "Documentos, encomendas ou paletes até 640 kg — a mesma carrinha, a mesma operação.",
     icon: '<path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
   },
 ];
@@ -258,7 +259,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Como peço um orçamento?",
     resposta:
-      "Pode pedir orçamento através do formulário do site, por telefone ou por email para geral@prontogo.pt. A nossa equipa responde em menos de 24 horas úteis com uma proposta à medida da sua operação.",
+      "A forma mais rápida é por WhatsApp (+351 913 942 714): diga-nos o que precisa de enviar, de onde para onde e quando, e respondemos com o valor. Pode também usar o formulário do site, ligar-nos ou escrever para geral@prontogo.pt. Cada pedido é respondido por uma pessoa em menos de 24 horas úteis, com uma proposta à medida da sua operação.",
   },
   {
     pergunta: "Fazem integração com lojas online?",
@@ -268,7 +269,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Que tipos de mercadoria transportam?",
     resposta:
-      "Desde documentos e encomendas de e-commerce até volumes de maior dimensão e cargas até 640 kg, entre armazéns, lojas e clientes finais. Para cargas acima desse peso ou paletizadas, fale connosco: encaminhamos ou articulamos com parceiros.",
+      "Desde documentos e encomendas de e-commerce até volumes de maior dimensão, cargas e paletes até 640 kg (e até 1,20 m de altura carregada), transportados na nossa própria carrinha entre armazéns, lojas e clientes finais. Para cargas acima desse peso, fale connosco: articulamos o transporte com parceiros de confiança.",
   },
   {
     pergunta: "Posso acompanhar a minha encomenda em tempo real?",

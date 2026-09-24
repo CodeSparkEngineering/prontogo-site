@@ -1,19 +1,20 @@
 # ProntoGo
 
-> Empresa de logística e entregas com sede em Aveiro, Portugal. Entregas expressas urbanas no próprio dia, last-mile para e-commerce, transporte de mercadorias e logística para PMEs, em todo Portugal continental. Slogan: "Logística inteligente. Entregas que conectam."
+> Empresa de logística e entregas com sede em Aveiro, Portugal. Entregas expressas urbanas no próprio dia, last-mile para e-commerce, transporte de mercadorias e logística para PMEs, em todo Portugal continental, e entregas internacionais para a Europa com frota própria. Slogan: "Logística inteligente. Entregas que conectam."
 
 ## Serviços
 
 - **Entregas expressas urbanas**: recolha e entrega no próprio dia dentro das principais cidades, com estafetas dedicados.
 - **Last-mile para e-commerce**: distribuição final integrada com lojas online, com notificações ao cliente em cada etapa.
-- **Transporte de mercadorias**: volumes de maior dimensão e cargas até 640 kg entre armazéns, lojas e clientes finais.
+- **Transporte de mercadorias**: volumes de maior dimensão, cargas e paletes até 640 kg (até 1,20 m de altura carregada) entre armazéns, lojas e clientes finais; acima desse peso, articula o transporte com parceiros.
 - **Logística para PMEs**: planos regulares e flexíveis para pequenas e médias empresas, sem mínimos exagerados, com gestor dedicado.
+- **Entregas internacionais (Europa)**: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem centros de triagem — cargas, paletes e encomendas de e-commerce, com rastreamento de ponta a ponta. Preço orçamentado por destino e volume.
 
 ## Factos principais
 
 - Sede: Aveiro, Portugal
 - Cobertura: todo o território de Portugal continental, em quatro modalidades — urbano (Aveiro e limítrofes, no próprio dia), regional (até 100 km, 24 horas, entrega direta), nacional (todo o continente, 24 horas úteis) e viagem dedicada (carrinha exclusiva, à hora marcada)
-- Preços publicados no site, com simulador: urbano desde 9 €, regional desde 16 €, nacional desde 8 €, dedicada desde 19 €
+- Preços: não há tabela pública. Cada pedido é orçamentado à medida (serviço, escalão de peso ou distância) e respondido por uma pessoa; a forma mais rápida de pedir é por WhatsApp
 - Serviço expresso nacional: 24 horas
 - Rastreamento em tempo real com prova de receção em todas as encomendas
 - Resposta a pedidos de orçamento: menos de 24 horas úteis
@@ -23,6 +24,7 @@
 ## Contacto
 
 - Email: geral@prontogo.pt
+- Telefone: +351 913 942 714
 - WhatsApp: https://wa.me/message/D4VY7QSTGWJXO1
 - Site: https://prontogo.pt
 - Pedidos de orçamento: https://prontogo.pt/#contacto
@@ -31,6 +33,7 @@
 
 Conteúdo editorial próprio sobre logística em Portugal, escrito pela equipa ProntoGo:
 
+- [Quanto custa enviar uma palete em Portugal?](https://prontogo.pt/guias/quanto-custa-enviar-palete-portugal): o que conta como palete (europalete EPAL), porque a altura pesa tanto como o peso, grupagem versus viagem dedicada, e como comparar orçamentos que parecem incomparáveis.
 - [Quanto custa uma entrega expressa em Portugal?](https://prontogo.pt/guias/quanto-custa-entrega-expressa-portugal): os cinco fatores que definem o preço (peso e volume, distância, urgência, volume mensal, serviços adicionais), intervalos de preço praticados no mercado português por tipo de envio, e formas concretas de reduzir custos.
 - [Como escolher a transportadora da sua loja online: 7 critérios](https://prontogo.pt/guias/escolher-transportadora-loja-online): cobertura real, prazos de recolha, rastreamento, integração com a plataforma, resposta a falhas, devoluções e transparência de preço.
 - [Last-mile: o que é e porque decide a experiência do cliente](https://prontogo.pt/guias/last-mile-o-que-e): definição de última milha, porque representa mais de metade do custo de transporte, o que a faz correr bem, e comparação entre operação própria e parceiro logístico.

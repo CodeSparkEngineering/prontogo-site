@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { contactoWhatsapp } from "@/lib/site";
+import ConversaoPedido from "@/components/ConversaoPedido";
 
 export const metadata: Metadata = {
   title: "Pedido enviado",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function PedidoEnviadoPage() {
   return (
     <main className="nf-page">
+      <ConversaoPedido />
       <Image
         src="/assets/prontogo-icone-v2.svg"
         alt="ProntoGo"

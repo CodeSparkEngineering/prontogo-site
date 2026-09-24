@@ -2,7 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import CookieConsent from "@/components/CookieConsent";
+import SmoothScroll from "@/components/SmoothScroll";
+import ScrollEffects from "@/components/ScrollEffects";
+import ConversoesCliques from "@/components/ConversoesCliques";
 import { siteUrl, siteTitle, siteDescription } from "@/lib/site";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const sora = Sora({
@@ -69,8 +73,13 @@ export default function RootLayout({
   return (
     <html lang="pt-PT" className={sora.variable}>
       <body>
+        {/* Antes dos filhos: o efeito monta primeiro e a instância do Lenis
+            já existe quando as secções arrancam os seus próprios scrubs */}
+        <SmoothScroll />
         {children}
+        <ScrollEffects />
         <CookieConsent />
+        <ConversoesCliques />
         <Analytics />
       </body>
     </html>
