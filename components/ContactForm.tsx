@@ -88,7 +88,7 @@ export default function ContactForm() {
       {destacado && (
         <div className="form-sim-alert" role="status">
           <span className="form-sim-dot" />
-          <span>Dados do simulador importados com sucesso!</span>
+          <span>O seu pedido já vem preenchido — reveja e envie.</span>
         </div>
       )}
 

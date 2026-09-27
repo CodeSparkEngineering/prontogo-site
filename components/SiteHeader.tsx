@@ -1,134 +1,159 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { obterLenis } from "@/lib/lenis";
 
 // Paths absolutos para os links funcionarem também fora da homepage
 const links = [
   { href: "/#servicos", id: "servicos", label: "Serviços" },
   { href: "/#como-funciona", id: "como-funciona", label: "Como funciona" },
+  { href: "/#cobertura", id: "cobertura", label: "Cobertura" },
   { href: "/#precos", id: "precos", label: "Orçamento" },
   { href: "/#sobre", id: "sobre", label: "Sobre" },
   { href: "/guias", id: "guias", label: "Guias" },
 ];
 
+// Cabeçalho fixo em vidro escuro. Esconde-se ao descer e volta ao subir,
+// para não tapar as secções com animação ligada ao scroll. Nunca se esconde
+// com o menu aberto nem no topo da página.
 export default function SiteHeader() {
   const [menuAberto, setMenuAberto] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
-
-  function fecharMenu() {
-    setMenuAberto(false);
-  }
+  const [solido, setSolido] = useState(false);
+  const [escondido, setEscondido] = useState(false);
+  const [ativa, setAtiva] = useState("");
+  const ultimoY = useRef(0);
+  // Só a homepage abre sobre um fundo escuro; nas outras páginas o
+  // cabeçalho é sempre sólido para o texto claro ter contraste
+  const naHome = usePathname() === "/";
 
   useEffect(() => {
-    function handleScroll() {
-      setScrolled(window.scrollY > 30);
+    function onScroll() {
+      const y = window.scrollY;
+      setSolido(y > 24);
+      const desce = y > ultimoY.current;
+      if (Math.abs(y - ultimoY.current) > 6) {
+        setEscondido(desce && y > 420);
+        ultimoY.current = y;
+      }
     }
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scrollspy para detetar a secção ativa
+  // Secção ativa (só existe na homepage; nas outras páginas não há alvos)
   useEffect(() => {
-    const sectionIds = ["servicos", "como-funciona", "precos", "sobre"];
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
+    const secoes = links
+      .map((l) => document.getElementById(l.id))
       .filter((el): el is HTMLElement => el !== null);
-
-    if (!sections.length) return;
-
+    if (!secoes.length) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+      (entradas) => {
+        entradas.forEach((e) => {
+          if (e.isIntersecting) setAtiva(e.target.id);
         });
       },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0.1 },
+      { rootMargin: "-35% 0px -60% 0px" },
     );
-
-    sections.forEach((sec) => observer.observe(sec));
+    secoes.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
+    document.documentElement.classList.toggle("menu-aberto", menuAberto);
+    // O Lenis intercepta a roda do rato: tem de parar com o menu aberto,
+    // senão a página rola por trás do menu
+    if (menuAberto) obterLenis()?.stop();
+    else obterLenis()?.start();
     if (!menuAberto) return;
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setMenuAberto(false);
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setMenuAberto(false);
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [menuAberto]);
 
+  const fechar = () => setMenuAberto(false);
+
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <nav className="nav container">
-        <a href="/#inicio" className="brand" onClick={fecharMenu}>
+    <header
+      className={`hd${solido || !naHome ? " is-solido" : ""}${
+        escondido && !menuAberto ? " is-escondido" : ""
+      }${menuAberto ? " is-aberto" : ""}`}
+    >
+      <nav className="hd-barra" aria-label="Principal">
+        <a href="/#inicio" className="hd-marca" onClick={fechar}>
           <Image
             src="/assets/prontogo-icone-v2.svg"
-            alt="ProntoGo"
-            width={38}
-            height={38}
-            className="brand-icon"
+            alt=""
+            width={34}
+            height={34}
+            priority
           />
-          <span className="brand-word">
-            Pronto<span className="brand-go">Go</span>
+          <span className="hd-palavra">
+            Pronto<span>Go</span>
           </span>
         </a>
-        {/* CTA compacto visível na barra em mobile (o completo vive no menu) */}
-        <a href="/#contacto" className="btn btn-nav nav-cta-m" onClick={fecharMenu}>
-          Orçamento
+
+        <div className="hd-links">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={ativa === l.id ? "is-ativa" : undefined}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+
+        <a href="/#contacto" className="hd-cta" onClick={fechar}>
+          Pedir orçamento
+          <span aria-hidden="true" className="hd-cta-seta">
+            →
+          </span>
         </a>
+
         <button
           type="button"
-          className="nav-toggle"
+          className="hd-toggle"
           aria-expanded={menuAberto}
-          aria-controls="menu-principal"
+          aria-controls="menu-movel"
           aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
-          onClick={() => setMenuAberto((aberto) => !aberto)}
+          onClick={() => setMenuAberto((a) => !a)}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            aria-hidden="true"
-          >
-            {menuAberto ? (
-              <path d="M6 6l12 12M18 6L6 18" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+          <span />
+          <span />
         </button>
-        <div
-          id="menu-principal"
-          className={`nav-links${menuAberto ? " open" : ""}`}
-        >
-          {links.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                className={isActive ? "is-nav-active" : ""}
-                onClick={fecharMenu}
-              >
-                {link.label}
-              </a>
-            );
-          })}
-          <a href="/#contacto" className="btn btn-nav" onClick={fecharMenu}>
-            Pedir orçamento
-          </a>
-        </div>
       </nav>
+
+      {/* inert em vez de hidden: fechado fica fora do foco e dos leitores de
+          ecrã, mas continua no DOM para a transição de entrada funcionar */}
+      <div
+        id="menu-movel"
+        className="hd-menu"
+        inert={!menuAberto}
+        data-lenis-prevent
+      >
+        <div className="hd-menu-links">
+          {links.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={fechar}
+              style={{ transitionDelay: `${80 + i * 45}ms` }}
+            >
+              <span className="hd-menu-num">0{i + 1}</span>
+              {l.label}
+            </a>
+          ))}
+        </div>
+        <a href="/#contacto" className="h-btn h-btn--laranja" onClick={fechar}>
+          Pedir orçamento
+        </a>
+      </div>
     </header>
   );
 }

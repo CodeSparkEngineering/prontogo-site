@@ -3,32 +3,27 @@ import { perguntasFrequentes } from "@/lib/content";
 // Secção FAQ em <details>/<summary> nativos: acessível, sem JavaScript,
 // e com o texto completo no HTML — o que os crawlers e motores de resposta
 // precisam de ler. O schema FAQPage correspondente vive em app/page.tsx.
+// As classes faq-list/faq-item são partilhadas com as FAQ dos guias.
 export default function Faq() {
   return (
-    <section id="faq" className="section section-alt">
-      <div className="container">
-        <div className="section-head head-center" data-reveal>
-          <div className="kicker">Perguntas frequentes</div>
-          <h2>Tudo o que precisa de saber</h2>
+    <section id="faq" className="h-sec h-claro-2 fq">
+      <div className="h-wrap fq-grelha">
+        <div className="fq-lado">
+          <p className="h-eyebrow">
+            <span className="h-ponto" />
+            Perguntas frequentes
+          </p>
+          <h2 className="h-titulo">
+            Respostas diretas,{" "}
+            <span className="h-serif h-enfase">para decidir sem rodeios.</span>
+          </h2>
         </div>
-        <div className="faq-list" data-reveal>
+        <div className="faq-list">
           {perguntasFrequentes.map((item) => (
             <details className="faq-item" key={item.pergunta}>
               <summary>
                 <h3>{item.pergunta}</h3>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
+                <span className="faq-mais" aria-hidden="true" />
               </summary>
               <p>{item.resposta}</p>
             </details>

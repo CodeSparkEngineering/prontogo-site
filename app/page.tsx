@@ -1,15 +1,17 @@
 import SiteHeader from "@/components/SiteHeader";
-import ScrollExperience from "@/components/ScrollExperience";
-import Services from "@/components/Services";
-import HowItWorks from "@/components/HowItWorks";
-import CidadeBackground from "@/components/CidadeBackground";
-import Differentials from "@/components/Differentials";
-import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
-import Faq from "@/components/Faq";
-import GuiasPreview from "@/components/GuiasPreview";
+import Hero from "@/components/home/Hero";
+import Marquee from "@/components/home/Marquee";
+import Manifesto from "@/components/home/Manifesto";
+import Factos from "@/components/home/Factos";
+import Servicos from "@/components/home/Servicos";
+import Processo from "@/components/home/Processo";
+import Cobertura from "@/components/home/Cobertura";
+import Tecnologia from "@/components/home/Tecnologia";
+import Compromissos from "@/components/home/Compromissos";
 import Simulador from "@/components/Simulador";
-import AppRotas from "@/components/AppRotas";
+import Sobre from "@/components/home/Sobre";
+import GuiasPreview from "@/components/GuiasPreview";
+import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsappButton from "@/components/WhatsappButton";
@@ -115,19 +117,17 @@ export default function Home() {
       />
       <SiteHeader />
       <main>
-        <ScrollExperience />
-        {/* Zona com fundo de vídeo partilhado: o trânsito aéreo corre por trás
-            dos Serviços E do Como funciona, como um só cenário contínuo. */}
-        <div className="zona-cidade">
-          <CidadeBackground />
-          <Services />
-          <HowItWorks />
-        </div>
-        <Differentials />
-        <About />
-        <AppRotas />
+        <Hero />
+        <Marquee />
+        <Manifesto />
+        <Factos />
+        <Servicos />
+        <Processo />
+        <Cobertura />
+        <Tecnologia />
+        <Compromissos />
         <Simulador />
-        <Testimonials />
+        <Sobre />
         <GuiasPreview />
         <Faq />
         <Contact />

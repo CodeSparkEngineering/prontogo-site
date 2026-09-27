@@ -64,37 +64,54 @@ export default function Simulador() {
   }
 
   return (
-    <section id="precos" className="section section-alt section-sim-wrapper">
-      <div className="container">
-        <div className="section-head head-center" data-reveal>
-          <div className="kicker">Orçamento</div>
-          <h2>Diga-nos o que precisa e respondemos em minutos</h2>
-          <p>
-            Cada percurso tem uma conta diferente — distância, peso, horário e
-            frequência. Selecione o serviço e o escalão: o pedido segue para o
-            WhatsApp já escrito e devolvemos um valor fechado.
+    <section id="precos" className="h-sec h-claro-2 q">
+      <div className="h-wrap q-grelha">
+        <div className="q-lado">
+          <p className="h-eyebrow">
+            <span className="h-ponto" />
+            Orçamento
           </p>
+          <h2 className="h-titulo">
+            Diga-nos o que precisa.{" "}
+            <span className="h-serif h-enfase">Respondemos em minutos.</span>
+          </h2>
+          <p className="h-lead">
+            Cada percurso tem uma conta diferente — distância, peso, horário e
+            frequência. Escolha o serviço e o escalão: o pedido segue para o
+            WhatsApp já escrito e devolvemos um valor fechado, por escrito,
+            antes da recolha.
+          </p>
+
+          {/* Rota fixa contratada: viatura afeta a uma operação. O valor
+              depende do percurso e da frequência, por isso vai direto à
+              conversa. */}
+          <div className="q-rota" data-reveal>
+            <p className="q-rota-selo">Contrato mensal</p>
+            <h3>Rota fixa contratada</h3>
+            <p>
+              Recolha e entrega no mesmo dia, no mesmo percurso, todos os dias
+              úteis. Viatura e condutor afetos à sua operação, a partir de 20
+              operações por mês.
+            </p>
+            <a
+              className="q-link"
+              href={whatsappLink(
+                "Olá! Vim do site e tenho interesse numa rota fixa contratada: recolha e entrega no mesmo percurso, todos os dias úteis. Percurso e frequência previstos: "
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Falar sobre a rota <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
 
-        <div className="sim sim-card-enhanced" data-reveal>
-          {/* Header do pedido */}
-          <div className="sim-header-strip">
-            <div className="sim-header-badge">
-              <span className="sim-header-dot" />
-              <span>Resposta no WhatsApp em minutos</span>
-            </div>
-            <span className="sim-header-note">Orçamento sem compromisso</span>
+        <div className="q-painel" data-reveal>
+          <div className="q-passo">
+            <span className="q-passo-num">01</span>
+            <span className="q-passo-txt">Que serviço precisa?</span>
           </div>
-
-          {/* Passo 1: Escolha do Serviço */}
-          <div className="sim-passo">
-            <span className="sim-num">1</span>
-            <div>
-              <span className="sim-label">Que serviço precisa?</span>
-              <span className="sim-sublabel">Escolha o raio de abrangência da entrega</span>
-            </div>
-          </div>
-          <div className="sim-opcoes-grid" role="group" aria-label="Tipo de serviço">
+          <div className="q-opcoes" role="group" aria-label="Tipo de serviço">
             {servicosPreco.map((s) => {
               const ativo = s.id === servicoId;
               const icone = iconesServico[s.id] ?? iconesServico.urbano;
@@ -102,178 +119,84 @@ export default function Simulador() {
                 <button
                   key={s.id}
                   type="button"
-                  className={`sim-card-opt${ativo ? " on" : ""}`}
+                  className={`q-opcao${ativo ? " is-ativo" : ""}`}
                   onClick={() => escolherServico(s.id)}
                   aria-pressed={ativo}
                 >
-                  <div className="sim-card-top">
-                    <div className="sim-icon-circle">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        dangerouslySetInnerHTML={{ __html: icone }}
-                      />
-                    </div>
-                    {ativo && <span className="sim-check-badge">✓</span>}
-                  </div>
-                  <span className="sim-opcao-nome">{s.nome}</span>
-                  <span className="sim-opcao-desc">{s.descricao}</span>
-                  <span className="sim-opcao-prazo">{s.prazo}</span>
+                  <svg
+                    className="q-opcao-icone"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    dangerouslySetInnerHTML={{ __html: icone }}
+                  />
+                  <span className="q-opcao-nome">{s.nome}</span>
+                  <span className="q-opcao-desc">{s.descricao}</span>
+                  <span className="q-opcao-prazo">{s.prazo}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Passo 2: Escalão de Peso / Distância */}
-          <div className="sim-passo">
-            <span className="sim-num">2</span>
-            <div>
-              <span className="sim-label">
-                {servico.criterio === "peso" ? "Quanto pesa a encomenda?" : "Qual a distância estimada?"}
-              </span>
-              <span className="sim-sublabel">
-                {servico.criterio === "peso" ? "Selecione o escalão de peso" : "Selecione o percurso pretendido"}
-              </span>
-            </div>
+          <div className="q-passo">
+            <span className="q-passo-num">02</span>
+            <span className="q-passo-txt">
+              {servico.criterio === "peso"
+                ? "Quanto pesa a encomenda?"
+                : "Qual a distância estimada?"}
+            </span>
           </div>
-
           <div
-            className="sim-pesos-grid"
+            className="q-escaloes"
             role="group"
             aria-label={servico.criterio === "peso" ? "Peso" : "Distância"}
           >
-            {servico.escaloes.map((e, i) => {
-              const ativo = i === escalaoIdx;
-              return (
-                <button
-                  key={e}
-                  type="button"
-                  className={`sim-peso-btn${ativo ? " on" : ""}`}
-                  onClick={() => setEscalaoIdx(i)}
-                  aria-pressed={ativo}
-                >
-                  <span className="sim-peso-icon">
-                    {servico.criterio === "peso"
-                      ? i === 0
-                        ? "✉️"
-                        : i === 1
-                          ? "📦"
-                          : i === 2
-                            ? "📦"
-                            : "🏗️"
-                      : "📍"}
-                  </span>
-                  <span className="sim-peso-txt">{e}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {servico.nota && (
-            <div className="sim-nota-servico">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="16" x2="12" y2="12" />
-                <line x1="12" y1="8" x2="12.01" y2="8" />
-              </svg>
-              <span>{servico.nota}</span>
-            </div>
-          )}
-
-          {/* O pedido montado, pronto a seguir para o WhatsApp */}
-          <div className="sim-resultado">
-            <div className="sim-pedido-bloco">
-              <span className="sim-preco-label">O seu pedido</span>
-              <span
-                className="sim-pedido-resumo"
-                key={`${servico.id}-${escalaoIdx}`}
-              >
-                {servico.nome} · {escalao}
-              </span>
-              <span className="sim-preco-nota">
-                Orçamento à medida do percurso e da frequência, confirmado por
-                escrito antes da recolha.
-              </span>
-            </div>
-
-            <div className="sim-acoes">
-              <a
-                className="btn btn-primary sim-cta"
-                href={whatsappLink(
-                  `Olá! Vim do site e queria um orçamento: ${pedido}.`
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <IconeWhatsapp />
-                <span>Pedir orçamento no WhatsApp</span>
-              </a>
+            {servico.escaloes.map((e, i) => (
               <button
+                key={e}
                 type="button"
-                className="sim-alt"
-                onClick={pedirPorFormulario}
+                className={`q-escalao${i === escalaoIdx ? " is-ativo" : ""}`}
+                onClick={() => setEscalaoIdx(i)}
+                aria-pressed={i === escalaoIdx}
               >
-                Prefere escrever? Use o formulário
+                {e}
               </button>
-            </div>
+            ))}
           </div>
 
-          <p className="sim-rodape">
-            Recolha e entrega dentro da área indicada, com capacidade até{" "}
-            {CARGA_MAX_KG} kg por viagem. O preço é confirmado por escrito antes
-            da recolha — sem surpresas nem taxas escondidas.
-          </p>
-        </div>
+          {servico.nota && <p className="q-nota">{servico.nota}</p>}
 
-        {/* Rota fixa contratada: viatura afeta a uma operação, receita
-            recorrente. O valor depende do percurso e da frequência, por isso
-            nunca teria tabela — vai direto à conversa. */}
-        <div className="rota-fixa" data-reveal>
-          <div className="rota-fixa-icone" aria-hidden="true">
-            <svg
-              width="26"
-              height="26"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M8 3v4M16 3v4M3 10h18" />
-              <rect x="3" y="5" width="18" height="16" rx="2" />
-              <path d="M8 15h8" />
-            </svg>
-          </div>
-          <div className="rota-fixa-body">
-            <div className="rota-fixa-kicker">Contrato • Receita Recorrente</div>
-            <h3>Rota fixa contratada</h3>
-            <p>
-              Recolha e entrega no mesmo dia, no mesmo percurso, todos os dias
-              úteis. Viatura e condutor afetos à sua operação. A partir de 20
-              operações por mês.
-            </p>
-            <span className="rota-fixa-nota">
-              Orçamento à medida do percurso e da frequência.
+          <div className="q-resultado">
+            <span className="q-resultado-rotulo">O seu pedido</span>
+            <span className="q-resultado-resumo" key={`${servico.id}-${escalaoIdx}`}>
+              {servico.nome} · {escalao}
             </span>
+            <a
+              className="h-btn h-btn--laranja q-cta"
+              href={whatsappLink(
+                `Olá! Vim do site e queria um orçamento: ${pedido}.`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconeWhatsapp />
+              Pedir orçamento no WhatsApp
+            </a>
+            <button type="button" className="q-alt" onClick={pedirPorFormulario}>
+              Prefere escrever? Use o formulário
+            </button>
           </div>
-          <a
-            className="btn btn-primary rota-fixa-cta"
-            href={whatsappLink(
-              "Olá! Vim do site e tenho interesse numa rota fixa contratada: recolha e entrega no mesmo percurso, todos os dias úteis. Percurso e frequência previstos: "
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <IconeWhatsapp />
-            <span>Falar sobre a rota</span>
-          </a>
+
+          <p className="q-rodape">
+            Capacidade até {CARGA_MAX_KG} kg por viagem. O preço é confirmado
+            por escrito antes da recolha — sem surpresas nem taxas escondidas.
+          </p>
         </div>
       </div>
     </section>

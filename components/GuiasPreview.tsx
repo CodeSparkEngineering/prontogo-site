@@ -7,28 +7,22 @@ export default function GuiasPreview() {
   if (guias.length === 0) return null;
 
   return (
-    <section id="guias" className="section">
-      <div className="container">
-        <div className="section-head guias-head" data-reveal>
+    <section id="guias" className="h-sec h-claro gp">
+      <div className="h-wrap">
+        <div className="h-cabeca gp-cabeca">
           <div>
-            <div className="kicker">Guias</div>
-            <h2>Logística explicada sem jargão</h2>
+            <p className="h-eyebrow">
+              <span className="h-ponto" />
+              Guias
+            </p>
+            <h2 className="h-titulo">
+              Logística explicada{" "}
+              <span className="h-serif h-enfase">sem jargão.</span>
+            </h2>
           </div>
-          <Link href="/guias" className="guia-ver-todos">
+          <Link href="/guias" className="h-btn h-btn--linha-escura">
             Ver todos os guias
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
+            <span className="h-btn-seta" aria-hidden="true">→</span>
           </Link>
         </div>
         <div className="guias-grid" data-reveal>
