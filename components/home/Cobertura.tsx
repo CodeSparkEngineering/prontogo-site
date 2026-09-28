@@ -4,9 +4,17 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { servicosPreco } from "@/lib/precos";
+import Icone, { type NomeIcone } from "@/components/home/Icones";
 import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const ICONES_MOD: Record<string, NomeIcone> = {
+  urbano: "expresso",
+  regional: "carrinha",
+  nacional: "continente",
+  dedicada: "dedicada",
+};
 
 const C = 300; // centro do gráfico (Aveiro)
 
@@ -182,9 +190,9 @@ export default function Cobertura() {
               rastreio e prova de receção.
             </p>
             <ul>
-              {servicosPreco.map((s, i) => (
+              {servicosPreco.map((s) => (
                 <li className="cb-modalidade" key={s.id}>
-                  <span className="cb-mod-num">0{i + 1}</span>
+                  <Icone nome={ICONES_MOD[s.id] ?? "expresso"} tamanho={46} />
                   <div className="cb-mod-corpo">
                     <h3>{s.nome}</h3>
                     <p>{s.descricao}</p>

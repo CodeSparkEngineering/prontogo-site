@@ -259,7 +259,7 @@ main{overflow-x:clip}
 .cb-cidade-nome{font-family:var(--font-display),system-ui,sans-serif;font-size:17px;font-weight:600;fill:var(--claro)}
 .cb-cidade-km{font-family:var(--font-body),system-ui,sans-serif;font-size:13px;fill:var(--claro-2)}
 .cb-lista ul{margin:36px 0 0;padding:0;list-style:none;border-top:1px solid var(--linha-escura)}
-.cb-modalidade{display:grid;grid-template-columns:44px 1fr auto;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--linha-escura)}
+.cb-modalidade{display:grid;grid-template-columns:46px 1fr auto;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--linha-escura)}
 .cb-mod-num{font-size:13px;font-weight:600;color:var(--laranja)}
 .cb-mod-corpo h3{margin:0;font-size:22px;letter-spacing:-.03em}
 .cb-mod-corpo p{margin:4px 0 0;color:var(--claro-2);font-size:14.5px;line-height:1.45}
@@ -277,7 +277,7 @@ main{overflow-x:clip}
   .cb-grafico{max-width:560px;margin:0 auto;width:100%}
 }
 @media (max-width:520px){
-  .cb-modalidade{grid-template-columns:32px 1fr}
+  .cb-modalidade{grid-template-columns:46px 1fr}
   .cb-mod-prazo{grid-column:2;justify-self:start}
 }
 
@@ -289,7 +289,7 @@ main{overflow-x:clip}
 .tc-lado .h-lead{margin-top:28px}
 .tc-lista{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:0;padding:0;list-style:none;overflow:hidden;border:1px solid var(--linha-escura);border-radius:24px;background:var(--linha-escura)}
 .tc-item{padding:clamp(24px,3vw,36px);background:var(--noite-2)}
-.tc-icone{display:grid;place-items:center;width:52px;height:52px;margin-bottom:22px;border-radius:14px;background:rgba(245,130,11,.1);color:#FFB259}
+.tc-item .ic-placa{margin-bottom:24px}
 .tc-item h3{margin:0 0 10px;font-size:20px;letter-spacing:-.03em}
 .tc-item p{margin:0;color:var(--claro-2);font-size:14.5px;line-height:1.6}
 @media (prefers-reduced-motion:no-preference){.tc-selo-ponto{animation:tcPisca 2s ease-in-out infinite}}
@@ -330,7 +330,7 @@ main{overflow-x:clip}
 .q-opcao{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"i n" "i d" "i p";column-gap:14px;row-gap:2px;padding:16px;border:1px solid var(--linha-escura);border-radius:18px;background:transparent;color:var(--claro);text-align:left;font:inherit;cursor:pointer;transition:border-color .25s,background .25s}
 .q-opcao:hover{border-color:rgba(238,234,224,.35)}
 .q-opcao.is-ativo{border-color:var(--laranja);background:rgba(245,130,11,.09)}
-.q-opcao-icone{grid-area:i;margin-top:2px;color:var(--laranja)}
+.q-opcao-icone{grid-area:i;align-self:start}
 .q-opcao-nome{grid-area:n;font-size:16px;font-weight:600}
 .q-opcao-desc{grid-area:d;color:var(--claro-2);font-size:13px;line-height:1.4}
 .q-opcao-prazo{grid-area:p;margin-top:6px;color:#FFB259;font-size:12px}
@@ -417,6 +417,7 @@ main{overflow-x:clip}
 .ct-lado .h-lead{margin-top:28px}
 .ct-canais{margin:44px 0 0;padding:0;list-style:none;border-top:1px solid var(--linha-escura)}
 .ct-canais li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;padding:20px 0;border-bottom:1px solid var(--linha-escura)}
+.ct-canal{display:flex;align-items:center;gap:14px}
 .ct-rotulo{color:var(--claro-2);font-size:13px;letter-spacing:.04em}
 .ct-valor{display:inline-flex;align-items:center;gap:10px;color:var(--claro);font-family:var(--font-display),system-ui,sans-serif;font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.02em}
 a.ct-valor:hover{color:var(--laranja)}
@@ -522,3 +523,26 @@ a.ct-valor:hover .ct-seta{transform:translate(3px,-3px)}
 @keyframes fvFluxo{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
 @keyframes fvGrao{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
 @media (max-width:700px){.fv-rotas{opacity:.7}}
+
+/* ============================ ÍCONES ============================ */
+/* Placa em vidro com o desenho em dois tons (components/home/Icones.tsx).
+   --ic é o tamanho da placa; o desenho ocupa ~56%. */
+.ic-placa{--ic:56px;position:relative;display:inline-grid;place-items:center;flex:none;width:var(--ic);height:var(--ic);border-radius:calc(var(--ic) * .3);color:var(--claro);background:radial-gradient(130% 130% at 15% 0%,rgba(245,130,11,.3),transparent 55%),linear-gradient(160deg,rgba(238,234,224,.13),rgba(238,234,224,.03));border:1px solid rgba(245,130,11,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 16px 34px -14px rgba(245,130,11,.5)}
+.ic-placa::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 30% 18%,rgba(255,255,255,.14),transparent 55%);pointer-events:none}
+.ic-placa--claro,.h-claro .ic-placa,.h-claro-2 .ic-placa:not(.q-opcao-icone){color:var(--texto);background:radial-gradient(130% 130% at 15% 0%,rgba(245,130,11,.2),transparent 55%),linear-gradient(160deg,#fff,rgba(255,255,255,.6));border-color:rgba(245,130,11,.25);box-shadow:inset 0 1px 0 #fff,0 14px 30px -18px rgba(11,23,51,.35)}
+.ic-svg{position:relative;z-index:1;width:64%;height:64%;overflow:visible;transition:transform .55s cubic-bezier(.34,1.56,.64,1)}
+.ic-base{fill:currentColor;fill-opacity:.2}
+.ic-linha{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-linha--acento{stroke:var(--laranja)}
+.ic-linha--tracejada{stroke-dasharray:.1 3.6}
+.ic-cheio{fill:currentColor}
+.ic-acento{fill:var(--laranja)}
+.ic-acento--anel{stroke:var(--noite);stroke-width:1.6;paint-order:stroke}
+.h-claro .ic-acento--anel,.h-claro-2 .ic-placa:not(.q-opcao-icone) .ic-acento--anel,.ic-placa--claro .ic-acento--anel{stroke:#fff}
+.ic-furo{fill:none;stroke:var(--noite);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ic-furo-cheio{fill:var(--noite)}
+/* Pequeno salto do desenho quando o cartão que o contém recebe o rato */
+.tc-item:hover .ic-svg,.q-opcao:hover .ic-svg,.cb-modalidade:hover .ic-svg,.ct-canais li:hover .ic-svg,.sv-cartao:hover .ic-svg{transform:scale(1.1) rotate(-5deg)}
+.sv-icone{position:absolute;left:18px;top:18px;z-index:2;background:linear-gradient(150deg,rgba(6,18,42,.55),rgba(6,18,42,.3));backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%)}
+.q-opcao.is-ativo .q-opcao-icone{border-color:rgba(245,130,11,.6);background:linear-gradient(150deg,rgba(245,130,11,.28),rgba(245,130,11,.06))}
+@media (prefers-reduced-motion:reduce){.ic-svg{transition:none}}

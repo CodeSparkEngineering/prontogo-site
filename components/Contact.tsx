@@ -1,5 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import FundoVivo from "@/components/home/FundoVivo";
+import Icone, { type NomeIcone } from "@/components/home/Icones";
 import {
   contactoEmail,
   contactoTelefone,
@@ -8,6 +9,7 @@ import {
 } from "@/lib/site";
 
 interface Canal {
+  icone: NomeIcone;
   rotulo: string;
   valor: string;
   href?: string;
@@ -16,18 +18,19 @@ interface Canal {
 
 const canais: Canal[] = [
   {
+    icone: "whatsapp",
     rotulo: "WhatsApp · a via mais rápida",
     valor: "Falar agora",
     href: whatsappLink("Olá! Vim do site e queria pedir um orçamento."),
     externo: true,
   },
   ...(contactoTelefone
-    ? [{ rotulo: "Telefone", valor: contactoTelefoneDisplay, href: `tel:${contactoTelefone}` }]
+    ? [{ icone: "telefone" as const, rotulo: "Telefone", valor: contactoTelefoneDisplay, href: `tel:${contactoTelefone}` }]
     : []),
   ...(contactoEmail
-    ? [{ rotulo: "Email", valor: contactoEmail, href: `mailto:${contactoEmail}` }]
+    ? [{ icone: "email" as const, rotulo: "Email", valor: contactoEmail, href: `mailto:${contactoEmail}` }]
     : []),
-  { rotulo: "Base operacional", valor: "Aveiro, Portugal" },
+  { icone: "local", rotulo: "Base operacional", valor: "Aveiro, Portugal" },
 ];
 
 export default function Contact() {
@@ -52,7 +55,10 @@ export default function Contact() {
           <ul className="ct-canais">
             {canais.map((c) => (
               <li key={c.rotulo}>
-                <span className="ct-rotulo">{c.rotulo}</span>
+                <span className="ct-canal">
+                  <Icone nome={c.icone} tamanho={46} />
+                  <span className="ct-rotulo">{c.rotulo}</span>
+                </span>
                 {c.href ? (
                   <a
                     className="ct-valor"

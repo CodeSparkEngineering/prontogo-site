@@ -5,6 +5,9 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { servicos } from "@/lib/content";
+import Icone, { type NomeIcone } from "@/components/home/Icones";
+
+const ICONES_SERVICO: NomeIcone[] = ["expresso", "porta", "paletes", "loja"];
 import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -110,6 +113,7 @@ export default function Servicos() {
                 height={675}
                 sizes="(max-width: 960px) 100vw, 520px"
               />
+              <Icone nome={ICONES_SERVICO[i]} tamanho={54} className="sv-icone" />
             </div>
             <div className="sv-corpo">
               <span className="sv-num">0{i + 1}</span>

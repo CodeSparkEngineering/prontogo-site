@@ -4,6 +4,7 @@ import { useState } from "react";
 import { servicosPreco, CARGA_MAX_KG } from "@/lib/precos";
 import { whatsappLink } from "@/lib/site";
 import { rolarPara } from "@/lib/lenis";
+import Icone, { type NomeIcone } from "@/components/home/Icones";
 
 // O ficheiro mantém o nome, e a secção mantém o id #precos, para não partir
 // ligações externas nem os anúncios que já apontam para /#precos. Deixou de
@@ -11,16 +12,12 @@ import { rolarPara } from "@/lib/lenis";
 // serviço e escalão — e entregá-lo no WhatsApp já escrito.
 export const EVENTO_SIMULACAO = "prontogo:simulacao";
 
-// Ícones temáticos para cada modalidade
-const iconesServico: Record<string, string> = {
-  urbano:
-    '<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />',
-  regional:
-    '<rect x="1" y="3" width="15" height="13" rx="2" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" />',
-  nacional:
-    '<circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" />',
-  dedicada:
-    '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
+// Ícone de cada modalidade (conjunto em components/home/Icones.tsx)
+const iconesServico: Record<string, NomeIcone> = {
+  urbano: "expresso",
+  regional: "carrinha",
+  nacional: "continente",
+  dedicada: "dedicada",
 };
 
 function IconeWhatsapp() {
@@ -114,7 +111,7 @@ export default function Simulador() {
           <div className="q-opcoes" role="group" aria-label="Tipo de serviço">
             {servicosPreco.map((s) => {
               const ativo = s.id === servicoId;
-              const icone = iconesServico[s.id] ?? iconesServico.urbano;
+              const icone = iconesServico[s.id] ?? "expresso";
               return (
                 <button
                   key={s.id}
@@ -123,19 +120,7 @@ export default function Simulador() {
                   onClick={() => escolherServico(s.id)}
                   aria-pressed={ativo}
                 >
-                  <svg
-                    className="q-opcao-icone"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                    dangerouslySetInnerHTML={{ __html: icone }}
-                  />
+                  <Icone nome={icone} tamanho={44} className="q-opcao-icone" />
                   <span className="q-opcao-nome">{s.nome}</span>
                   <span className="q-opcao-desc">{s.descricao}</span>
                   <span className="q-opcao-prazo">{s.prazo}</span>
