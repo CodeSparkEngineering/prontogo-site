@@ -1,4 +1,5 @@
 import { capacidadesApp } from "@/lib/content";
+import FundoVivo from "@/components/home/FundoVivo";
 
 // App de rotas em desenvolvimento. Esta secção substitui o antigo painel
 // "AI Dispatch Engine", que tinha latência, relógio a correr e percentagens
@@ -44,6 +45,7 @@ const ICONES = [
 export default function Tecnologia() {
   return (
     <section id="tecnologia" className="h-sec h-escuro tc">
+      <FundoVivo />
       <div className="h-wrap tc-grelha">
         <div className="tc-lado" data-reveal>
           <p className="tc-selo">

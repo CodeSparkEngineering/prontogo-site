@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { servicosPreco } from "@/lib/precos";
+import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,7 @@ export default function Cobertura() {
 
   return (
     <section id="cobertura" className="h-sec h-escuro cb" ref={raiz}>
+      <FundoVivo />
       <div className="h-wrap">
         <div className="h-cabeca">
           <p className="h-eyebrow">
@@ -106,7 +108,7 @@ export default function Cobertura() {
               <defs>
                 <linearGradient id="cb-varrimento-grad" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0" stopColor="#F5820B" stopOpacity="0" />
-                  <stop offset="1" stopColor="#F5820B" stopOpacity=".32" />
+                  <stop offset="1" stopColor="#F5820B" stopOpacity=".2" />
                 </linearGradient>
               </defs>
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { servicos } from "@/lib/content";
+import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,7 @@ export default function Servicos() {
 
   return (
     <section id="servicos" className="h-escuro sv" ref={raiz}>
+      <FundoVivo />
       <div className="sv-pista" ref={pista}>
         <div className="sv-intro">
           <p className="h-eyebrow">

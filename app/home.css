@@ -96,7 +96,6 @@ main{overflow-x:clip}
 
 /* ============================ HERO ============================ */
 .hx{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:100svh;padding:clamp(128px,17vh,190px) 0 clamp(36px,6vh,72px);overflow:hidden;background:var(--noite);color:var(--claro)}
-.hx::before{content:"";position:absolute;right:-22vw;top:-34vw;width:72vw;height:72vw;border-radius:50%;background:radial-gradient(circle,rgba(245,130,11,.15),transparent 62%);pointer-events:none}
 .hx-grelha{position:absolute;inset:0;background-image:radial-gradient(rgba(238,234,224,.1) 1px,transparent 1.5px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 45%,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse 80% 70% at 50% 45%,#000 25%,transparent 78%);pointer-events:none}
 .hx-texto{position:relative;z-index:1}
 .hx-titulo{margin:0;font-family:var(--font-display),system-ui,sans-serif;font-weight:700;font-size:clamp(3rem,8.6vw,9rem);line-height:.92;letter-spacing:-.04em;font-variation-settings:"wdth" 88}
@@ -413,7 +412,6 @@ main{overflow-x:clip}
 
 /* ============================ CONTACTO ============================ */
 .ct{overflow:hidden}
-.ct-brilho{position:absolute;left:-20vw;bottom:-32vw;width:62vw;height:62vw;border-radius:50%;background:radial-gradient(circle,rgba(245,130,11,.13),transparent 60%);pointer-events:none}
 .ct-grelha{position:relative;display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,6vw,100px);align-items:start}
 .ct-titulo{font-size:clamp(3rem,7.5vw,7rem);line-height:.92}
 .ct-lado .h-lead{margin-top:28px}
@@ -489,3 +487,38 @@ a.ct-valor:hover .ct-seta{transform:translate(3px,-3px)}
 @media (max-width:900px){.rp-grelha{grid-template-columns:1fr 1fr}.rp-marca{grid-column:1 / -1}}
 @media (max-width:640px){.rp-base{padding-bottom:76px}.pm{font-size:25vw}}
 @media (max-width:440px){.rp-grelha{grid-template-columns:1fr}}
+
+/* ============================ FUNDO VIVO ============================ */
+/* Camada de fundo das secções escuras (FundoVivo.tsx). O conteúdo de cada
+   secção sobe para z-index 1 para ficar por cima. */
+.fv{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;contain:strict}
+.h-escuro>.h-wrap,.sv-pista{position:relative;z-index:1}
+.sv-progresso{z-index:2}
+.fv-luz{position:absolute;border-radius:50%;will-change:transform}
+.fv-luz--1{width:min(70vw,900px);aspect-ratio:1;right:-18%;top:-30%;background:radial-gradient(circle,rgba(245,130,11,.16),transparent 62%)}
+.fv-luz--2{width:min(80vw,1000px);aspect-ratio:1;left:-25%;bottom:-40%;background:radial-gradient(circle,rgba(46,98,196,.22),transparent 62%)}
+.fv-rotas{position:absolute;inset:0;width:100%;height:100%}
+.fv-rota{fill:none;stroke:rgba(238,234,224,.07);stroke-width:1.2}
+.fv-fluxo{fill:none;stroke:var(--laranja);stroke-width:2;stroke-linecap:round;stroke-dasharray:0 1000;opacity:.7}
+.fv-cursor{position:absolute;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(245,130,11,.11),transparent 65%);transform:translate(var(--mx,50vw),var(--my,50%));opacity:0;transition:opacity .6s}
+.fv.tem-cursor .fv-cursor{opacity:1}
+/* Grão de película: ruído SVG em data: (permitido pelo img-src da CSP) */
+.fv-grao{position:absolute;inset:-50%;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){
+  .fv-luz--1{animation:fvFlutua1 22s ease-in-out infinite alternate}
+  .fv-luz--2{animation:fvFlutua2 28s ease-in-out infinite alternate}
+  /* Um ponto de luz (traço de 26 em 1000) a percorrer cada rota */
+  .fv-fluxo{stroke-dasharray:26 974;animation:fvFluxo 11s linear infinite}
+  .fv-fluxo--2{animation-duration:14s;animation-delay:-4s}
+  .fv-fluxo--3{animation-duration:9s;animation-delay:-7s}
+  .fv-fluxo--4{animation-duration:16s;animation-delay:-2s;animation-direction:reverse}
+  .fv-fluxo--5{animation-duration:13s;animation-delay:-9s}
+  .fv-grao{animation:fvGrao 1.2s steps(4) infinite}
+  /* Fora do ecrã, tudo parado */
+  .fv:not(.is-visivel) *{animation-play-state:paused}
+}
+@keyframes fvFlutua1{to{transform:translate(-18vw,22vh) scale(1.15)}}
+@keyframes fvFlutua2{to{transform:translate(22vw,-18vh) scale(.9)}}
+@keyframes fvFluxo{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@keyframes fvGrao{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+@media (max-width:700px){.fv-rotas{opacity:.7}}

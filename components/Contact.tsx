@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import FundoVivo from "@/components/home/FundoVivo";
 import {
   contactoEmail,
   contactoTelefone,
@@ -32,7 +33,7 @@ const canais: Canal[] = [
 export default function Contact() {
   return (
     <section id="contacto" className="h-sec h-escuro ct">
-      <div className="ct-brilho" aria-hidden="true" />
+      <FundoVivo />
       <div className="h-wrap ct-grelha">
         <div className="ct-lado" data-reveal>
           <p className="h-eyebrow">

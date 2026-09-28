@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { whatsappLink } from "@/lib/site";
+import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -91,6 +92,7 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="hx" ref={raiz}>
+      <FundoVivo rotas={false} />
       <div className="hx-grelha" aria-hidden="true" />
 
       <div className="h-wrap hx-texto">
