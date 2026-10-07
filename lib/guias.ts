@@ -357,7 +357,7 @@ export const guias: Guia[] = [
     img: "/assets/guia-ecommerce.webp",
     imgAlt: "Lojista online a preparar encomendas rodeado de caixas de cartão",
     servico: {
-      texto: "Conhecer o nosso last-mile para e-commerce",
+      texto: "Ver os nossos serviços para empresas",
       href: "/#servicos",
     },
     blocos: [
@@ -438,7 +438,7 @@ export const guias: Guia[] = [
       {
         tipo: "p",
         texto:
-          "Na ProntoGo trabalhamos exatamente assim com as lojas que nos procuram: começamos pequeno, medimos, e crescemos quando os números justificarem. Se quiser fazer esse teste connosco, peça-nos uma proposta.",
+          "Na ProntoGo trabalhamos exatamente assim com as empresas que nos procuram: começamos pequeno, medimos, e crescemos quando os números justificarem. Se quiser fazer esse teste connosco, peça-nos uma proposta.",
       },
     ],
     faq: [
@@ -550,7 +550,7 @@ export const guias: Guia[] = [
       {
         tipo: "p",
         texto:
-          "É precisamente esse o serviço que fazemos: distribuição final integrada com a sua loja, com notificações ao cliente em cada etapa e prova de receção imediata. Se ainda está a decidir com quem trabalhar, veja [o que perguntar antes de contratar](/guias/escolher-transportadora-loja-online) — e [quanto deve custar](/guias/quanto-custa-entrega-expressa-portugal).",
+          "Na ProntoGo tratamos do troço entre empresas: levamos a sua mercadoria a lojas, armazéns e clientes empresariais na mesma carrinha, com rastreio e prova de receção imediata. Se ainda está a decidir com quem trabalhar, veja [o que perguntar antes de contratar](/guias/escolher-transportadora-loja-online) — e [quanto deve custar](/guias/quanto-custa-entrega-expressa-portugal).",
       },
     ],
     faq: [

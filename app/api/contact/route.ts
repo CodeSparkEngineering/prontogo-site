@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { tiposServico, volumesEnvio, zonasEntrega } from "@/lib/content";
+import {
+  tiposServico,
+  volumesEnvio,
+  zonasEntrega,
+  frequenciasEnvio,
+} from "@/lib/content";
 import { contactoEmail } from "@/lib/site";
 
 // Envio via Resend (https://resend.com) — REST API, sem dependências.
@@ -45,6 +50,8 @@ interface Pedido {
   telefone?: string;
   volume?: string;
   zona?: string;
+  frequencia?: string;
+  nomeEmpresa?: string; // nome real da empresa (formulário de /empresas)
   empresa?: string; // honeypot — humanos nunca preenchem este campo
 }
 
@@ -108,6 +115,10 @@ export async function POST(request: Request) {
 
   const volume = opcionalDaLista(pedido.volume, volumesEnvio);
   const zona = opcionalDaLista(pedido.zona, zonasEntrega);
+  const frequencia = opcionalDaLista(pedido.frequencia, frequenciasEnvio);
+  const nomeEmpresa = campoValido(pedido.nomeEmpresa, MAX_CAMPO)
+    ? limpar(pedido.nomeEmpresa)
+    : null;
   const telefone =
     typeof pedido.telefone === "string" &&
     /^[+\d][\d\s().-]{6,24}$/.test(pedido.telefone.trim())
@@ -140,13 +151,15 @@ export async function POST(request: Request) {
         from: process.env.CONTACT_FROM_EMAIL ?? "ProntoGo <onboarding@resend.dev>",
         to: [process.env.CONTACT_TO_EMAIL ?? contactoEmail ?? "geral@prontogo.pt"],
         reply_to: pedido.email,
-        subject: `Pedido de orçamento — ${nome} (${pedido.servico})`,
+        subject: `Pedido de orçamento — ${nomeEmpresa ?? nome} (${pedido.servico})`,
         text: [
+          ...(nomeEmpresa ? [`Empresa: ${nomeEmpresa}`] : []),
           `Nome: ${nome}`,
           `Email: ${pedido.email}`,
           ...(telefone ? [`Telefone: ${telefone}`] : []),
           `Tipo de serviço: ${pedido.servico}`,
           ...(volume ? [`Volume estimado: ${volume}`] : []),
+          ...(frequencia ? [`Frequência: ${frequencia}`] : []),
           ...(zona ? [`Zona de entrega: ${zona}`] : []),
           "",
           "Mensagem:",

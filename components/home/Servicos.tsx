@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { servicos } from "@/lib/content";
 import Icone, { type NomeIcone } from "@/components/home/Icones";
 
-const ICONES_SERVICO: NomeIcone[] = ["expresso", "porta", "paletes", "loja"];
+const ICONES_SERVICO: NomeIcone[] = ["expresso", "paletes", "loja"];
 import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -91,7 +91,7 @@ export default function Servicos() {
             Serviços
           </p>
           <h2 className="h-titulo">
-            Tudo o que precisa de mover.{" "}
+            Tudo o que a sua empresa precisa de mover.{" "}
             <span className="h-serif h-enfase">Numa só operação.</span>
           </h2>
           <p className="h-lead">

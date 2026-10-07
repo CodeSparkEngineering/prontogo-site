@@ -11,7 +11,7 @@ const PARTES: { t: string; enfase?: boolean }[] = [
   { t: "Não somos uma rede de centros de triagem. Somos uma equipa de Aveiro com" },
   { t: "carrinha própria", enfase: true },
   { t: "— recolhemos, conduzimos e entregamos nós," },
-  { t: "da primeira à última porta.", enfase: true },
+  { t: "da sua empresa ao destino.", enfase: true },
 ];
 
 // Manifesto: as palavras acendem à medida que se rola, atadas ao scroll (se

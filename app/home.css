@@ -466,6 +466,23 @@ a.ct-valor:hover .ct-seta{transform:translate(3px,-3px)}
   .form-card input,.form-card select,.form-card textarea{font-size:16px}
 }
 
+/* ====================== LANDING /EMPRESAS ====================== */
+.lp{position:relative;min-height:100svh;padding:clamp(116px,15vh,170px) 0 clamp(72px,9vw,120px);overflow:hidden}
+.lp-cta{margin-left:auto}
+.lp-grelha{position:relative;display:grid;grid-template-columns:5fr 6fr;grid-template-areas:"intro form" "benef form";gap:clamp(28px,4vw,52px) clamp(40px,6vw,100px);align-items:start}
+.lp-intro{grid-area:intro}
+.lp-form{grid-area:form}
+.lp-titulo{font-size:clamp(2.5rem,5.2vw,4.8rem);line-height:.98}
+.lp-intro .h-lead{margin-top:24px}
+.lp-benef{grid-area:benef;margin:0;padding:0;list-style:none;border-top:1px solid var(--linha-escura)}
+.lp-benef li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linha-escura);color:var(--claro-2);font-size:15px;line-height:1.5}
+.lp-benef strong{display:block;color:var(--claro);font-weight:600}
+.lp-visto{flex:none;margin-top:3px;color:var(--laranja)}
+.btn-submit--wa{background:#25D366;color:#04210F}
+.btn-submit--wa:hover{background:var(--noite);color:var(--claro)}
+.lp-nota{margin:-6px 0 0;color:var(--texto-2);font-size:13px;line-height:1.5;text-align:center}
+@media (max-width:960px){.lp-grelha{grid-template-columns:1fr;grid-template-areas:"intro" "form" "benef"}}
+
 /* ============================ RODAPÉ ============================ */
 .rp{overflow:hidden;padding:clamp(72px,9vw,120px) 0 28px;background:#040C1E;color:var(--claro)}
 .rp-grelha{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}

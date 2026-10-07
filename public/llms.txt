@@ -1,14 +1,14 @@
 # ProntoGo
 
-> Empresa de logística e entregas com sede em Aveiro, Portugal. Entregas expressas urbanas no próprio dia, last-mile para e-commerce, transporte de mercadorias e logística para PMEs, em todo Portugal continental, e entregas internacionais para a Europa com frota própria. Slogan: "Logística inteligente. Entregas que conectam."
+> Empresa de logística e entregas para empresas (B2B), com sede em Aveiro, Portugal. Entregas expressas urbanas no próprio dia, transporte de mercadorias e paletes, rotas fixas contratadas e logística para PMEs, em todo Portugal continental, e entregas internacionais para a Europa com frota própria. Slogan: "Logística inteligente. Entregas que conectam."
 
 ## Serviços
 
-- **Entregas expressas urbanas**: recolha e entrega no próprio dia dentro das principais cidades, com estafetas dedicados.
-- **Last-mile para e-commerce**: distribuição final integrada com lojas online, com notificações ao cliente em cada etapa.
-- **Transporte de mercadorias**: volumes de maior dimensão, cargas e paletes até 640 kg (até 1,20 m de altura carregada) entre armazéns, lojas e clientes finais; acima desse peso, articula o transporte com parceiros.
+- **Entregas expressas urbanas**: recolha e entrega no próprio dia entre empresas, clientes e fornecedores, dentro das principais cidades.
+- **Transporte de mercadorias**: volumes de maior dimensão, cargas e paletes até 640 kg (até 1,20 m de altura carregada) entre armazéns, fornecedores e lojas; acima desse peso, articula o transporte com parceiros.
 - **Logística para PMEs**: planos regulares e flexíveis para pequenas e médias empresas, sem mínimos exagerados, com gestor dedicado.
-- **Entregas internacionais (Europa)**: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem centros de triagem — cargas, paletes e encomendas de e-commerce, com rastreamento de ponta a ponta. Preço orçamentado por destino e volume.
+- **Rota fixa contratada**: recolha e entrega no mesmo percurso, todos os dias úteis, com viatura e condutor afetos à operação do cliente; contrato mensal a partir de 20 operações por mês.
+- **Entregas internacionais (Europa)**: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem centros de triagem — cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. Preço orçamentado por destino e volume.
 
 ## Factos principais
 
@@ -19,7 +19,7 @@
 - Rastreamento em tempo real com prova de receção em todas as encomendas
 - Resposta a pedidos de orçamento: menos de 24 horas úteis
 - Preço fechado antes do serviço, sem sobretaxas surpresa
-- Em desenvolvimento: aplicação própria de apoio à distribuição, com inteligência artificial a calcular a melhor sequência de entregas porta a porta, prova de entrega digital e janelas horárias mais fiáveis. Ainda não está disponível.
+- Em desenvolvimento: aplicação própria de apoio à distribuição, com inteligência artificial a calcular a melhor sequência de paragens de cada rota, prova de entrega digital e janelas horárias mais fiáveis. Ainda não está disponível.
 
 ## Contacto
 
@@ -41,5 +41,6 @@ Conteúdo editorial próprio sobre logística em Portugal, escrito pela equipa P
 ## Páginas
 
 - [Página principal](https://prontogo.pt): serviços, como funciona, diferenciais, perguntas frequentes e formulário de orçamento.
+- [Empresas](https://prontogo.pt/empresas): pedido de proposta para empresas, com formulário que segue por WhatsApp.
 - [Guias](https://prontogo.pt/guias): artigos práticos sobre logística e entregas.
 - [Política de Privacidade](https://prontogo.pt/privacidade): tratamento de dados pessoais, conforme o RGPD.

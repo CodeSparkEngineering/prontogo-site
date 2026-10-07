@@ -98,7 +98,7 @@ export default function Hero() {
       <div className="h-wrap hx-texto">
         <p className="h-eyebrow hx-sobe">
           <span className="h-ponto" />
-          Transporte e entregas · Aveiro → Portugal e Europa
+          Entregas para empresas · Aveiro → Portugal e Europa
         </p>
 
         <h1 className="hx-titulo">
@@ -112,15 +112,15 @@ export default function Hero() {
 
         <div className="hx-rodape">
           <p className="hx-lead hx-sobe">
-            Uma só carrinha do ponto de recolha à porta do destino. Sem centros
-            de triagem nem transbordos — de Aveiro para todo o continente e para
-            a Europa.
+            Uma só carrinha da sua empresa ao destino da mercadoria. Sem
+            centros de triagem nem transbordos — de Aveiro para todo o
+            continente e para a Europa.
           </p>
           <div className="hx-ctas hx-sobe">
             <a
               className="h-btn h-btn--laranja"
               href={whatsappLink(
-                "Olá! Vim do site e queria pedir um orçamento para um envio.",
+                "Olá! Vim do site e queria pedir um orçamento para a minha empresa.",
               )}
               target="_blank"
               rel="noopener noreferrer"

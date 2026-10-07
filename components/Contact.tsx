@@ -47,9 +47,9 @@ export default function Contact() {
             Pronto para <span className="h-serif h-enfase">enviar?</span>
           </h2>
           <p className="h-lead">
-            Conte-nos o que precisa de transportar. Cada pedido é lido por uma
-            pessoa e respondido em menos de 24 horas úteis, com uma proposta
-            concreta e sem compromisso.
+            Conte-nos o que a sua empresa precisa de transportar. Cada pedido
+            é lido por uma pessoa e respondido em menos de 24 horas úteis, com
+            uma proposta concreta e sem compromisso.
           </p>
 
           <ul className="ct-canais">

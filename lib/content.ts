@@ -15,25 +15,16 @@ export const servicos: Servico[] = [
   {
     titulo: "Entregas expressas urbanas",
     texto:
-      "Recolha e entrega no próprio dia dentro das principais cidades, com estafetas dedicados.",
+      "Recolha e entrega no próprio dia entre a sua empresa, os seus clientes e os seus fornecedores, dentro das principais cidades.",
     tone: "accent",
     icon: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>',
     img: "/assets/prontogo-servico-expresso.webp",
     imgAlt: "Carrinha de entregas a circular numa rua histórica portuguesa",
   },
   {
-    titulo: "Last-mile para e-commerce",
-    texto:
-      "Distribuição final integrada com a sua loja online, com notificações ao cliente em cada etapa.",
-    tone: "blue",
-    icon: '<path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/><path d="m3 8 2.4-4.2A2 2 0 0 1 7.1 3h9.8a2 2 0 0 1 1.7.8L21 8"/><path d="M3 8h18"/><path d="M9 12h6"/>',
-    img: "/assets/prontogo-servico-lastmile.webp",
-    imgAlt: "Estafeta a entregar uma encomenda à porta de casa da cliente",
-  },
-  {
     titulo: "Transporte de mercadorias",
     texto:
-      "Volumes, cargas e paletes até 640 kg entre armazéns, lojas e clientes finais — o que não cabe numa encomenda normal.",
+      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas — o que não cabe numa encomenda normal.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
@@ -42,7 +33,7 @@ export const servicos: Servico[] = [
   {
     titulo: "Logística para PMEs",
     texto:
-      "Planos regulares e flexíveis para pequenas e médias empresas, sem mínimos exagerados.",
+      "Planos regulares e rotas fixas contratadas para pequenas e médias empresas, sem mínimos exagerados.",
     tone: "accent",
     icon: '<path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/>',
     img: "/assets/prontogo-servico-pmes.webp",
@@ -98,7 +89,7 @@ export const diferenciais: Diferencial[] = [
   },
   {
     titulo: "Rastreamento em tempo real",
-    texto: "Saiba onde está cada encomenda, do armazém à porta do cliente.",
+    texto: "Saiba onde está cada envio, da recolha à entrega.",
     icon: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',
   },
   {
@@ -165,9 +156,9 @@ export const compromissos: Compromisso[] = [
 
 export const tiposServico = [
   "Entregas expressas urbanas",
-  "Last-mile para e-commerce",
   "Transporte de mercadorias",
   "Logística para PMEs",
+  "Rota fixa contratada",
   "Entregas internacionais (Europa)",
   "Outro",
 ];
@@ -182,6 +173,15 @@ export const volumesEnvio = [
   "100 a 500 por mês",
   "Mais de 500 por mês",
   "Envio pontual",
+];
+
+// Só o formulário de /empresas pergunta a frequência: é o que separa um
+// envio pontual de uma rota regular.
+export const frequenciasEnvio = [
+  "Pontual",
+  "Semanal",
+  "Várias vezes por semana",
+  "Todos os dias úteis",
 ];
 
 export const zonasEntrega = [
@@ -249,7 +249,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Fazem entregas para fora de Portugal?",
     resposta:
-      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e encomendas de e-commerce, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume — peça-nos uma proposta.",
+      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume — peça-nos uma proposta.",
   },
   {
     pergunta: "Quanto tempo demora uma entrega expressa?",
@@ -262,14 +262,14 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
       "A forma mais rápida é por WhatsApp (+351 913 942 714): diga-nos o que precisa de enviar, de onde para onde e quando, e respondemos com o valor. Pode também usar o formulário do site, ligar-nos ou escrever para geral@prontogo.pt. Cada pedido é respondido por uma pessoa em menos de 24 horas úteis, com uma proposta à medida da sua operação.",
   },
   {
-    pergunta: "Fazem integração com lojas online?",
+    pergunta: "Posso contratar uma rota fixa para a minha empresa?",
     resposta:
-      "Sim. O serviço de last-mile para e-commerce integra-se com a sua loja online e envia notificações ao cliente final em cada etapa da entrega, do armazém à porta.",
+      "Sim. Na rota fixa contratada fazemos a recolha e a entrega no mesmo percurso, todos os dias úteis, com viatura e condutor afetos à sua operação. É um contrato mensal, a partir de 20 operações por mês, com o valor definido pelo percurso e pela frequência.",
   },
   {
     pergunta: "Que tipos de mercadoria transportam?",
     resposta:
-      "Desde documentos e encomendas de e-commerce até volumes de maior dimensão, cargas e paletes até 640 kg (e até 1,20 m de altura carregada), transportados na nossa própria carrinha entre armazéns, lojas e clientes finais. Para cargas acima desse peso, fale connosco: articulamos o transporte com parceiros de confiança.",
+      "Desde documentos e volumes pequenos até cargas e paletes até 640 kg (e até 1,20 m de altura carregada), transportados na nossa própria carrinha entre armazéns, fornecedores, lojas e empresas clientes. Para cargas acima desse peso, fale connosco: articulamos o transporte com parceiros de confiança.",
   },
   {
     pergunta: "Posso acompanhar a minha encomenda em tempo real?",
@@ -279,6 +279,6 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Trabalham com pequenas e médias empresas?",
     resposta:
-      "Sim, é uma das nossas especialidades: planos regulares e flexíveis para PMEs, sem mínimos exagerados, e um gestor dedicado que conhece a sua operação.",
+      "Sim, é para elas que trabalhamos: planos regulares e flexíveis para PMEs, sem mínimos exagerados, e um gestor dedicado que conhece a sua operação.",
   },
 ];

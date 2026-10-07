@@ -65,7 +65,7 @@ const jsonLd = {
           "@type": "Service",
           name: "Entregas internacionais na Europa",
           description:
-            "Entregas internacionais para a Europa com frota própria, sem transbordos: cargas, paletes e encomendas de e-commerce, com rastreamento de ponta a ponta.",
+            "Entregas internacionais para a Europa com frota própria, sem transbordos: cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta.",
           areaServed: "Europa",
         },
       },

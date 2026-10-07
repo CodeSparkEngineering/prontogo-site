@@ -75,7 +75,7 @@ export default function Sobre() {
           </p>
           <ul className="sb-pills">
             <li>Sede em Aveiro</li>
-            <li>E-commerce, PMEs e particulares</li>
+            <li>Empresas e PMEs</li>
             <li>Carrinha própria</li>
           </ul>
         </div>
