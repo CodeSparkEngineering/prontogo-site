@@ -24,7 +24,7 @@ export const servicos: Servico[] = [
   {
     titulo: "Mercadorias e paletes",
     texto:
-      "Volumes, cargas e paletes entre armazéns, fornecedores e lojas, numa viagem só sua, sem transbordos.",
+      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas, numa viagem só sua, sem transbordos.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
@@ -262,7 +262,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Como é calculado o preço?",
     resposta:
-      "Pela distância da viagem, não pelo peso da carga. Como a carrinha vai só para si, o que conta é o percurso: de Sangalhos até à recolha e daí até ao destino. Diga-nos de onde para onde e enviamos o valor fechado, por escrito, antes da recolha.",
+      "Pela distância da viagem, não pelo peso da carga. Como a carrinha vai só para si, o que conta é o percurso: de Sangalhos até à recolha e daí até ao destino. Diga-nos de onde para onde e enviamos o valor fechado, por escrito, antes da recolha. O único limite é o da carrinha: 640 kg por viagem.",
   },
   {
     pergunta: "Como peço um orçamento?",
@@ -277,7 +277,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Que tipos de mercadoria transportam?",
     resposta:
-      "Desde documentos e volumes pequenos até cargas e paletes, transportados na nossa própria carrinha entre armazéns, fornecedores, lojas e empresas clientes. Diga-nos o que precisa de levar e confirmamos se segue na carrinha.",
+      "Desde documentos e volumes pequenos até cargas e paletes, transportados na nossa própria carrinha entre armazéns, fornecedores, lojas e empresas clientes. O limite é de 640 kg por viagem.",
   },
   {
     pergunta: "Posso acompanhar a minha encomenda em tempo real?",

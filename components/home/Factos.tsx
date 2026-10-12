@@ -19,7 +19,7 @@ interface Facto {
 const FACTOS: Facto[] = [
   { valor: "Hora marcada", legenda: "A carrinha sai quando marcar, só com a sua carga." },
   { n: 0, valor: "0", legenda: "Transbordos e centros de triagem pelo caminho." },
-  { n: 24, valor: "24", sufixo: " h", legenda: "Úteis, no máximo, para responder ao seu pedido de orçamento." },
+  { n: 640, valor: "640", sufixo: " kg", legenda: "Limite de carga por viagem. O preço é pela distância, não pelo peso." },
   { n: 100, valor: "100", sufixo: "%", legenda: "Das viagens com rastreio e prova de receção." },
 ];
 

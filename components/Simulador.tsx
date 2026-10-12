@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CARGA_MAX_KG } from "@/lib/precos";
 import { whatsappLink } from "@/lib/site";
 import { rolarPara } from "@/lib/lenis";
 
@@ -10,7 +11,7 @@ import { rolarPara } from "@/lib/lenis";
 // (recolha, entrega, dia e carga) e entrega o pedido no WhatsApp já escrito.
 // Não se pergunta a distância: as carrinhas saem de Sangalhos e quem faz essa
 // conta somos nós. O preço é pela distância: não se pergunta o peso nem
-// se mostram valores.
+// se mostram valores, só se diz o limite da carrinha.
 export const EVENTO_SIMULACAO = "prontogo:simulacao";
 
 const DIAS = ["Hoje", "Amanhã", "Outro dia"] as const;
@@ -161,6 +162,9 @@ export default function Simulador() {
               autoComplete="off"
             />
           </label>
+          <p className="q-nota">
+            O limite da carrinha é de {CARGA_MAX_KG} kg por viagem.
+          </p>
 
           <div className="q-resultado">
             <a

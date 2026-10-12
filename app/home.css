@@ -325,7 +325,7 @@ main{overflow-x:clip}
 .q-escalao{padding:11px 16px;border:1px solid var(--linha-escura);border-radius:999px;background:none;color:var(--claro);font:inherit;font-size:14px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .q-escalao:hover{border-color:rgba(238,234,224,.35)}
 .q-escalao.is-ativo{border-color:var(--claro);background:var(--claro);color:var(--noite)}
-.q-nota{margin:10px 0 0 28px;color:var(--claro-2);font-size:13.5px;line-height:1.55}
+.q-nota{margin:-10px 0 0;color:var(--claro-2);font-size:13.5px;line-height:1.55}
 .q-resultado{display:grid;gap:14px;margin-top:32px;padding-top:28px;border-top:1px solid var(--linha-escura)}
 .q-cta{width:100%}
 .q-alt{justify-self:center;padding:6px;border:none;background:none;color:var(--claro-2);font:inherit;font-size:14px;text-decoration:underline;text-underline-offset:4px;cursor:pointer}

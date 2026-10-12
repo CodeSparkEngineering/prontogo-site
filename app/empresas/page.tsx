@@ -34,7 +34,7 @@ const BENEFICIOS = [
   },
   {
     titulo: "Preço pela distância, não pelo peso",
-    texto: "Fechado por escrito antes da recolha, sem sobretaxas nem taxas escondidas.",
+    texto: "Até 640 kg por viagem. Valor fechado por escrito antes da recolha, sem taxas escondidas.",
   },
 ];
 

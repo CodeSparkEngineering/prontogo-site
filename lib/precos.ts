@@ -9,8 +9,11 @@
 //
 // A ProntoGo vende um só serviço: a viagem dedicada, exclusiva para a carga de
 // um cliente. O preço é calculado pela distância, não pelo peso. O site
-// diz isso, mas não mostra valores nem limites de peso: o orçamento é dado
-// por uma pessoa.
+// diz isso sem mostrar valores: o orçamento é dado por uma pessoa.
+//
+// O peso só entra como limite da carrinha: 640 kg por viagem.
+
+export const CARGA_MAX_KG = 640;
 
 // Escalões de distância que a secção #precos pergunta. Apenas rótulos: o
 // valor de cada um está em lib/tarifario.ts.
