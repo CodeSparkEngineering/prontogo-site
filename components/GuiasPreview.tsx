@@ -11,14 +11,7 @@ export default function GuiasPreview() {
       <div className="h-wrap">
         <div className="h-cabeca gp-cabeca">
           <div>
-            <p className="h-eyebrow">
-              <span className="h-ponto" />
-              Guias
-            </p>
-            <h2 className="h-titulo">
-              Logística explicada{" "}
-              <span className="h-serif h-enfase">sem jargão.</span>
-            </h2>
+            <h2 className="h-titulo">Guias de logística</h2>
           </div>
           <Link href="/guias" className="h-btn h-btn--linha-escura">
             Ver todos os guias

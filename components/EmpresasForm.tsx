@@ -214,7 +214,7 @@ export default function EmpresasForm() {
         )}
       </button>
       <p className="lp-nota">
-        Abre o WhatsApp com o pedido já escrito — basta carregar em enviar.
+        Abre o WhatsApp com o pedido já escrito: basta carregar em enviar.
         {contactoEmail && " Fica também uma cópia no nosso email."}
       </p>
 

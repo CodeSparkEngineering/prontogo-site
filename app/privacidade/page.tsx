@@ -76,17 +76,17 @@ export default function PrivacidadePage() {
           </p>
           <ul>
             <li>
-              <strong>Vercel</strong> — alojamento do site e registos técnicos de
+              <strong>Vercel</strong>: alojamento do site e registos técnicos de
               acesso.
             </li>
             <li>
-              <strong>Resend</strong> — entrega do email gerado pelo formulário.
+              <strong>Resend</strong>: entrega do email gerado pelo formulário.
             </li>
             <li>
-              <strong>Google Workspace</strong> — receção e arquivo do email.
+              <strong>Google Workspace</strong>: receção e arquivo do email.
             </li>
             <li>
-              <strong>Google Ads e Google Analytics</strong> — cookies de
+              <strong>Google Ads e Google Analytics</strong>: cookies de
               medição da eficácia dos anúncios e de análise de utilização do
               site, ativados apenas com o seu consentimento (ver secção
               seguinte).

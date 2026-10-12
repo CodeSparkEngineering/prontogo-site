@@ -4,10 +4,10 @@
 
 ## Serviços
 
-- **Viagem dedicada**: a carrinha vai só para a carga do cliente, à hora marcada, diretamente da recolha ao destino, sem paragens. Preço por viagem, em função da distância — o peso não muda o preço até ao limite da carrinha.
+- **Viagem dedicada**: a carrinha vai só para a carga do cliente, à hora marcada, diretamente da recolha ao destino, sem paragens. Preço por viagem, em função da distância, o peso não muda o preço até ao limite da carrinha.
 - **Mercadorias e paletes**: volumes de maior dimensão, cargas e paletes até 640 kg (até 1,20 m de altura carregada) entre armazéns, fornecedores e lojas; acima desse peso, articula o transporte com parceiros.
 - **Rota fixa contratada**: recolha e entrega no mesmo percurso, todos os dias úteis, com viatura e condutor afetos à operação do cliente; contrato mensal a partir de 20 operações por mês.
-- **Viagem dedicada para a Europa**: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem centros de triagem — cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. Preço orçamentado por destino e volume.
+- **Viagem dedicada para a Europa**: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem centros de triagem, cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. Preço orçamentado por destino e volume.
 
 ## Factos principais
 

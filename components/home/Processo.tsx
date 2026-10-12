@@ -118,14 +118,7 @@ export default function Processo() {
     <section id="como-funciona" className="h-sec h-claro pc" ref={raiz}>
       <div className="h-wrap pc-grelha">
         <div className="pc-lado">
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Como funciona
-          </p>
-          <h2 className="h-titulo">
-            Três passos.{" "}
-            <span className="h-serif h-enfase">Sempre as mesmas mãos.</span>
-          </h2>
+          <h2 className="h-titulo">Como funciona um pedido</h2>
           <p className="h-lead">
             Não há centrais nem intermediários: quem confirma o seu pedido
             sabe quem vai recolher, e quem recolhe é quem entrega.

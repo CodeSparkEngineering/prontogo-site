@@ -8,10 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 // O texto em partes; as marcadas com `enfase` saem em itálico serifado
 const PARTES: { t: string; enfase?: boolean }[] = [
-  { t: "Não somos uma rede de centros de triagem. Somos uma equipa de Aveiro com" },
-  { t: "carrinha própria", enfase: true },
-  { t: "— recolhemos, conduzimos e entregamos nós," },
-  { t: "da sua empresa ao destino.", enfase: true },
+  {
+    t: "Somos uma equipa com carrinha própria e base em Sangalhos, Anadia. Quem atende o seu pedido é quem recolhe a carga, faz a viagem e a entrega no destino.",
+  },
 ];
 
 // Manifesto: as palavras acendem à medida que se rola, atadas ao scroll (se

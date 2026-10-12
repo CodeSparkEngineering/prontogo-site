@@ -71,13 +71,7 @@ export default function Factos() {
     <section className="h-sec h-claro ft" ref={raiz}>
       <div className="h-wrap">
         <div className="h-cabeca">
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Em números
-          </p>
-          <h2 className="h-titulo">
-            Promessas que pode <span className="h-serif h-enfase">cobrar.</span>
-          </h2>
+          <h2 className="h-titulo">O que tem garantido em cada viagem</h2>
         </div>
         <div className="ft-grelha">
           {FACTOS.map((f) => (

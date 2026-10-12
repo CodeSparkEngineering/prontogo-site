@@ -12,7 +12,7 @@ export default function NotFound() {
       />
       <h1>Página não encontrada</h1>
       <p>
-        Esta encomenda perdeu-se no caminho — a página que procura não existe
+        Esta encomenda perdeu-se no caminho: a página que procura não existe
         ou mudou de morada.
       </p>
       <Link href="/" className="btn btn-primary">

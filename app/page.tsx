@@ -6,7 +6,6 @@ import Factos from "@/components/home/Factos";
 import Servicos from "@/components/home/Servicos";
 import Processo from "@/components/home/Processo";
 import Cobertura from "@/components/home/Cobertura";
-import Tecnologia from "@/components/home/Tecnologia";
 import Compromissos from "@/components/home/Compromissos";
 import Simulador from "@/components/Simulador";
 import Sobre from "@/components/home/Sobre";
@@ -124,7 +123,6 @@ export default function Home() {
         <Servicos />
         <Processo />
         <Cobertura />
-        <Tecnologia />
         <Compromissos />
         <Simulador />
         <Sobre />

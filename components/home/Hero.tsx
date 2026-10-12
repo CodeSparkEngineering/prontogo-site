@@ -112,8 +112,8 @@ export default function Hero() {
 
         <div className="hx-rodape">
           <p className="hx-lead hx-sobe">
-            Uma carrinha só para a sua carga, à hora que marcar. Sem centros
-            de triagem nem transbordos — de Aveiro para todo o continente e
+            Uma carrinha só para a sua carga, à hora que marcar, sem centros
+            de triagem nem transbordos. De Aveiro para todo o continente e
             para a Europa.
           </p>
           <div className="hx-ctas hx-sobe">
@@ -236,12 +236,12 @@ export default function Hero() {
 
         <ul className="hx-legenda" aria-hidden="true">
           <li>
-            <span className="hx-leg-linha" /> ProntoGo — a mesma carrinha do
+            <span className="hx-leg-linha" /> ProntoGo: a mesma carrinha do
             início ao fim
           </li>
           <li>
-            <span className="hx-leg-linha hx-leg-linha--rede" /> Rede tradicional
-            — passa por centros de triagem
+            <span className="hx-leg-linha hx-leg-linha--rede" /> Rede tradicional:
+            passa por centros de triagem
           </li>
         </ul>
       </div>

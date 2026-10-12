@@ -41,7 +41,7 @@ export default function Footer() {
             >
               <img
                 src="https://www.zaask.pt/widget?user=1075679&widget=pro-since"
-                alt="ProntoGo, profissional verificado no Zaask — ver perfil"
+                alt="ProntoGo, profissional verificado no Zaask, ver perfil"
                 width={72}
                 height={72}
               />

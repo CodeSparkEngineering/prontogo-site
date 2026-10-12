@@ -24,7 +24,7 @@ export const servicos: Servico[] = [
   {
     titulo: "Mercadorias e paletes",
     texto:
-      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas, numa viagem só sua — o peso não muda o preço.",
+      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas, numa viagem só sua. O peso não muda o preço.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
@@ -95,13 +95,13 @@ export const diferenciais: Diferencial[] = [
   {
     titulo: "Cobertura nacional e europeia",
     texto:
-      "De Aveiro para todo o continente e, com frota própria, para a Europa — a mesma carrinha faz a viagem toda, sem transbordos.",
+      "De Aveiro para todo o continente e, com frota própria, para a Europa, a mesma carrinha faz a viagem toda, sem transbordos.",
     icon: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
   },
   {
     titulo: "Do envelope à palete",
     texto:
-      "Documentos, encomendas ou paletes até 640 kg — a mesma carrinha, a mesma operação.",
+      "Documentos, encomendas ou paletes até 640 kg, a mesma carrinha, a mesma operação.",
     icon: '<path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
   },
 ];
@@ -134,14 +134,14 @@ export const compromissos: Compromisso[] = [
   {
     titulo: "Resposta em menos de 24 horas úteis",
     texto:
-      "Cada pedido de orçamento é analisado e respondido por uma pessoa, com uma proposta concreta — não por um autoresponder.",
+      "Cada pedido de orçamento é analisado e respondido por uma pessoa, com uma proposta concreta, não por um autoresponder.",
     img: "/assets/prontogo-compromisso-resposta.webp",
     imgAlt: "Responsável da ProntoGo a responder a um pedido de orçamento",
   },
   {
     titulo: "Sem surpresas no preço",
     texto:
-      "O valor que acordamos é o valor que fatura. Sobretaxas e condições ficam claras antes de fechar — não depois.",
+      "O valor que acordamos é o valor que fatura. Sobretaxas e condições ficam claras antes de fechar, não depois.",
     img: "/assets/prontogo-compromisso-preco.webp",
     imgAlt: "Aperto de mão entre a ProntoGo e um lojista ao balcão",
   },
@@ -221,7 +221,7 @@ export const capacidadesApp: CapacidadeApp[] = [
   {
     titulo: "Prova de entrega no telemóvel",
     texto:
-      "Assinatura e fotografia no momento da entrega, associadas à encomenda — sem papel, sem dúvidas sobre quem recebeu.",
+      "Assinatura e fotografia no momento da entrega, associadas à encomenda, sem papel, sem dúvidas sobre quem recebeu.",
   },
   {
     titulo: "Horas de chegada mais fiáveis",
@@ -247,12 +247,12 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "De onde partem as carrinhas?",
     resposta:
-      "De Sangalhos, no concelho de Anadia (distrito de Aveiro). É daí que saímos para recolher a sua carga, onde quer que esteja, e levá-la ao local que indicar. Ainda não temos carrinhas noutras regiões do país, por isso todas as viagens começam em Sangalhos — e é a contar com esse percurso que combinamos a hora de recolha e fechamos o preço.",
+      "De Sangalhos, no concelho de Anadia (distrito de Aveiro). É daí que saímos para recolher a sua carga, onde quer que esteja, e levá-la ao local que indicar. Ainda não temos carrinhas noutras regiões do país, por isso todas as viagens começam em Sangalhos, e é a contar com esse percurso que combinamos a hora de recolha e fechamos o preço.",
   },
   {
     pergunta: "Fazem entregas para fora de Portugal?",
     resposta:
-      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume — peça-nos uma proposta.",
+      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume, peça-nos uma proposta.",
   },
   {
     pergunta: "O que é uma entrega dedicada?",
@@ -287,6 +287,6 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Trabalham com pequenas e médias empresas?",
     resposta:
-      "Sim, é para elas que trabalhamos: viagens dedicadas avulsas, sem mínimos, e rotas fixas contratadas para quem envia com regularidade — sempre com alguém que conhece a sua operação.",
+      "Sim, é para elas que trabalhamos: viagens dedicadas avulsas, sem mínimos, e rotas fixas contratadas para quem envia com regularidade, sempre com alguém que conhece a sua operação.",
   },
 ];

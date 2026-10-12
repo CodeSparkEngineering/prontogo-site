@@ -86,13 +86,8 @@ export default function Servicos() {
       <FundoVivo />
       <div className="sv-pista" ref={pista}>
         <div className="sv-intro">
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Serviços
-          </p>
           <h2 className="h-titulo">
-            Uma carrinha só para a sua carga.{" "}
-            <span className="h-serif h-enfase">À hora que marcar.</span>
+            Uma carrinha só para a sua carga, à hora que marcar
           </h2>
           <p className="h-lead">
             Do envelope urgente à palete entre armazéns: uma viagem dedicada,
@@ -116,7 +111,6 @@ export default function Servicos() {
               <Icone nome={ICONES_SERVICO[i]} tamanho={54} className="sv-icone" />
             </div>
             <div className="sv-corpo">
-              <span className="sv-num">0{i + 1}</span>
               <h3>{s.titulo}</h3>
               <p>{s.texto}</p>
             </div>
@@ -125,8 +119,7 @@ export default function Servicos() {
 
         <div className="sv-fim">
           <p className="sv-fim-texto">
-            Precisa de outra coisa?{" "}
-            <span className="h-serif h-enfase">Fale connosco.</span>
+            Precisa de outra coisa? Fale connosco.
           </p>
           <a className="h-btn h-btn--laranja" href="#contacto">
             Pedir orçamento

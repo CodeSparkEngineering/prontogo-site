@@ -56,7 +56,7 @@ export const alcances: Alcance[] = [
   {
     id: "europa",
     nome: "Europa",
-    descricao: "Frota própria — a mesma carrinha faz a viagem toda",
+    descricao: "Frota própria, a mesma carrinha faz a viagem toda",
     selo: "Orçamento à medida",
   },
 ];

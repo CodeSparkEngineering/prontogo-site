@@ -1,44 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { escaloesDedicada, CARGA_MAX_KG } from "@/lib/precos";
+import { CARGA_MAX_KG } from "@/lib/precos";
 import { whatsappLink } from "@/lib/site";
 import { rolarPara } from "@/lib/lenis";
-import Icone, { type NomeIcone } from "@/components/home/Icones";
 
 // O ficheiro mantém o nome, e a secção mantém o id #precos, para não partir
-// ligações externas nem os anúncios que já apontam para /#precos. Deixou de
-// ser um simulador: não mostra valores. Serve para qualificar o pedido de
-// viagem dedicada — distância e se a carga cabe na carrinha — e entregá-lo
-// no WhatsApp já escrito. O peso não é escalão: até ao limite da carrinha
-// não muda o preço; acima dele o transporte é articulado com parceiros.
+// ligações externas nem os anúncios que já apontam para /#precos. Não mostra
+// valores: recolhe o que é preciso para orçamentar uma viagem dedicada
+// (recolha, entrega, dia e carga) e entrega o pedido no WhatsApp já escrito.
+// Não se pergunta a distância: as carrinhas saem de Sangalhos e quem faz essa
+// conta somos nós. O peso só interessa acima do limite da carrinha.
 export const EVENTO_SIMULACAO = "prontogo:simulacao";
 
-const CARGAS: {
-  cabe: boolean;
-  nome: string;
-  descricao: string;
-  efeito: string;
-  icone: NomeIcone;
-  nota: string;
-}[] = [
-  {
-    cabe: true,
-    nome: `Até ${CARGA_MAX_KG} kg`,
-    descricao: "Cabe na nossa carrinha, até 1,20 m de altura carregada",
-    efeito: "O peso não muda o preço",
-    icone: "dedicada",
-    nota: "Paga a viagem, não os quilos: um envelope ou uma palete, o valor é o mesmo para o mesmo percurso.",
-  },
-  {
-    cabe: false,
-    nome: `Mais de ${CARGA_MAX_KG} kg`,
-    descricao: "Ou mais alta do que 1,20 m",
-    efeito: "Orçamento à medida",
-    icone: "paletes",
-    nota: "Acima do limite da carrinha articulamos o transporte com parceiros de confiança. Diga-nos o peso e as medidas e orçamentamos à medida.",
-  },
-];
+const DIAS = ["Hoje", "Amanhã", "Outro dia"] as const;
+type Dia = (typeof DIAS)[number];
 
 function IconeWhatsapp() {
   return (
@@ -50,17 +26,31 @@ function IconeWhatsapp() {
 }
 
 export default function Simulador() {
-  const [escalaoIdx, setEscalaoIdx] = useState(0);
-  const [cabe, setCabe] = useState(true);
+  const [recolha, setRecolha] = useState("");
+  const [entrega, setEntrega] = useState("");
+  const [dia, setDia] = useState<Dia>("Hoje");
+  const [data, setData] = useState("");
+  const [cargaTexto, setCargaTexto] = useState("");
+  const [acimaDoLimite, setAcimaDoLimite] = useState(false);
 
-  // Um rótulo, não um objeto: o valor ficou em lib/tarifario.ts.
-  const escalao = escaloesDedicada[escalaoIdx];
-  const carga = CARGAS.find((c) => c.cabe === cabe) ?? CARGAS[0];
-  const rotuloCarga = cabe
-    ? `carga até ${CARGA_MAX_KG} kg`
-    : `carga acima de ${CARGA_MAX_KG} kg`;
+  const quando =
+    dia === "Outro dia"
+      ? data
+        ? new Date(`${data}T12:00:00`).toLocaleDateString("pt-PT")
+        : ""
+      : dia;
 
-  const pedido = `viagem dedicada, ${escalao}, ${rotuloCarga}`;
+  // Só entram no pedido as linhas preenchidas: quem carrega no botão com o
+  // formulário vazio abre na mesma a conversa, e completamos por lá.
+  const linhas = [
+    "Olá! Vim do site e queria um orçamento de viagem dedicada.",
+    recolha.trim() && `Recolha: ${recolha.trim()}`,
+    entrega.trim() && `Entrega: ${entrega.trim()}`,
+    quando && `Quando: ${quando}`,
+    cargaTexto.trim() && `Carga: ${cargaTexto.trim()}`,
+    acimaDoLimite &&
+      `A carga passa dos ${CARGA_MAX_KG} kg ou de 1,20 m de altura.`,
+  ].filter(Boolean) as string[];
 
   // Alternativa para quem está ao computador ou prefere escrever: leva o
   // mesmo pedido ao formulário, com a mensagem já preenchida.
@@ -69,7 +59,7 @@ export default function Simulador() {
       new CustomEvent(EVENTO_SIMULACAO, {
         detail: {
           servico: "Viagem dedicada",
-          mensagem: `Vim do site e queria um orçamento: ${pedido}.`,
+          mensagem: linhas.slice(1).join("\n"),
         },
       })
     );
@@ -80,21 +70,12 @@ export default function Simulador() {
     <section id="precos" className="h-sec h-claro-2 q">
       <div className="h-wrap q-grelha">
         <div className="q-lado">
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Orçamento
-          </p>
-          <h2 className="h-titulo">
-            Diga-nos o que precisa.{" "}
-            <span className="h-serif h-enfase">Respondemos em minutos.</span>
-          </h2>
+          <h2 className="h-titulo">Peça um orçamento</h2>
           <p className="h-lead">
-            Na viagem dedicada a carrinha vai só para si, por isso a conta
-            faz-se pela distância, não pelo peso. Partimos de Sangalhos
-            (Anadia), recolhemos onde a carga estiver e entregamos no local
-            que indicar. Escolha o percurso: o pedido
-            segue para o WhatsApp já escrito e devolvemos um valor fechado,
-            por escrito, antes da recolha.
+            Diga-nos de onde para onde e em que dia. A carrinha sai de
+            Sangalhos (Anadia), recolhe a carga e leva-a diretamente ao local
+            que indicar. O preço depende do percurso, não do peso, e fica
+            fechado por escrito antes da recolha.
           </p>
 
           {/* Rota fixa contratada: viatura afeta a uma operação. O valor
@@ -104,9 +85,9 @@ export default function Simulador() {
             <p className="q-rota-selo">Contrato mensal</p>
             <h3>Rota fixa contratada</h3>
             <p>
-              Recolha e entrega no mesmo dia, no mesmo percurso, todos os dias
-              úteis. Viatura e condutor afetos à sua operação, a partir de 20
-              operações por mês.
+              Para quem faz o mesmo percurso todos os dias úteis: viatura e
+              condutor afetos à sua operação, a partir de 20 operações por
+              mês.
             </p>
             <a
               className="q-link"
@@ -122,61 +103,89 @@ export default function Simulador() {
         </div>
 
         <div className="q-painel" data-reveal>
-          <div className="q-passo">
-            <span className="q-passo-num">01</span>
-            <span className="q-passo-txt">Qual a distância da viagem?</span>
-          </div>
-          <div className="q-escaloes" role="group" aria-label="Distância">
-            {escaloesDedicada.map((e, i) => (
-              <button
-                key={e}
-                type="button"
-                className={`q-escalao${i === escalaoIdx ? " is-ativo" : ""}`}
-                onClick={() => setEscalaoIdx(i)}
-                aria-pressed={i === escalaoIdx}
-              >
-                {e}
-              </button>
-            ))}
+          <div className="q-linha">
+            <label className="q-campo">
+              <span className="q-campo-rotulo">Recolha</span>
+              <input
+                type="text"
+                value={recolha}
+                onChange={(e) => setRecolha(e.target.value)}
+                placeholder="Localidade ou morada"
+                autoComplete="off"
+              />
+            </label>
+            <label className="q-campo">
+              <span className="q-campo-rotulo">Entrega</span>
+              <input
+                type="text"
+                value={entrega}
+                onChange={(e) => setEntrega(e.target.value)}
+                placeholder="Localidade ou morada"
+                autoComplete="off"
+              />
+            </label>
           </div>
 
-          <div className="q-passo">
-            <span className="q-passo-num">02</span>
-            <span className="q-passo-txt">A carga cabe na carrinha?</span>
-          </div>
-          <div className="q-opcoes" role="group" aria-label="Carga">
-            {CARGAS.map((c) => {
-              const ativo = c.cabe === cabe;
-              return (
+          <div className="q-campo">
+            <span className="q-campo-rotulo" id="q-quando">
+              Quando
+            </span>
+            <div className="q-escaloes" role="group" aria-labelledby="q-quando">
+              {DIAS.map((d) => (
                 <button
-                  key={c.nome}
+                  key={d}
                   type="button"
-                  className={`q-opcao${ativo ? " is-ativo" : ""}`}
-                  onClick={() => setCabe(c.cabe)}
-                  aria-pressed={ativo}
+                  className={`q-escalao${d === dia ? " is-ativo" : ""}`}
+                  onClick={() => setDia(d)}
+                  aria-pressed={d === dia}
                 >
-                  <Icone nome={c.icone} tamanho={44} className="q-opcao-icone" />
-                  <span className="q-opcao-nome">{c.nome}</span>
-                  <span className="q-opcao-desc">{c.descricao}</span>
-                  <span className="q-opcao-prazo">{c.efeito}</span>
+                  {d}
                 </button>
-              );
-            })}
+              ))}
+              {dia === "Outro dia" && (
+                <input
+                  type="date"
+                  className="q-data"
+                  value={data}
+                  onChange={(e) => setData(e.target.value)}
+                  aria-label="Dia da recolha"
+                />
+              )}
+            </div>
           </div>
 
-          <p className="q-nota">{carga.nota}</p>
+          <label className="q-campo">
+            <span className="q-campo-rotulo">O que vai transportar</span>
+            <input
+              type="text"
+              value={cargaTexto}
+              onChange={(e) => setCargaTexto(e.target.value)}
+              placeholder="Por exemplo: 2 paletes, 12 caixas, uma máquina"
+              autoComplete="off"
+            />
+          </label>
+
+          <label className="q-caixa">
+            <input
+              type="checkbox"
+              checked={acimaDoLimite}
+              onChange={(e) => setAcimaDoLimite(e.target.checked)}
+            />
+            <span>
+              A carga pesa mais de {CARGA_MAX_KG} kg ou tem mais de 1,20 m de
+              altura
+            </span>
+          </label>
+          <p className="q-nota">
+            {acimaDoLimite
+              ? "Passa do limite da nossa carrinha. Tratamos do transporte com um parceiro e enviamos-lhe um orçamento à medida."
+              : `Até ${CARGA_MAX_KG} kg o peso não altera o preço: o valor é o da viagem.`}
+          </p>
 
           <div className="q-resultado">
-            <span className="q-resultado-rotulo">O seu pedido</span>
-            <span className="q-resultado-resumo" key={`${escalaoIdx}-${cabe}`}>
-              Dedicada · {escalao}
-              {!cabe && ` · mais de ${CARGA_MAX_KG} kg`}
-            </span>
             <a
               className="h-btn h-btn--laranja q-cta"
-              href={whatsappLink(
-                `Olá! Vim do site e queria um orçamento: ${pedido}.`
-              )}
+              href={whatsappLink(linhas.join("\n"))}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -187,11 +196,6 @@ export default function Simulador() {
               Prefere escrever? Use o formulário
             </button>
           </div>
-
-          <p className="q-rodape">
-            A carrinha vai só para si, à hora que marcar. O preço é confirmado
-            por escrito antes da recolha — sem surpresas nem taxas escondidas.
-          </p>
         </div>
       </div>
     </section>

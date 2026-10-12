@@ -91,14 +91,7 @@ export default function Cobertura() {
       <FundoVivo />
       <div className="h-wrap">
         <div className="h-cabeca">
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Cobertura
-          </p>
-          <h2 className="h-titulo">
-            De Aveiro para o continente.{" "}
-            <span className="h-serif h-enfase">E para a Europa.</span>
-          </h2>
+          <h2 className="h-titulo">Onde chegamos</h2>
         </div>
 
         <div className="cb-grelha">
@@ -188,7 +181,7 @@ export default function Cobertura() {
             <p className="h-lead">
               As nossas carrinhas partem de Sangalhos (Anadia): vamos buscar
               a carga onde estiver e levamo-la ao destino, só com ela a bordo.
-              Ainda não temos carrinhas noutras regiões — todas as viagens
+              Ainda não temos carrinhas noutras regiões: todas as viagens
               saem daqui, sempre com rastreio e prova de receção.
             </p>
             <ul>

@@ -9,14 +9,7 @@ export default function Faq() {
     <section id="faq" className="h-sec h-claro-2 fq">
       <div className="h-wrap fq-grelha">
         <div className="fq-lado">
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Perguntas frequentes
-          </p>
-          <h2 className="h-titulo">
-            Respostas diretas,{" "}
-            <span className="h-serif h-enfase">para decidir sem rodeios.</span>
-          </h2>
+          <h2 className="h-titulo">Perguntas frequentes</h2>
         </div>
         <div className="faq-list">
           {perguntasFrequentes.map((item) => (

@@ -39,13 +39,7 @@ export default function Contact() {
       <FundoVivo />
       <div className="h-wrap ct-grelha">
         <div className="ct-lado" data-reveal>
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Contacto
-          </p>
-          <h2 className="h-titulo ct-titulo">
-            Pronto para <span className="h-serif h-enfase">enviar?</span>
-          </h2>
+          <h2 className="h-titulo ct-titulo">Fale connosco</h2>
           <p className="h-lead">
             Conte-nos o que a sua empresa precisa de transportar. Cada pedido
             é lido por uma pessoa e respondido em menos de 24 horas úteis, com

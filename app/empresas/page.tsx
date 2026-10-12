@@ -77,12 +77,11 @@ export default function EmpresasPage() {
                 Para empresas · Aveiro → Portugal e Europa
               </p>
               <h1 className="h-titulo lp-titulo">
-                Entrega dedicada{" "}
-                <span className="h-serif h-enfase">para a sua empresa.</span>
+                Entrega dedicada para a sua empresa
               </h1>
               <p className="h-lead">
                 Diga-nos o que precisa de mover e com que frequência. Quem
-                recolhe é quem entrega — e respondemos com uma proposta em
+                recolhe é quem entrega, e respondemos com uma proposta em
                 menos de 24 horas úteis.
               </p>
             </div>

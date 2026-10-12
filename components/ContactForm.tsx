@@ -88,7 +88,7 @@ export default function ContactForm() {
       {destacado && (
         <div className="form-sim-alert" role="status">
           <span className="form-sim-dot" />
-          <span>O seu pedido já vem preenchido — reveja e envie.</span>
+          <span>O seu pedido já vem preenchido. Reveja e envie.</span>
         </div>
       )}
 
@@ -229,7 +229,7 @@ export default function ContactForm() {
       {estado === "erro" && (
         <div className="form-error" role="alert">
           <p>
-            Não foi possível enviar o pedido. Tente novamente — ou fale
+            Não foi possível enviar o pedido. Tente novamente ou fale
             connosco agora por outra via:
           </p>
           <div className="form-error-vias">

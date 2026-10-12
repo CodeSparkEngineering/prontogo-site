@@ -53,18 +53,11 @@ export default function Sobre() {
           />
         </div>
         <div className="sb-texto" data-reveal>
-          <p className="h-eyebrow">
-            <span className="h-ponto" />
-            Sobre nós
-          </p>
-          <h2 className="h-titulo">
-            Nascida em Aveiro,{" "}
-            <span className="h-serif h-enfase">feita para o país inteiro.</span>
-          </h2>
+          <h2 className="h-titulo">Quem somos</h2>
           <p className="h-lead">
             A ProntoGo nasceu de uma constatação simples: quem tem um negócio
             pequeno em Aveiro merece o mesmo nível de serviço que uma grande
-            marca em Lisboa — e raramente o consegue. As transportadoras
+            marca em Lisboa, e raramente o consegue. As transportadoras
             grandes tratam-nos como número; as pequenas nem sempre chegam onde
             é preciso.
           </p>
