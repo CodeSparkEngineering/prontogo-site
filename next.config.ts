@@ -68,6 +68,13 @@ const nextConfig: NextConfig = {
   // prontogo.pt (evita conteúdo duplicado no Google)
   async redirects() {
     return [
+      // Guias de e-commerce retirados: o site passou a falar só de entrega
+      // dedicada para empresas
+      {
+        source: "/guias/:slug(escolher-transportadora-loja-online|last-mile-o-que-e)",
+        destination: "/guias",
+        permanent: true,
+      },
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.prontogo.pt" }],

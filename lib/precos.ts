@@ -1,80 +1,62 @@
-// Catálogo público de serviços — o que a secção #precos mostra.
+// Catálogo público da viagem dedicada — o que as secções #cobertura e #precos
+// mostram.
 //
-// IMPORTANTE: este ficheiro é importado por um componente de cliente, por
-// isso tudo o que estiver aqui vai dentro do JavaScript que o browser
-// descarrega — mesmo que não apareça no ecrã. Nenhum valor de tarifa pode
-// entrar aqui. As tarifas vivem em lib/tarifario.ts, que nada importa e por
-// isso nunca chega ao browser.
+// IMPORTANTE: este ficheiro é importado por componentes de cliente, por isso
+// tudo o que estiver aqui vai dentro do JavaScript que o browser descarrega —
+// mesmo que não apareça no ecrã. Nenhum valor de tarifa pode entrar aqui. As
+// tarifas vivem em lib/tarifario.ts, que nada importa e por isso nunca chega
+// ao browser.
 //
-// Dois critérios, porque o custo real obedece a lógicas diferentes:
-//   - `peso`      → a entrega segue numa rota com outras. O que pesa é o
-//                   manuseamento, não os quilómetros.
-//   - `distancia` → viagem exclusiva para essa entrega. O custo é
-//                   quilómetros, portagens e horas ao volante.
+// A ProntoGo vende um só serviço: a viagem dedicada, exclusiva para a carga de
+// um cliente. O custo é quilómetros, portagens e horas ao volante — o peso não
+// entra na conta, só interessa saber se a carga cabe na carrinha.
 //
 // Limite operacional: 640 kg de carga útil (Citroën Berlingo).
 
-export type Criterio = "peso" | "distancia";
+export const CARGA_MAX_KG = 640;
 
-export interface ServicoPreco {
+// Escalões de distância que a secção #precos pergunta. Apenas rótulos: o
+// valor de cada um está em lib/tarifario.ts.
+export const escaloesDedicada = [
+  "Aveiro e limítrofes",
+  "Até 100 km",
+  "Até 150 km",
+  "Até 250 km",
+  "Mais de 250 km",
+];
+
+export interface Alcance {
   id: string;
   nome: string;
   descricao: string;
-  prazo: string;
-  criterio: Criterio;
-  // Apenas rótulos. O valor de cada escalão está em lib/tarifario.ts.
-  escaloes: string[];
-  nota?: string;
+  // Etiqueta à direita na lista da secção #cobertura
+  selo: string;
 }
 
-export const CARGA_MAX_KG = 640;
-
-export const servicosPreco: ServicoPreco[] = [
+// Os mesmos anéis do gráfico da secção #cobertura.
+export const alcances: Alcance[] = [
   {
-    id: "urbano",
-    nome: "Urbano",
-    descricao: "Aveiro e concelhos limítrofes",
-    prazo: "No próprio dia",
-    criterio: "peso",
-    escaloes: ["Até 5 kg", "5 a 15 kg", "15 a 30 kg", "Mais de 30 kg"],
+    id: "local",
+    nome: "Aveiro e limítrofes",
+    descricao: "Na cidade e nos concelhos vizinhos",
+    selo: "À hora marcada",
   },
   {
     id: "regional",
-    nome: "Regional",
-    descricao: "Até 100 km — Porto, Coimbra, Viseu",
-    prazo: "24 horas",
-    criterio: "peso",
-    escaloes: ["Até 5 kg", "5 a 15 kg", "15 a 30 kg", "Mais de 30 kg"],
-    nota: "Entrega direta por nós, sem passar por centros de triagem.",
+    nome: "Até 100 km",
+    descricao: "Porto, Coimbra, Viseu",
+    selo: "À hora marcada",
   },
   {
-    id: "nacional",
-    nome: "Nacional",
-    descricao: "Todo o continente",
-    prazo: "24 horas úteis",
-    criterio: "peso",
-    escaloes: [
-      "Até 5 kg",
-      "5 a 10 kg",
-      "10 a 20 kg",
-      "20 a 30 kg",
-      "Mais de 30 kg",
-    ],
-    nota: "Recolhemos consigo e a entrega segue pela nossa rede parceira.",
+    id: "continente",
+    nome: "Todo o continente",
+    descricao: "Lisboa e o resto do país, sem transbordos",
+    selo: "À hora marcada",
   },
   {
-    id: "dedicada",
-    nome: "Dedicada",
-    descricao: "Viagem exclusiva, sem paragens",
-    prazo: "À hora marcada",
-    criterio: "distancia",
-    escaloes: [
-      "Aveiro e limítrofes",
-      "Até 100 km",
-      "Até 150 km",
-      "Até 250 km",
-      "Mais de 250 km",
-    ],
-    nota: "A carrinha vai só para si, à hora que marcar. Preço por viagem, com qualquer peso até 640 kg e até 1,20 m de altura carregada.",
+    id: "europa",
+    nome: "Europa",
+    descricao: "Frota própria — a mesma carrinha faz a viagem toda",
+    selo: "Orçamento à medida",
   },
 ];

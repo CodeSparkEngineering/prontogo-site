@@ -13,27 +13,27 @@ export interface Servico {
 
 export const servicos: Servico[] = [
   {
-    titulo: "Entregas expressas urbanas",
+    titulo: "Viagem dedicada",
     texto:
-      "Recolha e entrega no próprio dia entre a sua empresa, os seus clientes e os seus fornecedores, dentro das principais cidades.",
+      "A carrinha vai só para si, à hora que marcar: recolhemos na sua empresa e entregamos diretamente no destino, sem paragens pelo caminho.",
     tone: "accent",
     icon: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>',
     img: "/assets/prontogo-servico-expresso.webp",
     imgAlt: "Carrinha de entregas a circular numa rua histórica portuguesa",
   },
   {
-    titulo: "Transporte de mercadorias",
+    titulo: "Mercadorias e paletes",
     texto:
-      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas — o que não cabe numa encomenda normal.",
+      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas, numa viagem só sua — o peso não muda o preço.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
     imgAlt: "Empilhador a carregar paletes de mercadoria num camião",
   },
   {
-    titulo: "Logística para PMEs",
+    titulo: "Rota fixa contratada",
     texto:
-      "Planos regulares e rotas fixas contratadas para pequenas e médias empresas, sem mínimos exagerados.",
+      "O mesmo percurso, todos os dias úteis, com viatura e condutor afetos à sua operação. Contrato mensal, a partir de 20 operações por mês.",
     tone: "accent",
     icon: '<path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/>',
     img: "/assets/prontogo-servico-pmes.webp",
@@ -155,11 +155,9 @@ export const compromissos: Compromisso[] = [
 ];
 
 export const tiposServico = [
-  "Entregas expressas urbanas",
-  "Transporte de mercadorias",
-  "Logística para PMEs",
+  "Viagem dedicada",
   "Rota fixa contratada",
-  "Entregas internacionais (Europa)",
+  "Viagem dedicada para a Europa",
   "Outro",
 ];
 
@@ -244,7 +242,12 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Em que zonas é que a ProntoGo faz entregas?",
     resposta:
-      "A ProntoGo tem sede em Aveiro e entrega em todo Portugal continental, em quatro modalidades: urbano em Aveiro e concelhos limítrofes no próprio dia; regional até 100 km (Porto, Coimbra, Viseu) em 24 horas, com entrega direta feita por nós; nacional em 24 horas úteis para todo o continente; e viagens dedicadas, em que a carrinha vai exclusivamente para si, à hora marcada. Além do território nacional, fazemos também entregas internacionais para a Europa, com frota própria.",
+      "A ProntoGo faz entregas dedicadas para todo Portugal continental, sempre a partir da nossa base em Sangalhos (Anadia, distrito de Aveiro): na região de Aveiro, até 100 km (Porto, Coimbra, Viseu) e no resto do país. A carrinha vai exclusivamente para a sua carga, à hora marcada, sem paragens pelo caminho. Além do território nacional, fazemos também viagens para a Europa, com frota própria.",
+  },
+  {
+    pergunta: "De onde partem as carrinhas?",
+    resposta:
+      "De Sangalhos, no concelho de Anadia (distrito de Aveiro). É daí que saímos para recolher a sua carga, onde quer que esteja, e levá-la ao local que indicar. Ainda não temos carrinhas noutras regiões do país, por isso todas as viagens começam em Sangalhos — e é a contar com esse percurso que combinamos a hora de recolha e fechamos o preço.",
   },
   {
     pergunta: "Fazem entregas para fora de Portugal?",
@@ -252,9 +255,14 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
       "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume — peça-nos uma proposta.",
   },
   {
-    pergunta: "Quanto tempo demora uma entrega expressa?",
+    pergunta: "O que é uma entrega dedicada?",
     resposta:
-      "Dentro das principais cidades, a recolha e a entrega acontecem no próprio dia. Para o restante território continental, o serviço expresso entrega em 24 horas úteis, com rastreamento em tempo real do início ao fim.",
+      "É uma viagem exclusiva: a carrinha leva só a sua carga, sai à hora que marcar e vai diretamente da recolha ao destino, sem paragens, transbordos nem centros de triagem. O tempo de entrega é o tempo da viagem, com rastreamento em tempo real do início ao fim.",
+  },
+  {
+    pergunta: "O peso da carga influencia o preço?",
+    resposta:
+      "Não, até ao limite da carrinha: 640 kg e 1,20 m de altura carregada. Na entrega dedicada o preço é por viagem e depende da distância, não dos quilos. Acima desse limite, articulamos o transporte com parceiros de confiança e orçamentamos à medida.",
   },
   {
     pergunta: "Como peço um orçamento?",
@@ -274,11 +282,11 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Posso acompanhar a minha encomenda em tempo real?",
     resposta:
-      "Sim. Todas as encomendas ProntoGo têm rastreamento em tempo real, do momento da recolha até à entrega, com prova de receção imediata.",
+      "Sim. Todas as entregas ProntoGo têm rastreamento em tempo real, do momento da recolha até à entrega, com prova de receção imediata.",
   },
   {
     pergunta: "Trabalham com pequenas e médias empresas?",
     resposta:
-      "Sim, é para elas que trabalhamos: planos regulares e flexíveis para PMEs, sem mínimos exagerados, e um gestor dedicado que conhece a sua operação.",
+      "Sim, é para elas que trabalhamos: viagens dedicadas avulsas, sem mínimos, e rotas fixas contratadas para quem envia com regularidade — sempre com alguém que conhece a sua operação.",
   },
 ];

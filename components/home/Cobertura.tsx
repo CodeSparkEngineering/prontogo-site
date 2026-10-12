@@ -3,23 +3,23 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { servicosPreco } from "@/lib/precos";
+import { alcances } from "@/lib/precos";
 import Icone, { type NomeIcone } from "@/components/home/Icones";
 import FundoVivo from "@/components/home/FundoVivo";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ICONES_MOD: Record<string, NomeIcone> = {
-  urbano: "expresso",
+  local: "expresso",
   regional: "carrinha",
-  nacional: "continente",
-  dedicada: "dedicada",
+  continente: "continente",
+  europa: "dedicada",
 };
 
 const C = 300; // centro do gráfico (Aveiro)
 
-// Anéis por alcance, não um mapa à escala: cada anel é uma modalidade de
-// serviço e as cidades ficam no anel certo, na direção aproximada.
+// Anéis por alcance, não um mapa à escala: cada anel é um alcance da
+// viagem dedicada e as cidades ficam no anel certo, na direção aproximada.
 const ANEIS = [
   { r: 92, rotulo: "até 100 km" },
   { r: 170, rotulo: "até 250 km" },
@@ -186,18 +186,20 @@ export default function Cobertura() {
 
           <div className="cb-lista">
             <p className="h-lead">
-              Quatro modalidades, conforme a urgência e a distância. Todas com
-              rastreio e prova de receção.
+              As nossas carrinhas partem de Sangalhos (Anadia): vamos buscar
+              a carga onde estiver e levamo-la ao destino, só com ela a bordo.
+              Ainda não temos carrinhas noutras regiões — todas as viagens
+              saem daqui, sempre com rastreio e prova de receção.
             </p>
             <ul>
-              {servicosPreco.map((s) => (
+              {alcances.map((s) => (
                 <li className="cb-modalidade" key={s.id}>
                   <Icone nome={ICONES_MOD[s.id] ?? "expresso"} tamanho={46} />
                   <div className="cb-mod-corpo">
                     <h3>{s.nome}</h3>
                     <p>{s.descricao}</p>
                   </div>
-                  <span className="cb-mod-prazo">{s.prazo}</span>
+                  <span className="cb-mod-prazo">{s.selo}</span>
                 </li>
               ))}
             </ul>

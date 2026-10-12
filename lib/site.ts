@@ -3,13 +3,13 @@
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://prontogo.pt";
 
-// Título com termos de pesquisa reais (entregas expressas, logística,
+// Título com termos de pesquisa reais (entrega dedicada, empresas,
 // Aveiro) — o slogan da marca vive no hero da página e no JSON-LD.
 export const siteTitle =
-  "ProntoGo — Entregas Expressas para Empresas em Aveiro, Portugal e Europa";
+  "ProntoGo — Entrega Dedicada para Empresas em Aveiro, Portugal e Europa";
 
 export const siteDescription =
-  "Logística e entregas para empresas em Aveiro, em todo Portugal e na Europa. Entregas expressas urbanas, transporte de mercadorias e paletes, rotas fixas contratadas, logística para PMEs e entregas internacionais na Europa com frota própria.";
+  "Entrega dedicada para empresas a partir de Aveiro: uma carrinha só para a sua carga, à hora marcada, sem transbordos nem centros de triagem. Mercadorias e paletes até 640 kg, rotas fixas contratadas e viagens para a Europa com frota própria.";
 
 // Contactos públicos do site — fonte única usada em Contact, Footer,
 // formulário, JSON-LD e API. Valores vazios ("") escondem o canal

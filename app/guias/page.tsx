@@ -9,7 +9,7 @@ import { siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Guias de logística e entregas",
   description:
-    "Guias práticos sobre custos de envio, escolha de transportadora, last-mile e logística para lojas online e PMEs em Portugal.",
+    "Guias práticos sobre custos de envio, escolha de transportadora e logística para empresas em Portugal.",
   alternates: { canonical: "/guias" },
 };
 

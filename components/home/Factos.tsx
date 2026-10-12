@@ -17,10 +17,10 @@ interface Facto {
 // Só promessas de serviço e limites da operação — nada de estatísticas de
 // volume ou pontualidade que a empresa ainda não pode provar.
 const FACTOS: Facto[] = [
-  { n: 24, valor: "24", sufixo: "h", legenda: "Serviço expresso para todo o continente." },
-  { valor: "Mesmo dia", legenda: "Recolha e entrega nas principais cidades." },
-  { n: 640, valor: "640", sufixo: " kg", legenda: "De carga por viagem — do envelope à palete." },
-  { n: 100, valor: "100", sufixo: "%", legenda: "Das encomendas com rastreio e prova de receção." },
+  { valor: "Hora marcada", legenda: "A carrinha sai quando marcar, só com a sua carga." },
+  { n: 0, valor: "0", legenda: "Transbordos e centros de triagem pelo caminho." },
+  { n: 640, valor: "640", sufixo: " kg", legenda: "Por viagem, sem o peso mexer no preço." },
+  { n: 100, valor: "100", sufixo: "%", legenda: "Das viagens com rastreio e prova de receção." },
 ];
 
 export default function Factos() {

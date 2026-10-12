@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import WhatsappButton from "@/components/WhatsappButton";
 
 export const metadata: Metadata = {
-  title: "Entregas personalizadas para empresas",
+  title: "Entrega dedicada para empresas",
   description:
-    "Entregas e transporte à medida da sua empresa, a partir de Aveiro: rotas e horários combinados, recolhas agendadas, carrinha própria até 640 kg. Peça uma proposta em um minuto.",
+    "Entrega dedicada para empresas, a partir de Aveiro: uma carrinha só para a sua carga, à hora marcada, sem transbordos, até 640 kg. Peça uma proposta em um minuto.",
   alternates: { canonical: "/empresas" },
 };
 
@@ -16,15 +16,15 @@ export const metadata: Metadata = {
 // novas (ver lib/content.ts e lib/precos.ts).
 const BENEFICIOS = [
   {
-    titulo: "Rotas e horários à sua medida",
-    texto: "Recolhas agendadas e janelas de entrega combinadas consigo.",
+    titulo: "Uma carrinha só para a sua carga",
+    texto: "Sem paragens nem outras entregas pelo caminho.",
   },
   {
-    titulo: "No próprio dia em Aveiro e arredores",
-    texto: "E em 24 horas úteis para o resto do continente.",
+    titulo: "À hora que marcar",
+    texto: "Partimos de Sangalhos (Anadia), recolhemos onde a carga estiver e entregamos direto no destino.",
   },
   {
-    titulo: "Carrinha própria, até 640 kg",
+    titulo: "Até 640 kg, sem o peso mexer no preço",
     texto: "Do envelope à palete, sem transbordos nem centros de triagem.",
   },
   {
@@ -34,7 +34,7 @@ const BENEFICIOS = [
   },
   {
     titulo: "Preço fechado antes da recolha",
-    texto: "Por escrito, sem sobretaxas nem taxas escondidas.",
+    texto: "Por viagem e por escrito, sem sobretaxas nem taxas escondidas.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function EmpresasPage() {
                 Para empresas · Aveiro → Portugal e Europa
               </p>
               <h1 className="h-titulo lp-titulo">
-                Entregas personalizadas{" "}
+                Entrega dedicada{" "}
                 <span className="h-serif h-enfase">para a sua empresa.</span>
               </h1>
               <p className="h-lead">

@@ -1,24 +1,44 @@
 "use client";
 
 import { useState } from "react";
-import { servicosPreco, CARGA_MAX_KG } from "@/lib/precos";
+import { escaloesDedicada, CARGA_MAX_KG } from "@/lib/precos";
 import { whatsappLink } from "@/lib/site";
 import { rolarPara } from "@/lib/lenis";
 import Icone, { type NomeIcone } from "@/components/home/Icones";
 
 // O ficheiro mantém o nome, e a secção mantém o id #precos, para não partir
 // ligações externas nem os anúncios que já apontam para /#precos. Deixou de
-// ser um simulador: não mostra valores. Serve para qualificar o pedido —
-// serviço e escalão — e entregá-lo no WhatsApp já escrito.
+// ser um simulador: não mostra valores. Serve para qualificar o pedido de
+// viagem dedicada — distância e se a carga cabe na carrinha — e entregá-lo
+// no WhatsApp já escrito. O peso não é escalão: até ao limite da carrinha
+// não muda o preço; acima dele o transporte é articulado com parceiros.
 export const EVENTO_SIMULACAO = "prontogo:simulacao";
 
-// Ícone de cada modalidade (conjunto em components/home/Icones.tsx)
-const iconesServico: Record<string, NomeIcone> = {
-  urbano: "expresso",
-  regional: "carrinha",
-  nacional: "continente",
-  dedicada: "dedicada",
-};
+const CARGAS: {
+  cabe: boolean;
+  nome: string;
+  descricao: string;
+  efeito: string;
+  icone: NomeIcone;
+  nota: string;
+}[] = [
+  {
+    cabe: true,
+    nome: `Até ${CARGA_MAX_KG} kg`,
+    descricao: "Cabe na nossa carrinha, até 1,20 m de altura carregada",
+    efeito: "O peso não muda o preço",
+    icone: "dedicada",
+    nota: "Paga a viagem, não os quilos: um envelope ou uma palete, o valor é o mesmo para o mesmo percurso.",
+  },
+  {
+    cabe: false,
+    nome: `Mais de ${CARGA_MAX_KG} kg`,
+    descricao: "Ou mais alta do que 1,20 m",
+    efeito: "Orçamento à medida",
+    icone: "paletes",
+    nota: "Acima do limite da carrinha articulamos o transporte com parceiros de confiança. Diga-nos o peso e as medidas e orçamentamos à medida.",
+  },
+];
 
 function IconeWhatsapp() {
   return (
@@ -30,21 +50,17 @@ function IconeWhatsapp() {
 }
 
 export default function Simulador() {
-  const [servicoId, setServicoId] = useState(servicosPreco[0].id);
   const [escalaoIdx, setEscalaoIdx] = useState(0);
+  const [cabe, setCabe] = useState(true);
 
-  const servico =
-    servicosPreco.find((s) => s.id === servicoId) ?? servicosPreco[0];
-  // Agora um rótulo, não um objeto: o valor ficou em lib/tarifario.ts.
-  const escalao =
-    servico.escaloes[Math.min(escalaoIdx, servico.escaloes.length - 1)];
+  // Um rótulo, não um objeto: o valor ficou em lib/tarifario.ts.
+  const escalao = escaloesDedicada[escalaoIdx];
+  const carga = CARGAS.find((c) => c.cabe === cabe) ?? CARGAS[0];
+  const rotuloCarga = cabe
+    ? `carga até ${CARGA_MAX_KG} kg`
+    : `carga acima de ${CARGA_MAX_KG} kg`;
 
-  const pedido = `${servico.nome} (${servico.descricao}), ${escalao}`;
-
-  function escolherServico(id: string) {
-    setServicoId(id);
-    setEscalaoIdx(0);
-  }
+  const pedido = `viagem dedicada, ${escalao}, ${rotuloCarga}`;
 
   // Alternativa para quem está ao computador ou prefere escrever: leva o
   // mesmo pedido ao formulário, com a mensagem já preenchida.
@@ -52,7 +68,7 @@ export default function Simulador() {
     window.dispatchEvent(
       new CustomEvent(EVENTO_SIMULACAO, {
         detail: {
-          servico: servico.nome,
+          servico: "Viagem dedicada",
           mensagem: `Vim do site e queria um orçamento: ${pedido}.`,
         },
       })
@@ -73,10 +89,12 @@ export default function Simulador() {
             <span className="h-serif h-enfase">Respondemos em minutos.</span>
           </h2>
           <p className="h-lead">
-            Cada percurso tem uma conta diferente — distância, peso, horário e
-            frequência. Escolha o serviço e o escalão: o pedido segue para o
-            WhatsApp já escrito e devolvemos um valor fechado, por escrito,
-            antes da recolha.
+            Na viagem dedicada a carrinha vai só para si, por isso a conta
+            faz-se pela distância, não pelo peso. Partimos de Sangalhos
+            (Anadia), recolhemos onde a carga estiver e entregamos no local
+            que indicar. Escolha o percurso: o pedido
+            segue para o WhatsApp já escrito e devolvemos um valor fechado,
+            por escrito, antes da recolha.
           </p>
 
           {/* Rota fixa contratada: viatura afeta a uma operação. O valor
@@ -106,43 +124,10 @@ export default function Simulador() {
         <div className="q-painel" data-reveal>
           <div className="q-passo">
             <span className="q-passo-num">01</span>
-            <span className="q-passo-txt">Que serviço precisa?</span>
+            <span className="q-passo-txt">Qual a distância da viagem?</span>
           </div>
-          <div className="q-opcoes" role="group" aria-label="Tipo de serviço">
-            {servicosPreco.map((s) => {
-              const ativo = s.id === servicoId;
-              const icone = iconesServico[s.id] ?? "expresso";
-              return (
-                <button
-                  key={s.id}
-                  type="button"
-                  className={`q-opcao${ativo ? " is-ativo" : ""}`}
-                  onClick={() => escolherServico(s.id)}
-                  aria-pressed={ativo}
-                >
-                  <Icone nome={icone} tamanho={44} className="q-opcao-icone" />
-                  <span className="q-opcao-nome">{s.nome}</span>
-                  <span className="q-opcao-desc">{s.descricao}</span>
-                  <span className="q-opcao-prazo">{s.prazo}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="q-passo">
-            <span className="q-passo-num">02</span>
-            <span className="q-passo-txt">
-              {servico.criterio === "peso"
-                ? "Quanto pesa a encomenda?"
-                : "Qual a distância estimada?"}
-            </span>
-          </div>
-          <div
-            className="q-escaloes"
-            role="group"
-            aria-label={servico.criterio === "peso" ? "Peso" : "Distância"}
-          >
-            {servico.escaloes.map((e, i) => (
+          <div className="q-escaloes" role="group" aria-label="Distância">
+            {escaloesDedicada.map((e, i) => (
               <button
                 key={e}
                 type="button"
@@ -155,12 +140,37 @@ export default function Simulador() {
             ))}
           </div>
 
-          {servico.nota && <p className="q-nota">{servico.nota}</p>}
+          <div className="q-passo">
+            <span className="q-passo-num">02</span>
+            <span className="q-passo-txt">A carga cabe na carrinha?</span>
+          </div>
+          <div className="q-opcoes" role="group" aria-label="Carga">
+            {CARGAS.map((c) => {
+              const ativo = c.cabe === cabe;
+              return (
+                <button
+                  key={c.nome}
+                  type="button"
+                  className={`q-opcao${ativo ? " is-ativo" : ""}`}
+                  onClick={() => setCabe(c.cabe)}
+                  aria-pressed={ativo}
+                >
+                  <Icone nome={c.icone} tamanho={44} className="q-opcao-icone" />
+                  <span className="q-opcao-nome">{c.nome}</span>
+                  <span className="q-opcao-desc">{c.descricao}</span>
+                  <span className="q-opcao-prazo">{c.efeito}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="q-nota">{carga.nota}</p>
 
           <div className="q-resultado">
             <span className="q-resultado-rotulo">O seu pedido</span>
-            <span className="q-resultado-resumo" key={`${servico.id}-${escalaoIdx}`}>
-              {servico.nome} · {escalao}
+            <span className="q-resultado-resumo" key={`${escalaoIdx}-${cabe}`}>
+              Dedicada · {escalao}
+              {!cabe && ` · mais de ${CARGA_MAX_KG} kg`}
             </span>
             <a
               className="h-btn h-btn--laranja q-cta"
@@ -179,7 +189,7 @@ export default function Simulador() {
           </div>
 
           <p className="q-rodape">
-            Capacidade até {CARGA_MAX_KG} kg por viagem. O preço é confirmado
+            A carrinha vai só para si, à hora que marcar. O preço é confirmado
             por escrito antes da recolha — sem surpresas nem taxas escondidas.
           </p>
         </div>
