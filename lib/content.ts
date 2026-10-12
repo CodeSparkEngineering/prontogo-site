@@ -260,6 +260,11 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
       "É uma viagem exclusiva: a carrinha leva só a sua carga, sai à hora que marcar e vai diretamente da recolha ao destino, sem paragens, transbordos nem centros de triagem. O tempo de entrega é o tempo da viagem, com rastreamento em tempo real do início ao fim.",
   },
   {
+    pergunta: "Como é calculado o preço?",
+    resposta:
+      "Pela distância da viagem, não pelo peso da carga. Como a carrinha vai só para si, o que conta é o percurso: de Sangalhos até à recolha e daí até ao destino. Diga-nos de onde para onde e enviamos o valor fechado, por escrito, antes da recolha.",
+  },
+  {
     pergunta: "Como peço um orçamento?",
     resposta:
       "A forma mais rápida é por WhatsApp (+351 913 942 714): diga-nos o que precisa de enviar, de onde para onde e quando, e respondemos com o valor. Pode também usar o formulário do site, ligar-nos ou escrever para geral@prontogo.pt. Cada pedido é respondido por uma pessoa em menos de 24 horas úteis, com uma proposta à medida da sua operação.",

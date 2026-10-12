@@ -4,7 +4,7 @@
 
 ## Serviços
 
-- **Viagem dedicada**: a carrinha vai só para a carga do cliente, à hora marcada, diretamente da recolha ao destino, sem paragens. Orçamento por viagem.
+- **Viagem dedicada**: a carrinha vai só para a carga do cliente, à hora marcada, diretamente da recolha ao destino, sem paragens. Preço calculado pela distância da viagem, não pelo peso.
 - **Mercadorias e paletes**: volumes de maior dimensão, cargas e paletes entre armazéns, fornecedores e lojas.
 - **Rota fixa contratada**: recolha e entrega no mesmo percurso, todos os dias úteis, com viatura e condutor afetos à operação do cliente; contrato mensal a partir de 20 operações por mês.
 - **Viagem dedicada para a Europa**: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem centros de triagem, cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. Orçamento à medida do destino.
@@ -14,7 +14,7 @@
 - Sede: Aveiro, Portugal
 - Base das carrinhas: Sangalhos (Anadia, distrito de Aveiro). Todas as viagens partem daí: a carrinha vai recolher a carga onde estiver e entrega-a no destino. A ProntoGo ainda não tem carrinhas noutras regiões do país
 - Cobertura: todo o território de Portugal continental (Aveiro e limítrofes, até 100 km, resto do continente) e Europa, sempre em viagem dedicada (carrinha exclusiva, à hora marcada)
-- Orçamentos: não há tabela pública. Cada pedido é orçamentado à medida, por viagem, e respondido por uma pessoa; a forma mais rápida de pedir é por WhatsApp
+- Orçamentos: não há tabela pública. Cada pedido é orçamentado à medida, pela distância da viagem e não pelo peso, e respondido por uma pessoa; a forma mais rápida de pedir é por WhatsApp
 - Rastreamento em tempo real com prova de receção em todas as entregas
 - Resposta a pedidos de orçamento: menos de 24 horas úteis
 - Orçamento fechado antes do serviço, sem sobretaxas surpresa

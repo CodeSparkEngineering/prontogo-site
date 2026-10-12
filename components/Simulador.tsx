@@ -9,7 +9,8 @@ import { rolarPara } from "@/lib/lenis";
 // valores: recolhe o que é preciso para orçamentar uma viagem dedicada
 // (recolha, entrega, dia e carga) e entrega o pedido no WhatsApp já escrito.
 // Não se pergunta a distância: as carrinhas saem de Sangalhos e quem faz essa
-// conta somos nós. Não se pergunta o peso nem se mostram preços.
+// conta somos nós. O preço é pela distância: não se pergunta o peso nem
+// se mostram valores.
 export const EVENTO_SIMULACAO = "prontogo:simulacao";
 
 const DIAS = ["Hoje", "Amanhã", "Outro dia"] as const;
@@ -70,8 +71,8 @@ export default function Simulador() {
           <p className="h-lead">
             Diga-nos de onde para onde e em que dia. A carrinha sai de
             Sangalhos (Anadia), recolhe a carga e leva-a diretamente ao local
-            que indicar. O orçamento é por viagem e fica fechado por escrito
-            antes da recolha.
+            que indicar. O preço é calculado pela distância, não pelo peso, e
+            fica fechado por escrito antes da recolha.
           </p>
 
           {/* Rota fixa contratada: viatura afeta a uma operação. O valor

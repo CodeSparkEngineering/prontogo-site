@@ -33,8 +33,8 @@ const BENEFICIOS = [
       "Viatura e condutor afetos à sua operação, a partir de 20 operações por mês.",
   },
   {
-    titulo: "Orçamento fechado antes da recolha",
-    texto: "Por viagem e por escrito, sem sobretaxas nem taxas escondidas.",
+    titulo: "Preço pela distância, não pelo peso",
+    texto: "Fechado por escrito antes da recolha, sem sobretaxas nem taxas escondidas.",
   },
 ];
 

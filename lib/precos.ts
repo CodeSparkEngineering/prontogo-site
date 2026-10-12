@@ -8,8 +8,9 @@
 // ao browser.
 //
 // A ProntoGo vende um só serviço: a viagem dedicada, exclusiva para a carga de
-// um cliente. O site não mostra preços nem fala de peso: o orçamento é por
-// viagem e é dado por uma pessoa.
+// um cliente. O preço é calculado pela distância, não pelo peso. O site
+// diz isso, mas não mostra valores nem limites de peso: o orçamento é dado
+// por uma pessoa.
 
 // Escalões de distância que a secção #precos pergunta. Apenas rótulos: o
 // valor de cada um está em lib/tarifario.ts.
