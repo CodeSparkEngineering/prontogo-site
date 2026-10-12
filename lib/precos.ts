@@ -8,12 +8,8 @@
 // ao browser.
 //
 // A ProntoGo vende um só serviço: a viagem dedicada, exclusiva para a carga de
-// um cliente. O custo é quilómetros, portagens e horas ao volante — o peso não
-// entra na conta, só interessa saber se a carga cabe na carrinha.
-//
-// Limite operacional: 640 kg de carga útil (Citroën Berlingo).
-
-export const CARGA_MAX_KG = 640;
+// um cliente. O site não mostra preços nem fala de peso: o orçamento é por
+// viagem e é dado por uma pessoa.
 
 // Escalões de distância que a secção #precos pergunta. Apenas rótulos: o
 // valor de cada um está em lib/tarifario.ts.

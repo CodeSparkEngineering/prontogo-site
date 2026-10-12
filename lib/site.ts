@@ -9,7 +9,7 @@ export const siteTitle =
   "ProntoGo | Entrega Dedicada para Empresas em Aveiro, Portugal e Europa";
 
 export const siteDescription =
-  "Entrega dedicada para empresas a partir de Aveiro: uma carrinha só para a sua carga, à hora marcada, sem transbordos nem centros de triagem. Mercadorias e paletes até 640 kg, rotas fixas contratadas e viagens para a Europa com frota própria.";
+  "Entrega dedicada para empresas a partir de Aveiro: uma carrinha só para a sua carga, à hora marcada, sem transbordos nem centros de triagem. Mercadorias e paletes, rotas fixas contratadas e viagens para a Europa com frota própria.";
 
 // Contactos públicos do site — fonte única usada em Contact, Footer,
 // formulário, JSON-LD e API. Valores vazios ("") escondem o canal

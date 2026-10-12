@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { CARGA_MAX_KG } from "@/lib/precos";
 import { whatsappLink } from "@/lib/site";
 import { rolarPara } from "@/lib/lenis";
 
@@ -10,7 +9,7 @@ import { rolarPara } from "@/lib/lenis";
 // valores: recolhe o que é preciso para orçamentar uma viagem dedicada
 // (recolha, entrega, dia e carga) e entrega o pedido no WhatsApp já escrito.
 // Não se pergunta a distância: as carrinhas saem de Sangalhos e quem faz essa
-// conta somos nós. O peso só interessa acima do limite da carrinha.
+// conta somos nós. Não se pergunta o peso nem se mostram preços.
 export const EVENTO_SIMULACAO = "prontogo:simulacao";
 
 const DIAS = ["Hoje", "Amanhã", "Outro dia"] as const;
@@ -31,7 +30,6 @@ export default function Simulador() {
   const [dia, setDia] = useState<Dia>("Hoje");
   const [data, setData] = useState("");
   const [cargaTexto, setCargaTexto] = useState("");
-  const [acimaDoLimite, setAcimaDoLimite] = useState(false);
 
   const quando =
     dia === "Outro dia"
@@ -48,8 +46,6 @@ export default function Simulador() {
     entrega.trim() && `Entrega: ${entrega.trim()}`,
     quando && `Quando: ${quando}`,
     cargaTexto.trim() && `Carga: ${cargaTexto.trim()}`,
-    acimaDoLimite &&
-      `A carga passa dos ${CARGA_MAX_KG} kg ou de 1,20 m de altura.`,
   ].filter(Boolean) as string[];
 
   // Alternativa para quem está ao computador ou prefere escrever: leva o
@@ -74,8 +70,8 @@ export default function Simulador() {
           <p className="h-lead">
             Diga-nos de onde para onde e em que dia. A carrinha sai de
             Sangalhos (Anadia), recolhe a carga e leva-a diretamente ao local
-            que indicar. O preço depende do percurso, não do peso, e fica
-            fechado por escrito antes da recolha.
+            que indicar. O orçamento é por viagem e fica fechado por escrito
+            antes da recolha.
           </p>
 
           {/* Rota fixa contratada: viatura afeta a uma operação. O valor
@@ -164,23 +160,6 @@ export default function Simulador() {
               autoComplete="off"
             />
           </label>
-
-          <label className="q-caixa">
-            <input
-              type="checkbox"
-              checked={acimaDoLimite}
-              onChange={(e) => setAcimaDoLimite(e.target.checked)}
-            />
-            <span>
-              A carga pesa mais de {CARGA_MAX_KG} kg ou tem mais de 1,20 m de
-              altura
-            </span>
-          </label>
-          <p className="q-nota">
-            {acimaDoLimite
-              ? "Passa do limite da nossa carrinha. Tratamos do transporte com um parceiro e enviamos-lhe um orçamento à medida."
-              : `Até ${CARGA_MAX_KG} kg o peso não altera o preço: o valor é o da viagem.`}
-          </p>
 
           <div className="q-resultado">
             <a

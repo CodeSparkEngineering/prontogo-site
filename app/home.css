@@ -321,8 +321,6 @@ main{overflow-x:clip}
 .q-campo input::placeholder{color:var(--claro-2);opacity:.7}
 .q-campo input:focus-visible,.q-data:focus-visible{outline:2px solid var(--laranja);outline-offset:1px;border-color:transparent}
 .q-data{width:auto;padding:9px 12px;border-radius:999px;font-size:14px}
-.q-caixa{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.45;cursor:pointer}
-.q-caixa input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:var(--laranja)}
 .q-escaloes{display:flex;flex-wrap:wrap;gap:8px}
 .q-escalao{padding:11px 16px;border:1px solid var(--linha-escura);border-radius:999px;background:none;color:var(--claro);font:inherit;font-size:14px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .q-escalao:hover{border-color:rgba(238,234,224,.35)}

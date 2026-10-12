@@ -8,7 +8,7 @@ import WhatsappButton from "@/components/WhatsappButton";
 export const metadata: Metadata = {
   title: "Entrega dedicada para empresas",
   description:
-    "Entrega dedicada para empresas, a partir de Aveiro: uma carrinha só para a sua carga, à hora marcada, sem transbordos, até 640 kg. Peça uma proposta em um minuto.",
+    "Entrega dedicada para empresas, a partir de Aveiro: uma carrinha só para a sua carga, à hora marcada, sem transbordos. Peça uma proposta em um minuto.",
   alternates: { canonical: "/empresas" },
 };
 
@@ -24,8 +24,8 @@ const BENEFICIOS = [
     texto: "Partimos de Sangalhos (Anadia), recolhemos onde a carga estiver e entregamos direto no destino.",
   },
   {
-    titulo: "Até 640 kg, sem o peso mexer no preço",
-    texto: "Do envelope à palete, sem transbordos nem centros de triagem.",
+    titulo: "Do envelope à palete",
+    texto: "Sem transbordos nem centros de triagem.",
   },
   {
     titulo: "Rota fixa contratada",
@@ -33,7 +33,7 @@ const BENEFICIOS = [
       "Viatura e condutor afetos à sua operação, a partir de 20 operações por mês.",
   },
   {
-    titulo: "Preço fechado antes da recolha",
+    titulo: "Orçamento fechado antes da recolha",
     texto: "Por viagem e por escrito, sem sobretaxas nem taxas escondidas.",
   },
 ];

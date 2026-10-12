@@ -24,7 +24,7 @@ export const servicos: Servico[] = [
   {
     titulo: "Mercadorias e paletes",
     texto:
-      "Volumes, cargas e paletes até 640 kg entre armazéns, fornecedores e lojas, numa viagem só sua. O peso não muda o preço.",
+      "Volumes, cargas e paletes entre armazéns, fornecedores e lojas, numa viagem só sua, sem transbordos.",
     tone: "blue",
     icon: '<path d="M14 17h-9V5h9v12z"/><path d="M14 8h4l3 4v5h-7V8z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
     img: "/assets/prontogo-servico-mercadorias.webp",
@@ -53,7 +53,7 @@ export const passos: Passo[] = [
     num: "1",
     titulo: "Solicite",
     texto:
-      "Peça por WhatsApp, telefone ou pelo formulário. Confirmamos preço e janela de recolha em minutos.",
+      "Peça por WhatsApp, telefone ou pelo formulário. Confirmamos o orçamento e a janela de recolha em minutos.",
     img: "/assets/prontogo-passo-solicite.webp",
   },
   {
@@ -101,7 +101,7 @@ export const diferenciais: Diferencial[] = [
   {
     titulo: "Do envelope à palete",
     texto:
-      "Documentos, encomendas ou paletes até 640 kg, a mesma carrinha, a mesma operação.",
+      "Documentos, encomendas ou paletes, a mesma carrinha, a mesma operação.",
     icon: '<path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
   },
 ];
@@ -139,7 +139,7 @@ export const compromissos: Compromisso[] = [
     imgAlt: "Responsável da ProntoGo a responder a um pedido de orçamento",
   },
   {
-    titulo: "Sem surpresas no preço",
+    titulo: "Orçamento fechado antes da recolha",
     texto:
       "O valor que acordamos é o valor que fatura. Sobretaxas e condições ficam claras antes de fechar, não depois.",
     img: "/assets/prontogo-compromisso-preco.webp",
@@ -247,22 +247,17 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "De onde partem as carrinhas?",
     resposta:
-      "De Sangalhos, no concelho de Anadia (distrito de Aveiro). É daí que saímos para recolher a sua carga, onde quer que esteja, e levá-la ao local que indicar. Ainda não temos carrinhas noutras regiões do país, por isso todas as viagens começam em Sangalhos, e é a contar com esse percurso que combinamos a hora de recolha e fechamos o preço.",
+      "De Sangalhos, no concelho de Anadia (distrito de Aveiro). É daí que saímos para recolher a sua carga, onde quer que esteja, e levá-la ao local que indicar. Ainda não temos carrinhas noutras regiões do país, por isso todas as viagens começam em Sangalhos, e é a contar com esse percurso que combinamos a hora de recolha e fechamos o orçamento.",
   },
   {
     pergunta: "Fazem entregas para fora de Portugal?",
     resposta:
-      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. O preço é orçamentado à medida do destino e do volume, peça-nos uma proposta.",
+      "Sim. Fazemos entregas internacionais para a Europa com frota própria: a mesma carrinha ProntoGo faz a viagem completa até ao destino, sem transbordos nem passagem por centros de triagem. Transportamos cargas, paletes e volumes de empresas, com rastreamento de ponta a ponta. Cada viagem é orçamentada à medida do destino, peça-nos uma proposta.",
   },
   {
     pergunta: "O que é uma entrega dedicada?",
     resposta:
       "É uma viagem exclusiva: a carrinha leva só a sua carga, sai à hora que marcar e vai diretamente da recolha ao destino, sem paragens, transbordos nem centros de triagem. O tempo de entrega é o tempo da viagem, com rastreamento em tempo real do início ao fim.",
-  },
-  {
-    pergunta: "O peso da carga influencia o preço?",
-    resposta:
-      "Não, até ao limite da carrinha: 640 kg e 1,20 m de altura carregada. Na entrega dedicada o preço é por viagem e depende da distância, não dos quilos. Acima desse limite, articulamos o transporte com parceiros de confiança e orçamentamos à medida.",
   },
   {
     pergunta: "Como peço um orçamento?",
@@ -277,7 +272,7 @@ export const perguntasFrequentes: PerguntaFrequente[] = [
   {
     pergunta: "Que tipos de mercadoria transportam?",
     resposta:
-      "Desde documentos e volumes pequenos até cargas e paletes até 640 kg (e até 1,20 m de altura carregada), transportados na nossa própria carrinha entre armazéns, fornecedores, lojas e empresas clientes. Para cargas acima desse peso, fale connosco: articulamos o transporte com parceiros de confiança.",
+      "Desde documentos e volumes pequenos até cargas e paletes, transportados na nossa própria carrinha entre armazéns, fornecedores, lojas e empresas clientes. Diga-nos o que precisa de levar e confirmamos se segue na carrinha.",
   },
   {
     pergunta: "Posso acompanhar a minha encomenda em tempo real?",
